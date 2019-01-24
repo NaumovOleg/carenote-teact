@@ -1,28 +1,42 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import Auth from './components/auth/auth';
+import Main from './components/root/main';
 
 class App extends Component {
   render() {
+
+      const routes = this.props.authentificated?<Main  />:
+          (<Switch>
+            <Route path="/auth" component={Auth}/>
+            <Redirect to="/auth"/>
+          </Switch>);
+
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
+       appp
+
+          {routes}
+
       </div>
     );
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+    return {
+        authentificated: state.auth.loggedIn,
+
+    };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+
+    };
+};
+
+export default withRouter ( connect ( mapStateToProps, mapDispatchToProps ) ( App ) );
