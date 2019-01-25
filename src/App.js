@@ -5,11 +5,12 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Auth from './components/auth/auth';
 import Main from './components/root/main';
+import Header from './components/header'
 
 class App extends Component {
   render() {
 
-      const routes = this.props.authentificated?<Main  />:
+      const routes = this.props.authentificated?<Main />:
           (<Switch>
             <Route path="/auth" component={Auth}/>
             <Redirect to="/auth"/>
@@ -17,10 +18,8 @@ class App extends Component {
 
     return (
       <div className="App">
-       appp
-
+          <Header/>
           {routes}
-
       </div>
     );
   }

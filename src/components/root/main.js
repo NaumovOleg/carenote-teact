@@ -5,7 +5,7 @@ import Accaunt from './main-components/Accaunt';
 import Notes from './main-components/CareNotes';
 import Shedule from './main-components/Shedules';
 import Subscriptions from './main-components/Subscriptions'
-
+import  Header from '../header';
 class Main extends Component {
     constructor(props) {
         super(props);
@@ -21,8 +21,10 @@ class Main extends Component {
             </Switch>);
         return (
           <div className="main-component">
-              main
-              {routes}
+              <div className="routers-montainer">
+                  {routes}
+              </div>
+
             </div>
         );
     }
