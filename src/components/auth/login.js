@@ -6,7 +6,6 @@ class Login extends Component {
             <div className="login-container">
                 {this.props.data.header}dddd
                 {this.props.data.subHeader}
-
             </div>)
     }
 }

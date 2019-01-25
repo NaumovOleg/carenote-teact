@@ -1,16 +1,11 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    user:            {
-        name:'Elbert',
-        surname:'elbert-surnamme'
-    },
-
-    loggedIn:        false,
+    plan:  'Gold plan' ,
 };
 const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {
-        case actionTypes.AUTH_CHECK:
+        case actionTypes.INIT_PLAN:
             return {
                 ...state,
                 loading: true,

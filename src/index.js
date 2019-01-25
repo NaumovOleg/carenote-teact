@@ -3,13 +3,15 @@ import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
-import { MemoryRouter } from 'react-router'
+import { MemoryRouter } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import authReducer from './store/reducers/auth';
+import planReducer from './store/reducers/plan';
 const rootReducer = combineReducers ( {
-    auth:     authReducer,
+    auth: authReducer,
+    plan: planReducer,
 } );
 const logger = store => {
     return next => {
@@ -29,9 +31,9 @@ const app = (
     </Provider>
 );
 
-ReactDOM.render(app, document.getElementById('root'));
+ReactDOM.render ( app, document.getElementById ( 'root' ) );
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: http://bit.ly/CRA-PWA
-serviceWorker.unregister();
+serviceWorker.unregister ();
