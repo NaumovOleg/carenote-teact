@@ -6,7 +6,7 @@ const initialState = {
         surname:'elbert-surnamme'
     },
 
-    loggedIn:        false,
+    loggedIn:        true,
 };
 const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {

@@ -1,0 +1,20 @@
+.menu-component{
+    flex-basis: 27%;
+    min-width:250px;
+}
+.menu-container .menu-items .header-navigation-menu{
+    height:45px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    font-size: 21px;
+    text-decoration: none;
+    color: #000;
+}
+.menu-container .menu-items .header-navigation__selected{
+    font-weight: 700;
+}
+.menu-container .menu-items .header-navigation-menu .text{
+    border-bottom: 4px solid #008BE2;
+    padding-bottom: 2px;
+}

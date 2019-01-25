@@ -1,0 +1,6 @@
+.main-component{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    padding-top:15px;
+}

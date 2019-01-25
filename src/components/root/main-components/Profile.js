@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 
 
-class Accaunt extends Component {
+class Profile extends Component {
     constructor(props) {
         super(props);
     }
@@ -22,4 +22,4 @@ const mapDispatchToProps = dispatch => {
     return {};
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(Accaunt);
+export default connect(mapStateToProps, mapDispatchToProps)(Profile);
