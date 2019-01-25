@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import '../../styles/login.css';
 import phoneLogo from '../../assets/Phone.png';
-import mainLogo from '../../assets/carenote.png';
+import mainLogo from '../../assets/CareNote.png';
 
 
 

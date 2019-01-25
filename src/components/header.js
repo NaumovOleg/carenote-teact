@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import headerIcon from '../assets/CareNote.png';
 import {connect} from 'react-redux'
+import * as actions from '../store/actions/index'
 import  '../styles/header.css';
 
 class Header extends Component {
-
 
     render () {
         const style = {
@@ -30,12 +30,9 @@ class Header extends Component {
                         </div>
                     </div>
                     <div className="log-out__button" style={style}>
-                        <button className="log-out">Logout</button>
-
+                        <button className="log-out" onClick={this.props.logOut}>Logout</button>
                     </div>
-
                 </div>
-
             </div>);
     }
 }
@@ -48,7 +45,9 @@ const mapStateToProps = state => {
 
 };
 const mapDispatchToProps = dispatch => {
-    return {};
+    return {
+        logOut :()=>dispatch(actions.logOut())
+    };
 };
 
 export default  connect(mapStateToProps, mapDispatchToProps)(Header);
