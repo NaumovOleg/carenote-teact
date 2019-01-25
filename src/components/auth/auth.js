@@ -15,7 +15,7 @@ class Auth extends Component {
         return (
             <div  className="auth-container">
                 <Login data={loginData}  />
-            </div>);
+            </div>)
     }
 }
 
