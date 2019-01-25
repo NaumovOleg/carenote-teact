@@ -11,27 +11,18 @@ class Login extends Component {
 
         return (
             <div className="login-container">
-            <div className="callSection">
-              <div className="telphoneNumber">
-                <img src={phoneLogo}/>
-                <p>Call Us Toll-Free <span>1-800-888-CARE</span></p>
-              </div>
-              <div className="mainLogoSection">
-                <img src={mainLogo}/>
-              </div>
-            </div>
                 <div className='loginHeader'>
-                  {this.props.data.header}
-                  {this.props.data.subHeader}
+                  <p>{this.props.data.header}</p>
+                  <p>{this.props.data.subHeader}</p>
                 </div>
-                <form>
-                  <input type="text" placeholder="Your email address" />
-                  <input type="password" placeholder="Your password" />
-                  <input type="submit" value="Login" />
+                <form className="loginForm">
+                  <input type="text" placeholder="Your email address" className="emailInput"/>
+                  <input type="password" placeholder="Your password" className="passwordInput"/>
+                  <input type="submit" value="Login" className="loginButton"/>
                 </form>
                 <div className="registerLink">
-                  <a href="#">Forgot password?</a>
-                  <p>Don't have an account?<a href="#">Register here to get started</a></p>
+                  <a href="#" className="passwordRestore">Forgot password?</a>
+                  <p>Don't have an account? <a href="#"> Register here to get started</a></p>
                 </div>
 
             </div>)
