@@ -7,12 +7,9 @@ class Header extends Component {
 
 
     render () {
-
-        console.log( this.props );
-
         const style = {
             display:this.props.auth.loggedIn?'flex':'none'
-        }
+        };
 
         return (
             <div  className="header-coponent">

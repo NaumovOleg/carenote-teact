@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
-import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
+import {  Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import Profile from './main-components/Profile';
 import Notes from './main-components/CareNotes';
 import Shedule from './main-components/Shedules';
@@ -27,7 +27,6 @@ class Main extends Component {
               <div className="routers-montainer">
                   {routes}
               </div>
-
             </div>
         );
     }
