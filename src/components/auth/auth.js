@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import Login from './login';
+import '../../styles/auth.css'
 class Auth extends Component {
 
 
@@ -14,7 +15,7 @@ class Auth extends Component {
         return (
             <div  className="auth-container">
                 <Login data={loginData}  />
-            </div>);
+            </div>)
     }
 }
 
