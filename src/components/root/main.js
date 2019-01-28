@@ -6,6 +6,7 @@ import Shedule from './main-components/Shedules';
 import Subscriptions from './main-components/Subscriptions';
 import '../../styles/root/main.css';
 
+
 class Main extends Component {
 
     constructor ( props ) {
