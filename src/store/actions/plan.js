@@ -1,6 +1,6 @@
 
 import * as actionTypes from './actionTypes';
-import axios from 'axios';
+import { request } from '../../utils/request';
 export const initPlan = ( plan ) => {
     return {
         type: actionTypes.INIT_PLAN,

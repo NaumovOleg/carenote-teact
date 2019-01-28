@@ -14,22 +14,16 @@ class Shedule extends Component {
         return (
             <div className="shedule-component">
                 <button onClick={this.props.prev}> back </button>
-
             </div>
         );
     }
 }
 const mapStateToProps = state => {
-    return {
-        location:state.location
-    };
+    return {    };
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-
-        openMenu: (  ) => dispatch ( actions.showMenu( 'flex' ) ),
-    };
+    return {};
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Shedule);

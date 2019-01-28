@@ -4,10 +4,13 @@ import Profile from './main-components/Profile';
 import Notes from './main-components/CareNotes';
 import Shedule from './main-components/Shedules';
 import Subscriptions from './main-components/Subscriptions';
+import * as actions from '../../store/actions/index'
 import '../../styles/root/main.css';
 
 
 class Main extends Component {
+
+
 
     constructor ( props ) {
         super ( props );
@@ -26,11 +29,14 @@ class Main extends Component {
         };
     }
 
+    componentWillMount(){
+        this.props.getProducts()
+    }
+
     switchRoute = ( route ) => {
         if ( this.state.currentRoute.name === route ) {
             return;
-        }
-        ;
+        };
         let routes = this.state.routes;
         let currentRoute = this.state.currentRoute;
         let previousRoute = this.state.currentRoute;
@@ -70,13 +76,13 @@ class Main extends Component {
 
         const styleForMenu = {
             display:this.state.currentRoute.name === 'shedule'?'none':'flex'
-        }
+        };
 
         const stylesForActivRoutes = {
-            subscriptions: this.state.routes.subscriptions.active?'header-navigation-menu active':'header-navigation-menu',
-            shedule:       this.state.routes.shedule.active?'header-navigation-menu active':'header-navigation-menu',
-            profile:       this.state.routes.profile.active?'header-navigation-menu active':'header-navigation-menu',
-            notes:         this.state.routes.notes.active?'header-navigation-menu active':'header-navigation-menu',
+            subscriptions: this.state.routes.subscriptions.active?'header-navigation-menu header-navigation__selected':'header-navigation-menu',
+            shedule:       this.state.routes.shedule.active?'header-navigation-menu header-navigation__selected':'header-navigation-menu',
+            profile:       this.state.routes.profile.active?'header-navigation-menu header-navigation__selected':'header-navigation-menu',
+            notes:         this.state.routes.notes.active?'header-navigation-menu header-navigation__selected':'header-navigation-menu',
         };
 
         return (
@@ -122,7 +128,9 @@ const mapStateToProps = state => {
     return state;
 };
 const mapDispatchToProps = dispatch => {
-    return {};
+    return {
+        getProducts:()=>dispatch(actions.getProducts())
+    };
 };
 
 export default connect ( mapStateToProps, mapDispatchToProps ) ( Main ) ;
