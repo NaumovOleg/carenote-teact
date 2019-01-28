@@ -11,6 +11,11 @@ class Header extends Component {
             display:this.props.auth.loggedIn?'flex':'none'
         };
 
+        let planTitle = '';
+        if( this.props.plan.line_items!==undefined){
+            planTitle = this.props.plan.line_items[0].title
+        }
+
         return (
             <div  className="header-coponent">
                 <div className="header-container">
@@ -20,7 +25,7 @@ class Header extends Component {
                         </div>
                         <div className="separator"></div>
                         <div className="plan">
-                            {this.props.plan.plan}
+                            {planTitle}
                         </div>
 
                     </div>

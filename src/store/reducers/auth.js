@@ -2,8 +2,8 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     user:            {
-        first_name:'Elbert',
-        last_name:'elbert-surnamme'
+        first_name:'',
+        last_name:''
     },
 
     loggedIn:        true,
