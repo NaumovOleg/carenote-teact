@@ -1,13 +1,18 @@
 .menu-component{
+    padding-top: 22px;
     flex-basis: 27%;
     min-width:250px;
     flex-direction: row;
     justify-content: center;
 }
+
+.header-navigation-menu {
+  padding-bottom: 9px;
+}
+
 .menu-container .menu-items .header-navigation-menu{
     height:45px;
     display: flex;
-    justify-content: center;
     align-items: flex-end;
     font-size: 21px;
     text-decoration: none;

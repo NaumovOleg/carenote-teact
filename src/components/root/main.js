@@ -7,6 +7,7 @@ import Subscriptions from './main-components/Subscriptions';
 import * as actions from '../../store/actions/index'
 import '../../styles/root/main.css';
 
+
 class Main extends Component {
 
     constructor ( props ) {
