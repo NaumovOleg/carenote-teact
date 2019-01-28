@@ -1,14 +1,10 @@
 import * as actionTypes from '../actions/actionTypes';
-const initialState = {
-    prev:'/subscription',
-    curr:'/subscriptions'
-};
+
+const initialState = [];
 const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {
-        case actionTypes.CHANGE_LOCATION:
-            return {
-                ...action.payload
-            };
+        case actionTypes.GET_PRODUCTS:
+            return [...action.products];
         default:
             return state;
     }

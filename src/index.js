@@ -9,14 +9,13 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import authReducer from './store/reducers/auth';
 import planReducer from './store/reducers/plan';
-import menuReducer  from './store/reducers/menu';
-import locationReducer from './store/reducers/location'
+import productsReducer   from './store/reducers/products'
 
 const rootReducer = combineReducers ( {
     auth: authReducer,
     plan: planReducer,
-    menu:menuReducer,
-    location:locationReducer
+    products:productsReducer
+
 } );
 const logger = store => {
     return next => {

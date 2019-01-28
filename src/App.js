@@ -23,14 +23,11 @@ class App extends Component {
 const mapStateToProps = state => {
     return {
         authentificated: state.auth.loggedIn,
-
     };
 };
 
 const mapDispatchToProps = dispatch => {
-    return {
-
-    };
+    return {};
 };
 
 export default withRouter ( connect ( mapStateToProps, mapDispatchToProps ) ( App ) );
