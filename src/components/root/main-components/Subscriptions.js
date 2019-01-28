@@ -12,7 +12,7 @@ class Subscriptions extends Component {
             <div className="subscriptions-component">
             <div className="main-container">
                 <div className="subscriptions">
-                  <h2>Subscriptions</h2>
+                  <p>Subscriptions</p>
                   <p><a href="#">Change Plan</a></p>
                 </div>
                 <div className="choosenSubscription">

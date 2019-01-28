@@ -5,30 +5,42 @@
 }
 
 .main-container {
-  padding: 60px 70px;
+  padding: 64px 65px;
 }
 
 .subscriptions {
+  margin-bottom: 21px;
   display: flex;
   justify-content: space-between;
 }
 
-.subscriptions h2 {
+.subscriptions p:first-child {
   margin: 0;
+  font-size: 23px;
+  color: #323334l
+}
+
+.subscriptions p:last-child {
+  margin: 0;
+  display: flex;
+  align-items: flex-end;
 }
 
 .subscriptions a {
   text-decoration: none;
   font-size: 15px;
-}
-
-.subscriptions p {
-  margin: 0;
+  color: #008BE2;
 }
 
 .choosenSubscription {
-  padding: 30px 0;
+  padding: 50px 0;
   text-align: left;
-  border-top: 5px solid grey;
-  border-bottom: 5px solid grey;
+  border-top: 5px solid #EAEDEF;
+  border-bottom: 5px solid #EAEDEF;
+}
+
+.choosenSubscription p {
+  margin: 0;
+  padding-bottom: 4px;
+  color: #323334;
 }
