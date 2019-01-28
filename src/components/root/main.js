@@ -72,10 +72,10 @@ class Main extends Component {
         }
 
         const stylesForActivRoutes = {
-            subscriptions: this.state.routes.subscriptions.active?'header-navigation-menu active':'header-navigation-menu',
-            shedule:       this.state.routes.shedule.active?'header-navigation-menu active':'header-navigation-menu',
-            profile:       this.state.routes.profile.active?'header-navigation-menu active':'header-navigation-menu',
-            notes:         this.state.routes.notes.active?'header-navigation-menu active':'header-navigation-menu',
+            subscriptions: this.state.routes.subscriptions.active?'header-navigation-menu header-navigation__selected':'header-navigation-menu',
+            shedule:       this.state.routes.shedule.active?'header-navigation-menu header-navigation__selected':'header-navigation-menu',
+            profile:       this.state.routes.profile.active?'header-navigation-menu header-navigation__selected':'header-navigation-menu',
+            notes:         this.state.routes.notes.active?'header-navigation-menu header-navigation__selected':'header-navigation-menu',
         };
 
         return (
