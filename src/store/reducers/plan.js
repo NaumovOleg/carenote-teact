@@ -7,8 +7,7 @@ const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {
         case actionTypes.INIT_PLAN:
             return {
-                ...state,
-                loading: true,
+                ...action.payload
             };
         default:
             return state;

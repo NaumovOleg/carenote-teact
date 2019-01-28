@@ -26,10 +26,12 @@ class Main extends Component {
         };
     }
 
-    componentWillMount(){
+    componentWillMount  (){
         this.props.getProducts();
-        this.props.getCustomer();
+        this.props.getCustomer(this.props.getLastOrder);
+
     }
+
 
     switchRoute = ( route ) => {
         if ( this.state.currentRoute.name === route ) {
@@ -128,7 +130,8 @@ const mapStateToProps = state => {
 const mapDispatchToProps = dispatch => {
     return {
         getProducts:()=>dispatch(actions.getProducts()),
-        getCustomer:()=>dispatch(actions.getCustomer())
+        getCustomer:(cb)=>dispatch(actions.getCustomer(cb)),
+        getLastOrder:(data)=>dispatch(actions.getLastOrder(data))
     };
 };
 

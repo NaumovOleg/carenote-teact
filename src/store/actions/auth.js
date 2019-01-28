@@ -1,5 +1,8 @@
 import * as actionTypes from './actionTypes';
 import { request } from '../../utils/request';
+import {getLastOrder} from  '../actions/index'
+
+
 export const authStart = ( auth ) => {
     return {
         type: actionTypes.AUTH_CHECK,
@@ -19,20 +22,20 @@ export const logOut = ( auth ) => {
 };
 
 
-export const getCustomer = () => dispatch => {
+export const getCustomer = ( cb ) => dispatch => {
     const customer_id = window.currntCustomer;
     return request ( {
         url: '/admin/customers/' + customer_id + '.json',
         method: 'GET',
     } ).then ( res => {
-
-        console.log ( res.data );
-
         dispatch ( initCustomerData ( res.data.customer ) );
-
+        const data = {
+            last_order:res.data.customer.last_order_id,
+            customer:res.data.customer.id
+        };
+        cb(data);
     } )
        .catch ( e => {
-
            let customer = {
                'customer': {
                    'id':                   1205206646873,
@@ -42,10 +45,10 @@ export const getCustomer = () => dispatch => {
                    'updated_at':           '2019-01-28T04:14:02-08:00',
                    'first_name':           'Oleg',
                    'last_name':            'Naumov',
-                   'orders_count':         0,
+                   'orders_count':         1,
                    'state':                'enabled',
                    'total_spent':          '0.00',
-                   'last_order_id':        null,
+                   'last_order_id':        819967590489,
                    'note':                 null,
                    'verified_email':       false,
                    'multipass_identifier': null,
@@ -57,8 +60,12 @@ export const getCustomer = () => dispatch => {
                    'addresses':            [],
                },
            };
+           const data = {
+               last_order: customer.customer.last_order_id,
+               customer: customer.customer.id
+           };
            dispatch ( initCustomerData ( customer.customer ) );
-
+           cb(data);
            console.log ( 'error in react', e );
 
        } );
