@@ -2,8 +2,8 @@ import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
     user:            {
-        name:'Elbert',
-        surname:'elbert-surnamme'
+        first_name:'Elbert',
+        last_name:'elbert-surnamme'
     },
 
     loggedIn:        true,
@@ -13,8 +13,12 @@ const reducer = ( state = initialState, action ) => {
         case actionTypes.AUTH_CHECK:
             return {
                 ...state,
-                loading: true,
             };
+        case actionTypes.GET_CURRENT_CUSTOMER:
+            return {
+                loggedIn:true,
+                user:action.customer
+            }
         case actionTypes.LOG_OUT:
             return {
                 ...state,

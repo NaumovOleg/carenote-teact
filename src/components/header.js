@@ -16,7 +16,7 @@ class Header extends Component {
                 <div className="header-container">
                     <div className="welcome-container" style={style}>
                         <div className="user-name">
-                            Hi {this.props.auth.user.name}
+                            Hi {this.props.auth.user.first_name}
                         </div>
                         <div className="separator"></div>
                         <div className="plan">
