@@ -1,12 +1,9 @@
 import * as actionTypes from '../actions/actionTypes';
 
 const initialState = {
-    user:            {
-        first_name:'',
-        last_name:''
-    },
+    user:            { },
 
-    loggedIn:        true,
+    loggedIn:        false,
 };
 const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {

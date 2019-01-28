@@ -10,7 +10,7 @@ import Header from './components/header'
 class App extends Component {
   render() {
 
-      const routes = this.props.authentificated?<Main />:<Auth/>;
+      const routes = window.currntCustomer!==undefined?<Main />:<Auth/>;
     return (
       <div className="App" style={{height:'100%'}}>
           <Header/>

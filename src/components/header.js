@@ -35,7 +35,7 @@ class Header extends Component {
                         </div>
                     </div>
                     <div className="log-out__button" style={style}>
-                        <button className="log-out" onClick={this.props.logOut}>Logout</button>
+                        <a href="/account/logout" className="log-out" onClick={this.props.logOut}>Logout</a>
                     </div>
                 </div>
             </div>);
