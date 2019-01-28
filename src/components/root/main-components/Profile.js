@@ -21,32 +21,38 @@ class Profile extends Component {
                     <input type="text" name="residenceAddress" placeholder="Residence Address" />
                     <input type="text" name="city" placeholder="City" />
                     <input type="text" name="State" placeholder="State" />
-                    <input type="number" name="zipCode" placeholder="Zip code" />
-                    <input type="number" name="phone" placeholder="PhoneNumber" />
+                    <input type="text" name="zipCode" placeholder="Zip code" />
+                    <input type="text" name="phone" placeholder="Phone Number" />
                     <input type="email" name="email" placeholder="Email address" />
-                    <span><input type="checkbox" name="sms" value="sms" className="smsCheckbox"/> Receive notifications via text/SMS</span>
+                    <label class="checkboxContainer">
+                      <input type="checkbox" />
+                      <span class="checkmark">Receive notifications via text/SMS</span>
+                    </label>
                   </div>
                   <h5>Your Info</h5>
                   <div className="userInfo">
                     <input type="text" name="name" placeholder="First name" value={this.props.user.first_name}/>
                     <input type="text" name="lastName" placeholder="Last name" value={this.props.user.last_name}/>
-                    <input type="number" name="phone" placeholder="PhoneNumber" value={this.props.user.phone}/>
+                    <input type="text" name="phone" placeholder="Phone Number" value={this.props.user.phone}/>
                     <input type="email" name="email" placeholder="Email address" value={this.props.user.email} />
-                    <span><input type="checkbox" name="sms" value="sms" className="smsCheckbox"/> Receive notifications via text/SMS</span>
+                    <label class="checkboxContainer">
+                      <input type="checkbox" />
+                      <span class="checkmark">Receive notifications via text/SMS</span>
+                    </label>
                   </div>
                   <div className="paymentSection">
                     <div className="billingAddress">
-                      <h4>Billing Address</h4>
+                      <h5>Billing Address</h5>
                         <input type="text" name="addressOne" placeholder="Address 1" />
                         <input type="text" name="addressTwo" placeholder="Address 2" />
                         <input type="text" name="city" placeholder="City" />
                         <input type="text" name="State" placeholder="State" />
-                        <input type="number" name="zipCode" placeholder="Zip code" />
+                        <input type="text" name="zipCode" placeholder="Zip code" />
                     </div>
                     <div className="paymentInfo">
-                      <h4>Payment Info</h4>
-                        <input type="number" name="creditCard" placeholder="Credit Cart" />
-                        <input type="number" name="ccv" placeholder="CCV" />
+                      <h5>Payment Info</h5>
+                        <input type="text" name="creditCard" placeholder="Credit Cart" />
+                        <input type="text" name="ccv" placeholder="CCV" />
                         <input type="text" name="expiration" placeholder="Expiration" />
                     </div>
                   </div>
