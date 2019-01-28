@@ -3,25 +3,18 @@ import {connect} from 'react-redux';
 import { withRouter, NavLink } from 'react-router-dom';
 import * as actions from '../../../store/actions/index';
 
+import '../../../styles/left-menu.css'
+
 class Shedule extends Component {
     constructor(props) {
         super(props);
     };
-    openMenu =( )=>{
 
-        this.props.openMenu();
-
-
-
-    };
     render() {
-        const location = this.props.location.prev;
         return (
             <div className="shedule-component">
-                <NavLink   className="header-navigation-menu" activeClassName="header-navigation__selected"
-                          to={location}>
-                    <div onClick={this.openMenu}  className="text">back</div>
-                </NavLink>
+                <button onClick={this.props.prev}> back </button>
+
             </div>
         );
     }

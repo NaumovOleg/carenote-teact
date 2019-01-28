@@ -10,12 +10,7 @@ import Header from './components/header'
 class App extends Component {
   render() {
 
-      const routes = this.props.authentificated?<Main />:
-          (<Switch>
-            <Route path="/auth" component={Auth}/>
-            <Redirect to="/auth"/>
-          </Switch>);
-
+      const routes = this.props.authentificated?<Main />:<Auth/>;
     return (
       <div className="App" style={{height:'100%'}}>
           <Header/>

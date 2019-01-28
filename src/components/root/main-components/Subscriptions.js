@@ -9,7 +9,7 @@ class Subscriptions extends Component {
     render() {
         return (
             <div className="subscriptions-component">
-                Subscriptions
+                Subscriptions component
             </div>
         );
     }
