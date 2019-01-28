@@ -9,8 +9,6 @@ import '../../styles/root/main.css';
 
 class Main extends Component {
 
-
-
     constructor ( props ) {
         super ( props );
         this.state = {
@@ -29,7 +27,8 @@ class Main extends Component {
     }
 
     componentWillMount(){
-        this.props.getProducts()
+        this.props.getProducts();
+        this.props.getCustomer();
     }
 
     switchRoute = ( route ) => {
@@ -128,7 +127,8 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        getProducts:()=>dispatch(actions.getProducts())
+        getProducts:()=>dispatch(actions.getProducts()),
+        getCustomer:()=>dispatch(actions.getCustomer())
     };
 };
 
