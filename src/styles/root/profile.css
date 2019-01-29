@@ -81,6 +81,7 @@ input::placeholder {
 }
 
 .profileButton {
+  margin: auto;
   margin-top: 29px;
   padding: 11px 63px;
   border-radius: 50px;
