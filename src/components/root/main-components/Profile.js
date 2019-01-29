@@ -8,7 +8,7 @@ class Profile extends Component {
     }
     render() {
 
-        console.log( this.props )
+        const address = this.props.user.addresses[0];
         return (
             <div className="accaunt-component">
               <div className="profileContainer">
@@ -43,11 +43,11 @@ class Profile extends Component {
                   <div className="paymentSection">
                     <div className="billingAddress">
                       <h5>Billing Address</h5>
-                        <input type="text" name="addressOne" placeholder="Address 1" />
-                        <input type="text" name="addressTwo" placeholder="Address 2" />
-                        <input type="text" name="city" placeholder="City" />
+                        <input type="text" name="addressOne"  value={address.address1} placeholder="Address 1" />
+                        <input type="text" name="addressTwo" value={address.address2} placeholder="Address 2" />
+                        <input type="text" name="city" value={address.city} placeholder="City" />
                         <input type="text" name="State" placeholder="State" />
-                        <input type="text" name="zipCode" placeholder="Zip code" />
+                        <input type="text" name="zipCode" value={address.zip} placeholder="Zip code" />
                     </div>
                     <div className="paymentInfo">
                       <h5>Payment Info</h5>
