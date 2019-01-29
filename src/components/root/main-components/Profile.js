@@ -12,7 +12,7 @@ class Profile extends Component {
         return (
             <div className="accaunt-component">
               <div className="profileContainer">
-                <h3>My Profile</h3>
+                <p>My Profile</p>
                 <form>
                   <h5>Father's Info</h5>
                   <div className="relative">
@@ -24,9 +24,9 @@ class Profile extends Component {
                     <input type="text" name="zipCode" placeholder="Zip code" />
                     <input type="text" name="phone" placeholder="Phone Number" />
                     <input type="email" name="email" placeholder="Email address" />
-                    <label class="checkboxContainer">
+                    <label class="checkboxContainer">Receive notifications vis text/SMS
                       <input type="checkbox" />
-                      <span class="checkmark">Receive notifications via text/SMS</span>
+                      <span class="checkmark"></span>
                     </label>
                   </div>
                   <h5>Your Info</h5>
@@ -35,9 +35,9 @@ class Profile extends Component {
                     <input type="text" name="lastName" placeholder="Last name" value={this.props.user.last_name}/>
                     <input type="text" name="phone" placeholder="Phone Number" value={this.props.user.phone}/>
                     <input type="email" name="email" placeholder="Email address" value={this.props.user.email} />
-                    <label class="checkboxContainer">
+                    <label class="checkboxContainer">Receive notifications vis text/SMS
                       <input type="checkbox" />
-                      <span class="checkmark">Receive notifications via text/SMS</span>
+                      <span class="checkmark"></span>
                     </label>
                   </div>
                   <div className="paymentSection">
