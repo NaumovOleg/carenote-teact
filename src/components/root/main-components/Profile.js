@@ -24,7 +24,8 @@ class Profile extends Component {
                     <input type="text" name="zipCode" placeholder="Zip code" />
                     <input type="text" name="phone" placeholder="Phone Number" />
                     <input type="email" name="email" placeholder="Email address" />
-                    <label class="checkboxContainer">Receive notifications vis text/SMS
+                    <label class="checkboxContainer">
+                      <span className="checkboxText">Receive notifications vis text/SMS</span>
                       <input type="checkbox" />
                       <span class="checkmark"></span>
                     </label>
