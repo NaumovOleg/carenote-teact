@@ -32,7 +32,7 @@ class Notes extends Component {
                         {
                             notes.map(el=>{
                                return  <div className="item">
-                                   <div className="date"></div>
+                                   <div className="date"> {moment(el.date).format('mm/D')}</div>
                                     <div className='title'>{el.title}</div>
                                    <img src={searchIcon} className="search-icon"/>
                                 </div>
