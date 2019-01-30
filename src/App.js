@@ -10,11 +10,11 @@ import Header from './components/header'
 class App extends Component {
   render() {
 
-      //const routes = window.currntCustomer!==undefined?<Main />:<Auth/>;
+      const routers = window.currntCustomer !== undefined?<Auth/>:<div><Header/><Main/></div>
     return (
       <div className="App" style={{height:'100%'}}>
-          <Header/>
-          <Main />
+
+          {routers}
       </div>
     );
   }

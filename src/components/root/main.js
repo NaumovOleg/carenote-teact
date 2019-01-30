@@ -29,8 +29,7 @@ class Main extends Component {
 
     componentWillMount  (){
         this.props.getProducts();
-        this.props.getCustomer(this.props.getLastOrder);
-
+        this.props.getCustomer( this.props.initOrders  );
     }
 
 
@@ -87,6 +86,7 @@ class Main extends Component {
         };
 
         return (
+
             <div className="main-component">
                 <div className="menu-component" style={styleForMenu}>
                     <div className="menu-container">
@@ -132,7 +132,7 @@ const mapDispatchToProps = dispatch => {
     return {
         getProducts:()=>dispatch(actions.getProducts()),
         getCustomer:(cb)=>dispatch(actions.getCustomer(cb)),
-        getLastOrder:(data)=>dispatch(actions.getLastOrder(data))
+        initOrders:()=>dispatch(actions.initOrders())
     };
 };
 

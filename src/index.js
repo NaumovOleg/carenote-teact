@@ -9,12 +9,16 @@ import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import authReducer from './store/reducers/auth';
 import planReducer from './store/reducers/plan';
-import productsReducer   from './store/reducers/products'
+import productsReducer   from './store/reducers/products';
+import notesReduser from './store/reducers/notes';
+import helper from './utils/helper';
+helper()
 
 const rootReducer = combineReducers ( {
     auth: authReducer,
     plan: planReducer,
-    products:productsReducer
+    products:productsReducer,
+    notes:notesReduser
 
 } );
 const logger = store => {

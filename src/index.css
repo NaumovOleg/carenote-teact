@@ -1,36 +1,8 @@
-@font-face {
-  font-family: 'Avenir Bold';
-  font-style: normal;
-  font-weight: 400;
-  src: url('./styles/fonts/avenir_ff/AvenirLTStd-Black.otf'); /* IE9 Compat Modes */
-  /*src: local('Open Sans'), local('OpenSans'),*/
-  /*url('./styles/fonts/avenir_ff/AvenirLTStd-Black.otf') format('otf'), !* IE6-IE8 *!*/
-  /*url('./styles/fonts/avenir_ff/AvenirLTStd-Black.otf') format('otf'), !* Super Modern Browsers *!*/
-  /*url('./styles/fonts/avenir_ff/AvenirLTStd-Black.otf') format('otf'), !* Modern Browsers *!*/
-  /*url('./styles/fonts/avenir_ff/AvenirLTStd-Black.otf') format('otf'), !* Safari, Android, iOS *!*/
-  /*url('./styles/fonts/avenir_ff/AvenirLTStd-Black.otf') format('otf'); !* Legacy iOS *!*/
-}
-@font-face {
-  font-family: 'Avenir Book';
-  font-style: normal;
-  font-weight: 400;
-  src: url('./styles/fonts/avenir_ff/AvenirLTStd-Book.otf'); /* IE9 Compat Modes */
-
-}
-@font-face {
-  font-family: 'Avenir Roman';
-  font-style: normal;
-  font-weight: 400;
-  src: url('./styles/fonts/avenir_ff/AvenirLTStd-Roman.otf'); /* IE9 Compat Modes */
-
-}
-
-
 
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Avenir Book', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: 'Avenir-Book', -apple-system, BlinkMacSystemFont, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   background: #F5F8FA;

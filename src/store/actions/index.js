@@ -1,10 +1,10 @@
-import { authStart,logIn, logOut ,updateCustomer,getCustomer} from './auth';
-import { initPlan,getLastOrder } from './plan';
+import { authStart,logIn, initCustomerData,logOut ,updateCustomer,getCustomer} from './auth';
+import { initPlan, initOrders, initLastOrder } from './plan';
 import {initProducts,getProducts } from './products'
 
 export  {
     initPlan,
-    authStart,
-    logOut,getCustomer,getLastOrder,updateCustomer,
+    authStart,initLastOrder,initCustomerData,
+    logOut,getCustomer,initOrders,updateCustomer,
     initProducts,getProducts,logIn
 }

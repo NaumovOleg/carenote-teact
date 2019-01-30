@@ -18,10 +18,14 @@
     text-decoration: none;
     color: #000;
 }
-.menu-container .menu-items .header-navigation__selected{
-    font-weight: 700;
-}
+
 .menu-container .menu-items .header-navigation-menu .text{
     border-bottom: 4px solid #008BE2;
     padding-bottom: 2px;
+    cursor: pointer;
 }
+.menu-container .menu-items .header-navigation-menu.header-navigation__selected .text{
+    border-bottom: 4px solid #F79F2C;
+}
+.menu-container .menu-items .header-navigation-menu .text:hover{ border-bottom: 4px solid #F79F2C;}
+

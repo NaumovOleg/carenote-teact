@@ -7,7 +7,7 @@ class Profile extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            user:{...props.user}
+            user:props.user
         };
     }
 
@@ -24,7 +24,8 @@ class Profile extends Component {
         this.props.updateCustomer({customer:this.state.user})
     };
     render() {
-        const address = this.state.user.addresses[0];
+        const address = this.state.user.default_address;
+
         const updateCustomer = this.updateCustomer;
         return (
             <div className="accaunt-component">
@@ -41,7 +42,7 @@ class Profile extends Component {
                     <input type="text" name="zipCode" placeholder="Zip code" />
                     <input type="text" name="phone" placeholder="Phone Number" />
                     <input type="email" name="email" placeholder="Email address" />
-                    <label class="checkboxContainer">
+                    <label className="checkboxContainer">
                       <span className="checkboxText">Receive notifications vis text/SMS</span>
                       <input type="checkbox" />
                       <span className="checkmark"></span>
