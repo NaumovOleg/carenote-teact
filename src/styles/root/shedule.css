@@ -68,80 +68,93 @@
     left: 0px;
     top: 0px;
 }
-.shedule-component .calendar-header .next-button{
+
+.shedule-component .calendar-header .next-button {
     padding-left: 0px;
     padding-right: 26px;
 }
 
-.shedule-component .calendar-header .next-button img{
+.shedule-component .calendar-header .next-button img {
     right: 0px;
     left: auto;
-    transform: rotate( 180deg );
+    transform: rotate(180deg);
 }
-.shedule-component .calendar-days{
+
+.shedule-component .calendar-days {
     height: 285px;
-    width:960px;
+    width: 960px;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-self: center;
     padding-top: 33px;
 }
-.shedule-component .calendar-days .item{
-    width:128px;
+
+.shedule-component .calendar-days .item {
+    width: 128px;
     height: 228px;
     box-shadow: 0px 3px 6px rgba(68, 68, 68, 0.6);
     border-radius: 6px;
-
+    transition: 0.5s;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
+    background: #fff;
 
 }
-.shedule-component .calendar-days .item .top{
-    padding-top:28px;
-    width:94px;
-    border-bottom:6px solid #F79F2C;
+
+.shedule-component .calendar-days .item:hover {
+    transform: scale(1.2);
+}
+.shedule-component .calendar-days .item .top {
+    padding-top: 28px;
+    width: 94px;
+    border-bottom: 6px solid #F79F2C;
     align-self: center;
     display: flex;
     justify-content: space-between;
 }
-.shedule-component .calendar-days .item .top span{
+
+.shedule-component .calendar-days .item .top span {
     font-size: 16px;
-    width:94px;
+    width: 94px;
     padding-bottom: 4px;
 }
 
-.shedule-component .calendar-days .item .center{
-    border-bottom:6px solid #F79F2C;
+.shedule-component .calendar-days .item .center {
+    border-bottom: 6px solid #F79F2C;
     align-self: center;
     display: flex;
     flex-direction: column;
     justify-content: center;
-    width:94px;
+    width: 94px;
     height: 111px;
 }
-.shedule-component .calendar-footer{
-    border-top:8px solid  #EAEDEF;
+
+.shedule-component .calendar-footer {
+    border-top: 8px solid #EAEDEF;
     padding-top: 26px;
     width: 920px;
     align-self: center;
 }
-.shedule-component .calendar-footer span{
-    color:#323334;
+
+.shedule-component .calendar-footer span {
+    color: #323334;
     font-size: 14px;
     line-height: 20px;
 }
-.left{
-     text-align: left;
- }
-.right{
+
+.left {
+    text-align: left;
+}
+
+.right {
     text-align: right;
 }
 
-.shedule-component .calendar-days .item .bottom{
-    color:#008BE2;
+.shedule-component .calendar-days .item .bottom {
+    color: #008BE2;
     font-size: 12px;
-    padding-top :8px;
+    padding-top: 8px;
     cursor: pointer;
 }
