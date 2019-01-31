@@ -27,12 +27,13 @@ class Profile extends Component {
     }
 
     saveCustomer = ()=>{
-        this.props.updateCustomer({customer:this.state.user})
+        let  {first_name,email,last_name,billing_phone} = this.state.user;
+        let user = {first_name,email,last_name,billing_phone};
+        this.props.updateCustomer(user)
     };
     render() {
         console.log( this.state )
         const address = this.state.address;
-
         const updateCustomer = this.updateCustomer;
         return (
             <div className="accaunt-component">
@@ -116,7 +117,7 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        updateCustomer:(customer)=>dispatch(actions.updateCustomer(customer)),
+        updateCustomer:(customer)=>dispatch(actions.updateRCustomer(customer)),
     };
 };
 

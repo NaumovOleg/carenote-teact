@@ -17,6 +17,8 @@ function setRechargeToken() {
     axios.defaults.headers.common['X-Recharge-Access-Token'] = '64d455fb70f02865e7e742c4d67e9bc288663d6ede2f111e9b89c589';
     axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
     axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,PATCH,OPTIONS';
+    axios.defaults.headers.common['Accept'] = 'application/json';
+    axios.defaults.headers.common['Content-Type'] = 'application/json';
 }
 
 /**

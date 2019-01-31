@@ -120,18 +120,18 @@ export const getCustomer = ( cb ) => dispatch => {
        } );
 };
 
-export const updateCustomer = ( customer ) => dispatch => {
-    console.log ( customer );
-    return request ( {
-        url:    '/admin/customers/' + customer.customer.id + '.json',
-        method: 'PUT',
-        customer,
-    } ).then ( res => {
-        console.log ( res );
-    } )
-       .catch ( e => {
-           console.log ( 'error in react', e );
-       } );
-};
+//export const updateCustomer = ( customer ) => dispatch => {
+//    console.log ( customer );
+//    return request ( {
+//        url:    '/admin/customers/' + customer.customer.id + '.json',
+//        method: 'PUT',
+//        customer,
+//    } ).then ( res => {
+//        console.log ( res );
+//    } )
+//       .catch ( e => {
+//           console.log ( 'error in react', e );
+//       } );
+//};
 
 
