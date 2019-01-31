@@ -28,7 +28,7 @@ class Notes extends Component {
                     <div className="items-container">
                         {
                             notes.map(el=>{
-                               return  <div className="item">
+                               return  <div className="item" key={el.date + el.title}>
                                    <div className="date"> {moment(el.date).format('mm/D')}</div>
                                     <div className='title'>{el.title}</div>
                                    <img src={searchIcon} className="search-icon"/>

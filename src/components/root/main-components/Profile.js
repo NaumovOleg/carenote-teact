@@ -5,9 +5,11 @@ import '../../../styles/root/profile.css';
 
 class Profile extends Component {
     constructor(props) {
+        console.log( props );
         super(props);
         this.state = {
-            user:props.user
+            user:{...props.user},
+            address:{...props.address}
         };
     }
 
@@ -21,14 +23,15 @@ class Profile extends Component {
     };
 
     componentWillMount(){
-        this.props.getRCustomer()
+
     }
 
     saveCustomer = ()=>{
         this.props.updateCustomer({customer:this.state.user})
     };
     render() {
-        const address = this.state.user.default_address;
+        console.log( this.state )
+        const address = this.state.address;
 
         const updateCustomer = this.updateCustomer;
         return (
@@ -66,9 +69,9 @@ class Profile extends Component {
                     } value={this.state.user.last_name}/>
                     <input type="text" name="phone" placeholder="Phone Number" onChange={
                         function ( el ) {
-                            updateCustomer('phone', el.target.value )
+                            updateCustomer('billing_phone', el.target.value )
                         }
-                    } value={this.state.user.phone}/>
+                    } value={this.state.user.billing_phone}/>
                     <input type="email" name="email" placeholder="Email address"
                            onChange={
                                function ( el ) {
@@ -106,14 +109,14 @@ class Profile extends Component {
 }
 const mapStateToProps = state => {
     return {
-        user:state.auth.user
+        user:state.r_customer,
+        address:state.address
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
         updateCustomer:(customer)=>dispatch(actions.updateCustomer(customer)),
-        getRCustomer:(scutomerId) =>dispatch(actions.getRCustomer(scutomerId))
     };
 };
 

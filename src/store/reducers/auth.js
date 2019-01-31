@@ -15,7 +15,7 @@ const reducer = ( state = initialState, action ) => {
             return {
                 loggedIn:true,
                 user:action.customer
-            }
+            };
         case actionTypes.LOG_OUT:
             return {
                 ...state,
