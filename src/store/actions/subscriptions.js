@@ -11,7 +11,7 @@ export const initSubscriptions = ( subscriptions ) => {
 export const getSubscriptions = ( scutomer ) => dispatch => {
     console.log ( scutomer );
     return request ( {
-        url:    'https://api.rechargeapps.com/subscriptions?shopify_customer_id='+scutomer,
+        url:    'https://cors-anywhere.herokuapp.com/api.rechargeapps.com/subscriptions?shopify_customer_id='+scutomer,
         method: 'GET',
     } ).then ( res => {
         console.log( res )
