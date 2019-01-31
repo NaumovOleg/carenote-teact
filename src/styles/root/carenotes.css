@@ -1,0 +1,100 @@
+.notes-container {
+  padding: 59px 85px 2px;
+}
+
+.notes-component {
+  background: #fff;
+}
+
+.header {
+  padding-bottom: 21px;
+  color: #323334;
+  font-size: 24px;
+  text-align: left;
+  border-bottom: 7px solid #eaedef;
+}
+
+.items-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+  padding-top: 34px;
+  padding-bottom: 28px;
+  display: flex;
+  border-bottom: 1px solid #D0D3D5;
+}
+
+.item:last-child {
+  border-bottom: 7px solid #D0D3D5;
+  padding-bottom: 43px;
+}
+
+.date {
+  color: #A1A2A5;
+  flex-basis: 18%;
+  text-align: left;
+}
+
+.title {
+  color: #323334;
+  flex-basis: 70%;
+  text-align: left;
+}
+
+.search-img {
+  flex-basis: 12%;
+  text-align: right;
+  cursor: pointer;
+}
+
+.search-icon {
+  width: 19px;
+}
+
+.p-paginator {
+  padding: 21px 85px 125px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.p-paginator-first,
+.p-paginator-last {
+  display: none;
+}
+
+.p-paginator-page  {
+  display: none;
+}
+
+.p-highlight {
+  display: inline-block;
+  background: transparent;
+  border: none;
+  color: #A1A2A5;
+}
+
+.p-paginator-prev {
+    height: 7px;
+    width: 8px;
+    border-width: 0 1px 1px 0;
+    padding: 0px;
+    transform: rotate(150deg) skewX(30deg);
+    background: transparent;
+    outline: none;
+    cursor: pointer;
+}
+
+.p-paginator-next {
+  height: 7px;
+  width: 8px;
+  border-width: 0 1px 1px 0;
+  padding: 0px;
+  transform: rotate(-28deg) skewX(32deg);
+  background: transparent;
+  outline: none;
+  cursor: pointer;
+}

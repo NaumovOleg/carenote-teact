@@ -1,8 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as moment from 'moment';
-import { Paginator } from 'primereact/paginator.js';
+import { Paginator } from 'primereact/paginator';
+
 import searchIcon from '../../../assets/Search@2x.png'
+import '../../../styles/root/carenotes.css';
 moment.localeData ( 'uk' );
 
 
@@ -31,7 +33,7 @@ class Notes extends Component {
                                return  <div className="item" key={el.date + el.title}>
                                    <div className="date"> {moment(el.date).format('mm/D')}</div>
                                     <div className='title'>{el.title}</div>
-                                   <img src={searchIcon} className="search-icon"/>
+                                   <div className="search-img"><img src={searchIcon} className="search-icon"/></div>
                                 </div>
                             })
                         }
