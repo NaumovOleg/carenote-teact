@@ -100,7 +100,12 @@
     flex-direction: column;
     justify-content: flex-start;
     background: #fff;
+    padding-top:0;
+    padding-bottom:0;
 
+}
+.shedule-component .calendar-days .item {
+    border-bottom:0;
 }
 
 .shedule-component .calendar-days .item:hover {
