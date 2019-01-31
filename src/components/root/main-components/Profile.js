@@ -20,6 +20,10 @@ class Profile extends Component {
         })
     };
 
+    componentWillMount(){
+        this.props.getRCustomer()
+    }
+
     saveCustomer = ()=>{
         this.props.updateCustomer({customer:this.state.user})
     };
@@ -108,7 +112,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        updateCustomer:(customer)=>dispatch(actions.updateCustomer(customer))
+        updateCustomer:(customer)=>dispatch(actions.updateCustomer(customer)),
+        getRCustomer:(scutomerId) =>dispatch(actions.getRCustomer(scutomerId))
     };
 };
 

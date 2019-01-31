@@ -12,13 +12,15 @@ import planReducer from './store/reducers/plan';
 import productsReducer   from './store/reducers/products';
 import notesReduser from './store/reducers/notes';
 import helper from './utils/helper';
+import RCustomerReduser from './store/reducers/rechrgeCustomer'
 helper()
 
 const rootReducer = combineReducers ( {
     auth: authReducer,
     plan: planReducer,
     products:productsReducer,
-    notes:notesReduser
+    notes:notesReduser,
+    r_customer:RCustomerReduser
 
 } );
 const logger = store => {

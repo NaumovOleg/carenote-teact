@@ -13,6 +13,9 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
 function setAuthToken(token) {
 	axios.defaults.headers.common['Authorization'] = token;
 }
+function setRechargeToken() {
+    axios.defaults.headers.common['X-Recharge-Access-Token'] = '64d455fb70f02865e7e742c4d67e9bc288663d6ede2f111e9b89c589';
+}
 
 /**
  * Requests a URL, returning a promise.
@@ -36,4 +39,4 @@ function request(options) {
     });
 }
 
-export { request, setAuthToken }
+export { request, setAuthToken, setRechargeToken }
