@@ -12,13 +12,19 @@ import planReducer from './store/reducers/plan';
 import productsReducer   from './store/reducers/products';
 import notesReduser from './store/reducers/notes';
 import helper from './utils/helper';
-helper()
+import RCustomerReduser from './store/reducers/rechrgeCustomer';
+import addressReducer from './store/reducers/address';
+import subscriptionReduser from './store/reducers/subscriptions'
+helper();
 
 const rootReducer = combineReducers ( {
     auth: authReducer,
-    plan: planReducer,
-    products:productsReducer,
-    notes:notesReduser
+    //plan: planReducer,
+    //products:productsReducer,
+    notes:notesReduser,
+    r_customer:RCustomerReduser,
+    address:addressReducer,
+    subscriptions:subscriptionReduser
 
 } );
 const logger = store => {

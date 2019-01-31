@@ -6,32 +6,31 @@ import  '../styles/header.css';
 
 class Header extends Component {
 
-    state = {
-        plan: undefined,
-    };
+
 
     constructor ( props ) {
         super ( props );
-        this.plan = '';
+
+
+        this.state = {
+            //plan:props.subscriptions[0]
+        }
     }
     render () {
-
         const style = {
-            display: this.props.auth.loggedIn?'flex':'none',
+            display: this.props.auth.loggedIn?'flex':'flex',
         };
         let planName = '';
-        this.props.plan.forEach ( el => {
-            if ( el.id == this.props.auth.user.last_order_id ) {
-                console.log ( el.line_items[ 0 ].title );
-                planName = el.line_items[ 0 ].title;
-            }
-        } );
+        if( this.props.subscriptions.length>0){
+            planName = this.props.subscriptions[0].product_title
+        }
+
         return (
             <div className="header-coponent">
                 <div className="header-container">
                     <div className="welcome-container" style={style}>
                         <div className="user-name">
-                            Hi { this.props.auth.user.first_name }
+                            Hi { this.props.user.first_name }
                         </div>
                         <div className="separator"></div>
                         <div className="plan">
@@ -54,8 +53,9 @@ class Header extends Component {
 
 const mapStateToProps = state => {
     return {
-        auth: state.auth,
-        plan: state.plan,
+        user: state.r_customer,
+        auth:state.auth,
+        subscriptions:state.subscriptions
     };
 
 };

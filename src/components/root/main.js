@@ -4,9 +4,9 @@ import Profile from './main-components/Profile';
 import Notes from './main-components/CareNotes';
 import Shedule from './main-components/Shedules';
 import Subscriptions from './main-components/Subscriptions';
-import * as actions from '../../store/actions/index'
+import * as actions from '../../store/actions/index';
 import '../../styles/root/main.css';
-import '../../styles/left-menu.css'
+import '../../styles/left-menu.css';
 
 
 class Main extends Component {
@@ -14,6 +14,7 @@ class Main extends Component {
     constructor ( props ) {
         super ( props );
         this.state = {
+            userId:window.currntCustomer || "1205206646873" ,
             routes:        {
                 'profile':       { active: false, component: <Profile/> },
                 'subscriptions': { active: true, component: <Subscriptions/> },
@@ -28,9 +29,17 @@ class Main extends Component {
         };
     }
 
-    componentWillMount  (){
-        this.props.getProducts();
-        this.props.getCustomer( this.props.initOrders  );
+    getData = async () => {
+        //await  this.props.getProducts ();
+        //await  this.props.getCustomer ( this.props.initOrders );
+        await this.props.getRCustomer ( this.state.userId );
+        await  this.props.getAddress(this.props.r_customer.id);
+        await  this.props.getSubscriptions(this.state.userId)
+
+    };
+
+    componentWillMount () {
+        this.getData ();
     }
 
 
@@ -76,7 +85,7 @@ class Main extends Component {
         const switchRoute = this.switchRoute;
 
         const styleForMenu = {
-            display:this.state.currentRoute.name === 'shedule'?'none':'flex'
+            display: this.state.currentRoute.name === 'shedule'?'none':'flex',
         };
 
         const stylesForActivRoutes = {
@@ -98,7 +107,7 @@ class Main extends Component {
                                 }} className="text">Subscriptions
                                 </div>
                             </div>
-                            <div className={stylesForActivRoutes.shedule} >
+                            <div className={stylesForActivRoutes.shedule}>
                                 <div onClick={function () {
                                     switchRoute ( 'shedule' );
                                 }} className="text">Schedule
@@ -131,9 +140,13 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        getProducts:()=>dispatch(actions.getProducts()),
-        getCustomer:(cb)=>dispatch(actions.getCustomer(cb)),
-        initOrders:()=>dispatch(actions.initOrders())
+        //getProducts:  () => dispatch ( actions.getProducts () ),
+        //getCustomer:  ( cb ) => dispatch ( actions.getCustomer ( cb ) ),
+        //initOrders:   () => dispatch ( actions.initOrders () ),
+        getRCustomer: ( scutomerId ) => dispatch ( actions.getRCustomer ( scutomerId ) ),
+        getAddress: ( scutomerId ) => dispatch ( actions.getAddress ( scutomerId ) ),
+        getSubscriptions:(scustomer)=>dispatch(actions.getSubscriptions(scustomer))
+
     };
 };
 
