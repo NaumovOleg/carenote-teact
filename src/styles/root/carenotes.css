@@ -1,0 +1,59 @@
+.notes-container {
+  padding: 59px 85px;
+}
+
+.notes-component {
+  background: #fff;
+}
+
+.header {
+  padding-bottom: 21px;
+  color: #323334;
+  font-size: 24px;
+  text-align: left;
+  border-bottom: 7px solid #eaedef;
+}
+
+.items-container {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+}
+
+.item {
+  padding-top: 34px;
+  padding-bottom: 28px;
+  display: flex;
+  border-bottom: 1px solid #D0D3D5;
+}
+
+.date {
+  color: #A1A2A5;
+  flex-basis: 18%;
+  text-align: left;
+}
+
+.title {
+  color: #323334;
+  flex-basis: 70%;
+  text-align: left;
+}
+
+.search-img {
+  flex-basis: 12%;
+  text-align: right;
+  cursor: pointer;
+}
+
+.search-icon {
+  width: 19px;
+}
+
+.p-paginator-prev,
+.p-paginator-last {
+  display: none;
+}
+
+.p-paginator-page:nth-child(2) {
+  display: none;
+}
