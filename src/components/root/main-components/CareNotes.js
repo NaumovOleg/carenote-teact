@@ -23,10 +23,7 @@ class Notes extends Component {
 
     render () {
         const notes = this.getNotes();
-        console.log( notes );
         return (
-
-
             <div className="notes-component">
                 <div className="notes-container">
                     <div className="header">Carenotes</div>
