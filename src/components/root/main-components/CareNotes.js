@@ -50,21 +50,23 @@ class Notes extends Component {
                               <h3>Carenote 04</h3>
                               <p>2/1/19</p>
                           </div>
-                        <p className="carenotes-modal-text">Dear Elbert,
-                        Your Aunt Edna and I chatted the other day. She mentioned over text that you were
-                        meeting for brunch last Saturday. But when I asked her about it, she moved right passed
-                        it. I don’t know that there’s any reason for concern, but I wanted to bring it to your
-                        attention.
-                        I did ask about the sweater vest you sent her. I’m under the impression she’s not
-                        wearing it. She said, “Sweater? I like to wear what I knit myself.” And she was a little
-                        more curt than usual.
-                        Last, we spent most of our time discussing the geopolitical dilemma presented by
-                        globalization and the inherent tensions as historical regional powers jockey for
-                        economic superiority under the pressure their respective citizenries’ ambitions and
-                        tastes for luxury goods grow. We focused primarily on Russia, but for next week I
-                        promised to share my insights on what I’ve observed in the Asian markets.</p>
-                        <div className="carenotes-modal-link">
-                          <a href="#">Here’s a link to a lecture she shared on the subject.</a>
+                          <div className="carenotes-modal-text-box">
+                            <p className="carenotes-modal-text">Dear Elbert,
+                            Your Aunt Edna and I chatted the other day. She mentioned over text that you were
+                            meeting for brunch last Saturday. But when I asked her about it, she moved right passed
+                            it. I don’t know that there’s any reason for concern, but I wanted to bring it to your
+                            attention.
+                            I did ask about the sweater vest you sent her. I’m under the impression she’s not
+                            wearing it. She said, “Sweater? I like to wear what I knit myself.” And she was a little
+                            more curt than usual.
+                            Last, we spent most of our time discussing the geopolitical dilemma presented by
+                            globalization and the inherent tensions as historical regional powers jockey for
+                            economic superiority under the pressure their respective citizenries’ ambitions and
+                            tastes for luxury goods grow. We focused primarily on Russia, but for next week I
+                            promised to share my insights on what I’ve observed in the Asian markets.</p>
+                            <div className="carenotes-modal-link">
+                              <a href="#">Here’s a link to a lecture she shared on the subject.</a>
+                            </div>
                         </div>
                         <div className="carenotes-employee-info">
                             <p>Gloria Anderson<br/>Carenote Team Member</p>
