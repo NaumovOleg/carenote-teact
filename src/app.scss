@@ -1,3 +1,19 @@
+$base-blue : #008BE2;
+$base-range:#F79F2C;
+.custom-button-orange{
+  background: $base-range;
+  border:none;
+  color:#fff;
+  text-align: center;
+  outline: none;
+  height:40px;
+  width:155px;
+  border-radius:40px;
+  cursor: pointer;
+}
+
+
+
 #root{
   @import "./styles/header";
   @import "./styles/auth";
