@@ -5,11 +5,11 @@ import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Auth from './components/auth/auth';
 import Main from './components/root/main';
-import Header from './components/header'
+import Header from './components/header';
+import 'app.scss'
 
 class App extends Component {
   render() {
-
       const routers = window.currntCustomer == undefined?<Auth/>:<div><Header/><Main/></div>
     return (
       <div className="App" style={{height:'100%'}}>

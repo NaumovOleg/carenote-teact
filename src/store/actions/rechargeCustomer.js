@@ -24,11 +24,10 @@ export const getRCustomer = ( scutomer ) => dispatch => {
 
 
 export const updateRCustomer = ( customer ) => dispatch => {
-    console.log ( customer.id,JSON.stringify({...customer}) );
     return request ( {
-        url:    'https://cors-anywhere.herokuapp.com/api.rechargeapps.com/customers/'+customer.id,
+        url:    'https://api.rechargeapps.com/customers/'+customer.id,
         method: 'PUT',
-        ...customer
+        customer
     } ).then ( res => {
         console.log( res )
         dispatch( initRCustomer( res.data.customer ) )

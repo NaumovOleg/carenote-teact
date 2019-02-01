@@ -21,3 +21,17 @@ export const getSubscriptions = ( scutomer ) => dispatch => {
            console.log ( 'error in reac eeeet  products', e );
        } );
 };
+
+export const updateSubscriptions = ( subscription ) => dispatch => {
+    console.log ( subscription );
+    return request ( {
+        url:    'https://api.rechargeapps.com/subscriptions/'+subscription.id,
+        method: 'PUT',
+    } ).then ( res => {
+        console.log( res )
+        dispatch( initSubscriptions( res.data.subscriptions ) )
+    } )
+       .catch ( e => {
+           console.log ( 'error in reac eeeet  products', e );
+       } );
+};

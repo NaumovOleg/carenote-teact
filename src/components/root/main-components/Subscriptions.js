@@ -8,6 +8,8 @@ class Subscriptions extends Component {
         super ( props );
     }
 
+
+
     render () {
         let planName = '';
         if( this.props.subscriptions.length>0){
@@ -36,7 +38,9 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch => {
-    return {};
+    return {
+
+    };
 };
 
 export default connect ( mapStateToProps, mapDispatchToProps ) ( Subscriptions );
