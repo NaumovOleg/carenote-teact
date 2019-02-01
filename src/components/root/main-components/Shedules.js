@@ -206,7 +206,7 @@ class Shedule extends Component {
                             return ( <div className="item">
                                 <div className="top">
                                     <span className="left">{el.format ( 'MMM D' )}</span>
-                                    <span className="right">Sun</span>
+                                    <span className="right">{el.format ( 'ddd' )}</span>
                                 </div>
                                 <div className="center">
                             <span className="">
