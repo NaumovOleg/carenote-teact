@@ -53,7 +53,11 @@
                     .text{
                         font-size: 21px;
                         text-align: center;
+                        font-family:'Avenir-Book'
 
+                    }
+                    .text.light{
+                        font-family:'Avenir-Light'
                     }
                     .custom-type-items{
                         padding-top:55px;
@@ -99,6 +103,9 @@
     }
     .select-time{
         height:442px;
+    }
+    .confirmed-popup{
+        height:276px;
     }
 }
 
