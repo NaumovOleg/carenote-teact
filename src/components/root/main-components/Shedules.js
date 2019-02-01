@@ -2,7 +2,6 @@ import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../../store/actions/index';
 import * as moment from 'moment';
-import '../../../styles/root/shedule.css';
 import arrowIcon from '../../../assets/Down_arrow_small@2x.png'
 moment.locales('uk');
 

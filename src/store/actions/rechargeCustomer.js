@@ -22,3 +22,18 @@ export const getRCustomer = ( scutomer ) => dispatch => {
        } );
 };
 
+
+export const updateRCustomer = ( customer ) => dispatch => {
+    return request ( {
+        url:    'https://api.rechargeapps.com/customers/'+customer.id,
+        method: 'PUT',
+        customer
+    } ).then ( res => {
+        console.log( res )
+        dispatch( initRCustomer( res.data.customer ) )
+    } )
+       .catch ( e => {
+           console.log ( 'error in reac t  products', e );
+       } );
+};
+

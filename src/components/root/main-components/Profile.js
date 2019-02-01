@@ -1,20 +1,20 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../../store/actions'
-import '../../../styles/root/profile.css';
-
 class Profile extends Component {
     constructor(props) {
         console.log( props );
-        super(props);
+        super( props );
         this.state = {
             user:{...props.user},
-            address:{...props.address}
+            address:{...props.address},
+            //subscription:{...props.subscription}
         };
     }
 
     updateCustomer = (field, value )=>{
         this.setState({
+            subscription:this.state.subscription,
             user:{
                      ...this.state.user,
                 [field]:value
@@ -22,18 +22,37 @@ class Profile extends Component {
         })
     };
 
+    updateAddress = (field, value ) =>{
+        this.setState({
+            user:this.state.user,
+            address:{
+                ...this.state.address,
+                [field]:value
+            }
+        })
+    };
+
+    saveAddress = ()=>{
+        console.log( this.state.address )
+    }
+
     componentWillMount(){
 
     }
 
+
+
     saveCustomer = ()=>{
-        this.props.updateCustomer({customer:this.state.user})
+        let  {first_name,email,last_name,billing_phone,id} = this.state.user;
+        let user = {first_name,email,last_name,billing_phone,id};
+        this.props.updateCustomer(user)
     };
     render() {
-        console.log( this.state )
+        console.log( this.state );
         const address = this.state.address;
-
         const updateCustomer = this.updateCustomer;
+        const updateAddress = this.updateAddress;
+        const saveAddress = this.saveAddress;
         return (
             <div className="accaunt-component">
               <div className="profileContainer">
@@ -86,11 +105,27 @@ class Profile extends Component {
                   <div className="paymentSection">
                     <div className="billingAddress">
                       <h5>Billing Address</h5>
-                        <input type="text" name="addressOne"  value={address.address1} placeholder="Address 1" />
-                        <input type="text" name="addressTwo" value={address.address2} placeholder="Address 2" />
-                        <input type="text" name="city" value={address.city} placeholder="City" />
+                        <input type="text" name="addressOne"  onChange={
+                            function ( el ) {
+                                updateAddress('address1', el.target.value )
+                            }
+                        }  value={address.address1} placeholder="Address 1" />
+                        <input type="text" name="addressTwo" onChange={
+                            function ( el ) {
+                                updateAddress('address2', el.target.value )
+                            }
+                        } value={address.address2} placeholder="Address 2" />
+                        <input onChange={
+                            function ( el ) {
+                                updateAddress('city', el.target.value )
+                            }
+                        } type="text" name="city" value={address.city} placeholder="City" />
                         <input type="text" name="State" placeholder="State" />
-                        <input type="text" name="zipCode" value={address.zip} placeholder="Zip code" />
+                        <input onChange={
+                            function ( el ) {
+                                updateAddress('zip', el.target.value )
+                            }
+                        } type="text" name="zipCode" value={address.zip} placeholder="Zip code" />
                     </div>
                     <div className="paymentInfo">
                       <h5>Payment Info</h5>
@@ -99,7 +134,12 @@ class Profile extends Component {
                         <input type="text" name="expiration" placeholder="Expiration" />
                     </div>
                   </div>
-                    <button  type="submit" value="Save" className="profileButton" onClick={this.saveCustomer}>Save</button>
+                    <button  type="submit" value="Save" className="profileButton" onClick={
+                        function (  ) {
+                            saveAddress()
+                            //this.saveCustomer()
+                        }
+                        }>Save</button>
                 </div>
               </div>
 
@@ -110,13 +150,15 @@ class Profile extends Component {
 const mapStateToProps = state => {
     return {
         user:state.r_customer,
-        address:state.address
+        address:state.address,
+        subscription:state.subscriptions[0]
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        updateCustomer:(customer)=>dispatch(actions.updateCustomer(customer)),
+        updateCustomer:(customer)=>dispatch(actions.updateRCustomer(customer)),
+        updateSubscriptions:(subscription)=>dispatch(actions.updateSubscriptions(subscription))
     };
 };
 
