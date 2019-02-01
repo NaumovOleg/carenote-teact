@@ -99,65 +99,8 @@
   cursor: pointer;
 }
 
-// CareNote Modal Window (PopUp)
+/* CareNores PopUp */
 
-.modal-button {
-    display: none;
-}
-
-.carenotes-modal-window {
-  width: 63%;
-}
-
-.p-dialog {
-  left: 58%;
-  top: 47%;
-}
-
-.p-dialog-titlebar {
-  padding-top: 5px;
-  padding-right: 13px;
-  padding-bottom: 42px;
-  background-color: #fff;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-}
-
-.p-dialog-content {
-  border: none;
-  border-bottom-right-radius: 17px;
-  border-bottom-left-radius: 17px;
-}
-
-.carenotes-modal-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  h3 {
-    font-weight: 500;
-    font-size: 18px;
-    color: #323334;
-  }
-  p {
-    color: #323334;
-  }
-}
-
-.carenotes-modal-text {
-  border-top: 7px solid #F79F2C;
-}
-
-.carenotes-modal-link {
-  text-align: left;
-  border-bottom: 7px solid #008BE2;
-}
-
-.carenotes-employee-info {
-  text-align: left;
-}
-
-.pi-times:before {
-  content:"\00d7";
-  font-weight: 600;
-  font-size: 37px;
+.notes-component button {
+  display: none;
 }

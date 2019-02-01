@@ -15,10 +15,10 @@ import helper from './utils/helper';
 import RCustomerReduser from './store/reducers/rechrgeCustomer';
 import addressReducer from './store/reducers/address';
 import subscriptionReduser from './store/reducers/subscriptions';
+import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/nova-light/theme.css';
 
-import 'primeicons/primeicons.css';
 helper();
 
 const rootReducer = combineReducers ( {
