@@ -14,7 +14,11 @@ import notesReduser from './store/reducers/notes';
 import helper from './utils/helper';
 import RCustomerReduser from './store/reducers/rechrgeCustomer';
 import addressReducer from './store/reducers/address';
-import subscriptionReduser from './store/reducers/subscriptions'
+import subscriptionReduser from './store/reducers/subscriptions';
+import 'primereact/resources/primereact.min.css';
+import 'primereact/resources/themes/nova-light/theme.css';
+
+import 'primeicons/primeicons.css';
 helper();
 
 const rootReducer = combineReducers ( {

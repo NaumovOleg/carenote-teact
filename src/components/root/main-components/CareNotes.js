@@ -2,13 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as moment from 'moment';
 import { Paginator } from 'primereact/paginator';
-import searchIcon from '../../../assets/Search@2x.png'
+import searchIcon from '../../../assets/Search@2x.png';
 moment.localeData ( 'uk' );
 
 
 class Notes extends Component {
     state = {
         first: 0,
+        visible:false
     };
 
     constructor ( props ) {
@@ -18,6 +19,12 @@ class Notes extends Component {
     getNotes = () => {
         return this.props.notes.slice(this.state.first, 5+this.state.first)
     };
+
+    showDialog = ()=>{
+        this.setState({
+            visible:true
+        })
+    }
 
     render () {
         const notes = this.getNotes();
@@ -31,7 +38,7 @@ class Notes extends Component {
                                return  <div className="item" key={el.date + el.title}>
                                    <div className="date"> {moment(el.date).format('mm/D')}</div>
                                     <div className='title'>{el.title}</div>
-                                   <div className="search-img"><img src={searchIcon} className="search-icon"/></div>
+                                   <div className="search-img" onClick={this.showDialog}><img src={searchIcon} className="search-icon"/></div>
                                 </div>
                             })
                         }
