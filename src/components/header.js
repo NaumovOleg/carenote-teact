@@ -2,8 +2,6 @@ import React, { Component } from 'react';
 import headerIcon from '../assets/CareNote.png';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/index';
-import  '../styles/header.css';
-
 class Header extends Component {
 
 

@@ -1,8 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import * as actions from '../../../store/actions'
-import '../../../styles/root/profile.css';
-
 class Profile extends Component {
     constructor(props) {
         console.log( props );

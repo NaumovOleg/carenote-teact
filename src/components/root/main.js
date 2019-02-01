@@ -5,10 +5,6 @@ import Notes from './main-components/CareNotes';
 import Shedule from './main-components/Shedules';
 import Subscriptions from './main-components/Subscriptions';
 import * as actions from '../../store/actions/index';
-import '../../styles/root/main.css';
-import '../../styles/left-menu.css';
-
-
 class Main extends Component {
 
     constructor ( props ) {

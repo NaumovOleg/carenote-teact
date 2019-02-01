@@ -2,9 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import * as moment from 'moment';
 import { Paginator } from 'primereact/paginator';
-
 import searchIcon from '../../../assets/Search@2x.png'
-import '../../../styles/root/carenotes.css';
 moment.localeData ( 'uk' );
 
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import '../../styles/login.css';
 import * as actions from '../../store/actions/index';
 import { connect } from 'react-redux';
 import phoneLogo from '../../assets/Phone.png';
@@ -20,9 +19,7 @@ class Login extends Component {
     };
 
     submit = ()=>{
-
         this.props.login(this.state)
-
     }
 
     render () {
