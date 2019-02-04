@@ -5,7 +5,11 @@ import { Dialog } from 'primereact/dialog';
 import * as moment from 'moment';
 import arrowIcon from '../../../assets/Down_arrow_small@2x.png';
 import closeIcon from '../../../assets/No@2x.png';
+import google from '../../../utils/gapi';
+
+console.log( google.google.start )
 moment.locales ( 'us' );
+google.google.gapi.load('client', google.google.start );
 
 class Shedule extends Component {
     state = {
@@ -26,6 +30,7 @@ class Shedule extends Component {
 
     constructor ( props ) {
         super ( props );
+
     };
 
     nextWeek = async () => {
