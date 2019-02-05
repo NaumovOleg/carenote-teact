@@ -5,8 +5,8 @@ import { Dialog } from 'primereact/dialog';
 import * as moment from 'moment';
 import arrowIcon from '../../../assets/Down_arrow_small@2x.png';
 import closeIcon from '../../../assets/No@2x.png';
-moment.locales ( 'us' );
-
+import google from '../../../utils/gapi';moment.locales ( 'us' );
+google.google.gapi.load('client', google.google.start );
 class Shedule extends Component {
     state = {
         start:            0,
@@ -17,14 +17,16 @@ class Shedule extends Component {
         },
         changePopup:      false,
         selectTime:       false,
+        confirmedPopup:   false,
         selectedDateTime: {
             time: '',
-            date: '',
+            date:  moment ( new Date () ),
         },
     };
 
     constructor ( props ) {
         super ( props );
+
     };
 
     nextWeek = async () => {
@@ -41,26 +43,26 @@ class Shedule extends Component {
     };
 
     selectDateTime = ( type, value ) => {
-        console.log( type, value );
+        let newValue = this.state.selectedDateTime;
+        newValue[ type ] = value;
         this.setState ( {
             selectedDateTime: {
-                ...this.state.selectDateTime,
-                [type]:value
+                ...newValue
             },
         } );
 
     };
-    getDatesArray = ()=>{
+    getDatesArray = () => {
         const dates = [];
-        const startDate = this.state.week.start.clone();
-        const endDate = this.state.week.end.clone();
-        dates.push( startDate );
-        for(var a = 1;a<=5;a++ ){
-            const day =  startDate.clone().add( a, 'day');
-            dates.push(day)
+        const startDate = this.state.week.start.clone ();
+        const endDate = this.state.week.end.clone ();
+        dates.push ( startDate );
+        for ( var a = 1; a <= 5; a++ ) {
+            const day = startDate.clone ().add ( a, 'day' );
+            dates.push ( day );
         }
-        dates.push(endDate);
-        return dates
+        dates.push ( endDate );
+        return dates;
     };
     prevWeek = async () => {
         const end = this.state.end - 7;
@@ -86,14 +88,20 @@ class Shedule extends Component {
             selectTime: statevalue,
         } );
     };
-    render () {
 
-        const array = [ 1, 2, 3, 4, 5, 6, 7 ];
+    ConfirmedWindow = (value)=>{
+        this.setState({
+            confirmedPopup:value
+        })
+    };
+
+    render () {
         const ChangePopup = this.ChangePopup;
         const SelectTime = this.SelectTime;
         const selectDateTime = this.selectDateTime;
         const getDatesArray = this.getDatesArray;
-        const weeek = getDatesArray();
+        const ConfirmedWindow = this.ConfirmedWindow;
+        const weeek = getDatesArray ();
         return (
             <div className="shedule-component">
                 <Dialog className="change-call custom-popup" header="" visible={this.state.changePopup} modal={true} onHide={( e ) => this.setState ( { changePopup: false } )}>
@@ -108,27 +116,16 @@ class Shedule extends Component {
                                 What day would you like to change your call to?
                             </div>
                             <div className="items custom-type-items">
-                                <div className="item active custom-type-item">
-                                    <span>Jan 8, Sun</span>
-                                </div>
-                                <div className="item active custom-type-item">
-                                    <span>Jan 9, Mon</span>
-                                </div>
-                                <div className="item active custom-type-item">
-                                    <span>Jan 10, Tue</span>
-                                </div>
-                                <div className="item active custom-type-item">
-                                    <span>Jan 11, Wed</span>
-                                </div>
-                                <div className="item inactive custom-type-item">
-                                    <span>Jan 12, Thu</span>
-                                </div>
-                                <div className="item active custom-type-item">
-                                    <span>Jan 13, Fri</span>
-                                </div>
-                                <div className="item active custom-type-item">
-                                    <span>Jan 14, Sat</span>
-                                </div>
+                                {
+                                    weeek.map ( el => {
+                                        return (
+                                            <div key={el} className="item active custom-type-item" onClick={function () {
+                                                selectDateTime ( 'date', el );
+                                            }}>
+                                                <span>{el.format ( 'MMM ddd D' )}</span>
+                                            </div>);
+                                    } )
+                                }
                             </div>
                             <div className="select-button">
                                 <button className="custom-button-orange" onClick={function () {
@@ -141,7 +138,6 @@ class Shedule extends Component {
 
                     </div>
                 </Dialog>
-
                 <Dialog className="select-time custom-popup" header="" visible={this.state.selectTime} modal={true} onHide={( e ) => this.setState ( { selectTime: false } )}>
                     <div className="modal-body">
                         <div className="header custom-popup-header">
@@ -155,23 +151,57 @@ class Shedule extends Component {
                             </div>
                             <div className="items custom-type-items">
                                 <div className="item active custom-type-item">
-                                    <span>10:00 AM</span>
+                                    <span onClick={function () {
+                                        selectDateTime ( 'time', '10:00 AM' );
+                                    }}>10:00 AM</span>
                                 </div>
-                                <div className="item active custom-type-item">
+                                <div onClick={function () {
+                                    selectDateTime ( 'time', '11:00 AM' );
+                                }} className="item active custom-type-item">
                                     <span>11:00 AM</span>
                                 </div>
-                                <div className="item active custom-type-item">
+                                <div onClick={function () {
+                                    selectDateTime ( 'time', '12:00 PM' );
+                                }} className="item active custom-type-item">
                                     <span>12:00 PM</span>
                                 </div>
-                                <div className="item active custom-type-item">
+                                <div onClick={function () {
+                                    selectDateTime ( 'time', '1:00 PM' );
+                                }} className="item active custom-type-item">
                                     <span>1:00 PM</span>
                                 </div>
                             </div>
                             <div className="select-button">
                                 <button className="custom-button-orange" onClick={function () {
                                     SelectTime ( false );
+                                    ConfirmedWindow(true)
                                 }}>Select
                                 </button>
+                            </div>
+                        </div>
+
+                    </div>
+                </Dialog>
+
+                <Dialog className="confirmed-popup custom-popup" header="" visible={this.state.confirmedPopup} modal={true} onHide={( e ) => this.setState ( { confirmedPopup: false } )}>
+                    <div className="modal-body">
+                        <div className="header custom-popup-header">
+                            <button onClick={function () {
+                                ConfirmedWindow ( false );
+                            }}><img src={closeIcon}/></button>
+                        </div>
+                        <div className="body-content custom-body-content">
+                            <div className="text light">
+                                Your new scheduled call is confirmed:
+                            </div>
+                            <div className="text text-bold">
+                                {this.state.selectedDateTime.date.format ( 'MMM D ddd' )} @  {this.state.selectedDateTime.time}
+                            </div>
+
+                            <div className="select-button">
+                                <button className="custom-button-orange" onClick={function () {
+                                    ConfirmedWindow ( false );
+                                }}>Close</button>
                             </div>
                         </div>
 
