@@ -6,23 +6,25 @@ function start() {
 
     // 2. Initialize the JavaScript client library.
     gapi.client.init({
-        'apiKey': 'AIzaSyCAe1ONk-vBrZgeNAumqrx-CJZN3gCANu0',
+        'apiKey': 'AIzaSyBQ-9Zj5z-GNkpR1NdOJB5IFlXvLT-4tdc',
         // Your API key will be automatically added to the Discovery Document URLs.
-        'discoveryDocs': ['https://people.googleapis.com/$discovery/rest'],
+        'discoveryDocs': ['https://www.googleapis.com/auth/calendar'],
         // clientId and scope are optional if auth is not required.
-        'clientId': 'YOUR_WEB_CLIENT_ID.apps.googleusercontent.com',
-        'scope': 'profile',
+        'clientId': '1001705151822-qme1fk5m2k70r73dea6bag79b5vob82b.apps.googleusercontent.com',
+        'scope': 'calendar',
     }).then(function() {
         // 3. Initialize and make the API request.
-        return gapi.client.people.people.get({
-            'resourceName': 'people/me',
-            'requestMask.includeField': 'person.names'
-        });
+
+        console.log( '------------', gapi.client.people )
+        // return gapi.client.people.people.get({
+        //     'resourceName': '/users/me/calendarList/keeperoleg26@gmail.com',
+        //     // 'requestMask.includeField': 'person.names'
+        // });
     }).then(function(response) {
-        console.log(response.result);
+        console.log('-------------dddd', response.result);
     }, function(reason) {
-        console.log('Error: ' + reason.result.error.message);
+        console.log('eeeeeeeeeeeeeeeeeee Error: ' + reason.result);
     });
 };
 
-exports.google =  {start:  start,gapi:gapi}
+exports.google =  {start:  start,gapi:gapi }
