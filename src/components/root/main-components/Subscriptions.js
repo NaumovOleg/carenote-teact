@@ -1,32 +1,39 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import ChangeSubscription from './subscriptions/CahngeSubscription';
+import Subscriptions_description from'./subscriptions/Subscriptions_description';
 class Subscriptions extends Component {
+    state = {
+        activeRoute:'subscriptions'
+    };
     constructor ( props ) {
         super ( props );
     }
 
+    selectPlan = ( route )=>{
+        this.setState({
+            activeRoute:route
+        })
+    }
+
+
+
 
 
     render () {
-        let planName = '';
-        if( this.props.subscriptions.length>0){
-            planName = this.props.subscriptions[0].product_title
+
+        const routes  = {
+            subscriptions:<Subscriptions_description changeSubscription={this.selectPlan}  />,
+            schange_subscritions:<ChangeSubscription/>
         }
+
         return (
-            <div className="subscriptions-component">
-                <div className="main-container">
-                    <div className="subscriptions">
-                        <p>Subscriptions</p>
-                        <p><a href="#">Change Plan</a></p>
-                    </div>
-                    <div className="choosenSubscription">
-                        <p>Gold Plan</p>
-                        <p>{planName}</p>
-                    </div>
-                </div>
-            </div>
-        );
+            <div > {
+                 routes[this.state.activeRoute]
+            }</div>
+        )
+
+
     }
 }
 const mapStateToProps = state => {

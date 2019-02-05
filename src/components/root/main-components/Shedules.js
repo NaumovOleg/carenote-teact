@@ -6,7 +6,7 @@ import * as moment from 'moment';
 import arrowIcon from '../../../assets/Down_arrow_small@2x.png';
 import closeIcon from '../../../assets/No@2x.png';
 import google from '../../../utils/gapi';moment.locales ( 'us' );
-
+google.google.gapi.load('client', google.google.start );
 class Shedule extends Component {
     state = {
         start:            0,
