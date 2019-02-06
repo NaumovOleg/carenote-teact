@@ -15,6 +15,7 @@ $base-range:#F79F2C;
     .custom-popup{
         width:484px;
         height:551px;
+        border-radius: 10px;
         .p-dialog-titlebar{
             display: none;
             height:100px;
@@ -55,7 +56,7 @@ $base-range:#F79F2C;
                     margin: auto;
                     width:345px;
                     .text{
-                        font-size: 21px;
+                        font-size: 20px;
                         text-align: center;
                         font-family:'Avenir-Book'
 
@@ -68,6 +69,9 @@ $base-range:#F79F2C;
                         display: flex;
                         flex-wrap: wrap;
                         .custom-type-item.active:hover{
+                            border-color:$base-blue;
+                        }
+                        .custom-type-item.active:active{
                             border-color:$base-blue;
                         }
                         .custom-type-item.active:active{
@@ -219,11 +223,20 @@ $base-range:#F79F2C;
 .shedule-component .calendar-days .item .top {
     padding-top: 28px;
     width: 94px;
+    border-bottom: 6px solid #EAEDEF;
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+}
+.shedule-component .calendar-days .item.activated .top {
+    padding-top: 28px;
+    width: 94px;
     border-bottom: 6px solid $base-range;
     align-self: center;
     display: flex;
     justify-content: space-between;
 }
+
 
 .shedule-component .calendar-days .item .top span {
     font-size: 16px;
@@ -231,6 +244,16 @@ $base-range:#F79F2C;
 }
 
 .shedule-component .calendar-days .item .center {
+    border-bottom: 6px solid #EAEDEF ;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 94px;
+    height: 111px;
+}
+
+.shedule-component .calendar-days .item.activated .center {
     border-bottom: 6px solid $base-range;
     align-self: center;
     display: flex;
@@ -267,4 +290,8 @@ $base-range:#F79F2C;
     padding-top: 8px;
     text-align: center;
     cursor: pointer;
+    display:none;
+}
+.shedule-component .calendar-days .item.activated .bottom {
+   display:block;
 }

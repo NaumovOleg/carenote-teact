@@ -26,11 +26,11 @@ class Main extends Component {
     }
 
     getData = async () => {
-        //await  this.props.getProducts ();
-        //await  this.props.getCustomer ( this.props.initOrders );
-        // await this.props.getRCustomer ( this.state.userId );
-        // await  this.props.getAddress(this.props.r_customer.id);
-        // await  this.props.getSubscriptions(this.state.userId)
+        // await  this.props.getProducts ();
+        // await  this.props.getCustomer ( this.props.initOrders );
+        await this.props.getRCustomer ( this.state.userId );
+        await  this.props.getAddress(this.props.r_customer.id);
+        await  this.props.getSubscriptions(this.state.userId)
 
     };
 
@@ -91,6 +91,16 @@ class Main extends Component {
             notes:         this.state.routes.notes.active?'header-navigation-menu header-navigation__selected':'header-navigation-menu',
         };
 
+        const routesStyle = {
+            ...this.state.currentRoute.name!=='shedule'?
+                {
+                    width:'860px',
+                }:
+                {
+                    margin:'auto'
+                }
+        }
+
         return (
 
             <div className="main-component">
@@ -124,7 +134,7 @@ class Main extends Component {
                         </div>
                     </div>
                 </div>
-                <div className="routers-montainer">
+                <div className="routers-montainer" style={routesStyle}>
                     {this.state.currentRoute.component}
                 </div>
             </div>
