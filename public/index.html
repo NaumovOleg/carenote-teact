@@ -29,16 +29,14 @@
         });
     }
     function updateSigninStatus(isSignedIn) {
-
-        listUpcomingEvents();
-//        if (isSignedIn) {
-//            authorizeButton.style.display = 'none';
-//            signoutButton.style.display = 'block';
-//            listUpcomingEvents();
-//        } else {
-//            authorizeButton.style.display = 'block';
-//            signoutButton.style.display = 'none';
-//        }
+        if (isSignedIn) {
+            authorizeButton.style.display = 'none';
+            signoutButton.style.display = 'block';
+            listUpcomingEvents();
+        } else {
+            authorizeButton.style.display = 'block';
+            signoutButton.style.display = 'none';
+        }
     }
     function handleAuthClick(event) {
         gapi.auth2.getAuthInstance().signIn();
@@ -57,7 +55,7 @@
             'timeMin': (new Date('02 04 2018')).toISOString(),
             'showDeleted': true,
             'singleEvents': true,
-            'maxResults': 10,
+            'maxResults': 5,
             'orderBy': 'startTime'
         }).then(function(response) {
             var events = response.result.items;

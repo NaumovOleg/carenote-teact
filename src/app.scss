@@ -4,8 +4,8 @@ $base-range:#F79F2C;
 
 
 @mixin screen1380px (){
-  @media(min-width:1160px){
-    width:1160px;
+  @media(min-width:1081px){
+    width:1080px;
   }
 }
 .App{
