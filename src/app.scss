@@ -17,7 +17,8 @@ $base-range:#F79F2C;
 
 
 #root{
-
+  background-color: #f1f1f1;
+  font-family: 'Avenir-Light', sans-serif;
   @import "./styles/header";
   @import "./styles/auth";
   @import "./styles/left-menu";
