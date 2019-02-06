@@ -1,130 +1,137 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
 import * as actions from '../../../store/actions/index';
-import { Dialog } from 'primereact/dialog';
+import {Dialog} from 'primereact/dialog';
 import * as moment from 'moment';
 import arrowIcon from '../../../assets/Down_arrow_small@2x.png';
 import closeIcon from '../../../assets/No@2x.png';
 import google from '../../../utils/gapi';
-moment.locales ( 'us' );
+moment.locales('us');
 
 class Shedule extends Component {
     state = {
-        start:            0,
-        end:              6,
-        week:             {
-            start: moment ( new Date () ).weekday ( 0 ),
-            end:   moment ( new Date () ).weekday ( 6 ),
+        start: 0,
+        end: 6,
+        week: {
+            start: moment(new Date()).weekday(0),
+            end: moment(new Date()).weekday(6),
         },
-        changePopup:      false,
-        selectTime:       false,
-        confirmedPopup:   false,
+        changePopup: false,
+        selectTime: false,
+        confirmedPopup: false,
         selectedDateTime: {
             time: '',
-            date:  moment ( new Date () ),
+            date: moment(new Date()),
         },
     };
 
 
-
-    constructor ( props ) {
-        super ( props );
+    constructor(props) {
+        super(props);
 
     };
 
     nextWeek = async () => {
         const end = this.state.end + 7;
         const start = this.state.start + 7;
-        await  this.setState ( {
-            end:   end,
+        await  this.setState({
+            end: end,
             start: start,
-            week:  {
-                start: moment ( new Date () ).weekday ( start ),
-                end:   moment ( new Date () ).weekday ( end ),
+            week: {
+                start: moment(new Date()).weekday(start),
+                end: moment(new Date()).weekday(end),
             },
-        } );
+        });
     };
 
-    selectDateTime = ( type, value ) => {
+    selectDateTime = (type, value) => {
         let newValue = this.state.selectedDateTime;
-        newValue[ type ] = value;
-        this.setState ( {
+        newValue[type] = value;
+        this.setState({
             selectedDateTime: {
                 ...newValue
             },
-        } );
+        });
 
     };
     getDatesArray = () => {
         const dates = [];
-        const startDate = this.state.week.start.clone ();
-        const endDate = this.state.week.end.clone ();
-        dates.push ( startDate );
-        for ( var a = 1; a <= 5; a++ ) {
-            const day = startDate.clone ().add ( a, 'day' );
-            dates.push ( day );
+        const startDate = this.state.week.start.clone();
+        const endDate = this.state.week.end.clone();
+        dates.push(startDate);
+        for (var a = 1; a <= 5; a++) {
+            const day = startDate.clone().add(a, 'day');
+            dates.push(day);
         }
-        dates.push ( endDate );
+        dates.push(endDate);
         return dates;
     };
     prevWeek = async () => {
         const end = this.state.end - 7;
         const start = this.state.start - 7;
-        await  this.setState ( {
-            end:   end,
+        await  this.setState({
+            end: end,
             start: start,
-            week:  {
-                start: moment ( new Date () ).weekday ( start ),
-                end:   moment ( new Date () ).weekday ( end ),
+            week: {
+                start: moment(new Date()).weekday(start),
+                end: moment(new Date()).weekday(end),
             },
-        } );
+        });
 
     };
 
-    ChangePopup = ( statevalue ) => {
-        this.setState ( {
-            changePopup: statevalue,
-        } );
-    };
-    SelectTime = ( statevalue ) => {
-        this.setState ( {
-            selectTime: statevalue,
-        } );
-    };
-
-    ConfirmedWindow = (value)=>{
+    ChangePopup = (statevalue) => {
         this.setState({
-            confirmedPopup:value
+            changePopup: statevalue,
+        });
+    };
+    SelectTime = (statevalue) => {
+        this.setState({
+            selectTime: statevalue,
+        });
+    };
+
+    ConfirmedWindow = (value) => {
+        this.setState({
+            confirmedPopup: value
         })
     };
 
-    render () {
+    render() {
         const ChangePopup = this.ChangePopup;
         const SelectTime = this.SelectTime;
         const selectDateTime = this.selectDateTime;
         const getDatesArray = this.getDatesArray;
         const ConfirmedWindow = this.ConfirmedWindow;
-        const weeek = getDatesArray ();
+        const weeek = getDatesArray();
 
-        const events = window.events;
-        console.log( events );
-        let parsedEvents = {
-
-        }
-        if( events.length ){
-            events.forEach(el=>{
-                parsedEvents[  moment(el.end.dateTime).format('MMM_D_ddd') ] = el
+        const events = window.events || [];
+        console.log(events);
+        let parsedEvents = {}
+        if (events.length) {
+            events.forEach(el => {
+                parsedEvents[moment(el.end.dateTime).format('MMM_D_ddd')] = el
             })
         }
-
-        console.log( parsedEvents )
+        const noCalls = () => {
+            return (
+                <span style={    {
+                    'margin': 'auto',
+                    'width': '50px',
+                    textAlign:'center'
+                }}>
+                    NO  CALLS
+                </span>
+            )
+        };
         return (
             <div className="shedule-component">
-                <Dialog className="change-call custom-popup" header="" visible={this.state.changePopup} modal={true} onHide={( e ) => this.setState ( { changePopup: false } )}>
+                <Dialog className="change-call custom-popup" header="" visible={this.state.changePopup} modal={true}
+                        onHide={(e) => this.setState({changePopup: false})}>
                     <div className="modal-body">
                         <div className="header custom-popup-header">
                             <button onClick={function () {
-                                ChangePopup ( false );
+                                ChangePopup(false);
                             }}><img src={closeIcon}/></button>
                         </div>
                         <div className="body-content custom-body-content">
@@ -133,20 +140,22 @@ class Shedule extends Component {
                             </div>
                             <div className="items custom-type-items">
                                 {
-                                    weeek.map ( el => {
+                                    weeek.map(el => {
                                         return (
-                                            <div key={el} className="item active custom-type-item" onClick={function () {
-                                                selectDateTime ( 'date', el );
-                                            }}>
-                                                <span>{el.format ( 'MMM ddd D' )}</span>
+                                            <div key={el.format('MMM ddd D')}  className="item active custom-type-item"
+                                                 onClick={function ( ev ) {
+                                                     ev.target.style.borderColor = '#008BE2';
+                                                     selectDateTime('date', el);
+                                                 }}>
+                                                <span>{el.format('MMM ddd D')}</span>
                                             </div>);
-                                    } )
+                                    })
                                 }
                             </div>
                             <div className="select-button">
                                 <button className="custom-button-orange" onClick={function () {
-                                    ChangePopup ( false );
-                                    SelectTime ( true );
+                                    ChangePopup(false);
+                                    SelectTime(true);
                                 }}>Select
                                 </button>
                             </div>
@@ -154,11 +163,13 @@ class Shedule extends Component {
 
                     </div>
                 </Dialog>
-                <Dialog className="select-time custom-popup" header="" visible={this.state.selectTime} modal={true} onHide={( e ) => this.setState ( { selectTime: false } )}>
+                <Dialog className="select-time custom-popup" header="" visible={this.state.selectTime} modal={true}
+                        onHide={(e) => this.setState({selectTime: false})}>
                     <div className="modal-body">
                         <div className="header custom-popup-header">
                             <button onClick={function () {
-                                SelectTime ( false );
+
+                                SelectTime(false);
                             }}><img src={closeIcon}/></button>
                         </div>
                         <div className="body-content custom-body-content">
@@ -166,30 +177,34 @@ class Shedule extends Component {
                                 Please select from one of the available times below.
                             </div>
                             <div className="items custom-type-items">
-                                <div className="item active custom-type-item">
-                                    <span onClick={function () {
-                                        selectDateTime ( 'time', '10:00 AM' );
-                                    }}>10:00 AM</span>
+                                <div onClick={function (ev) {
+                                    ev.target.style.borderColor = '#008BE2';
+                                    selectDateTime('time', '10:00 AM');
+                                }} className="item active custom-type-item" >
+                                    <span >10:00 AM</span>
                                 </div>
-                                <div onClick={function () {
-                                    selectDateTime ( 'time', '11:00 AM' );
+                                <div onClick={function (ev) {
+                                    ev.target.style.borderColor = '#008BE2';
+                                    selectDateTime('time', '11:00 AM');
                                 }} className="item active custom-type-item">
                                     <span>11:00 AM</span>
                                 </div>
-                                <div onClick={function () {
-                                    selectDateTime ( 'time', '12:00 PM' );
+                                <div onClick={function (ev) {
+                                    ev.target.style.borderColor = '#008BE2';
+                                    selectDateTime('time', '12:00 PM');
                                 }} className="item active custom-type-item">
                                     <span>12:00 PM</span>
                                 </div>
-                                <div onClick={function () {
-                                    selectDateTime ( 'time', '1:00 PM' );
+                                <div onClick={function (ev) {
+                                    ev.target.style.borderColor = '#008BE2';
+                                    selectDateTime('time', '1:00 PM');
                                 }} className="item active custom-type-item">
                                     <span>1:00 PM</span>
                                 </div>
                             </div>
                             <div className="select-button">
                                 <button className="custom-button-orange" onClick={function () {
-                                    SelectTime ( false );
+                                    SelectTime(false);
                                     ConfirmedWindow(true)
                                 }}>Select
                                 </button>
@@ -199,11 +214,12 @@ class Shedule extends Component {
                     </div>
                 </Dialog>
 
-                <Dialog className="confirmed-popup custom-popup" header="" visible={this.state.confirmedPopup} modal={true} onHide={( e ) => this.setState ( { confirmedPopup: false } )}>
+                <Dialog className="confirmed-popup custom-popup" header="" visible={this.state.confirmedPopup}
+                        modal={true} onHide={(e) => this.setState({confirmedPopup: false})}>
                     <div className="modal-body">
                         <div className="header custom-popup-header">
                             <button onClick={function () {
-                                ConfirmedWindow ( false );
+                                ConfirmedWindow(false);
                             }}><img src={closeIcon}/></button>
                         </div>
                         <div className="body-content custom-body-content">
@@ -211,13 +227,15 @@ class Shedule extends Component {
                                 Your new scheduled call is confirmed:
                             </div>
                             <div className="text text-bold">
-                                {this.state.selectedDateTime.date.format ( 'MMM D ddd' )} @  {this.state.selectedDateTime.time}
+                                {this.state.selectedDateTime.date.format('MMM D ddd')}
+                                @ {this.state.selectedDateTime.time}
                             </div>
 
                             <div className="select-button">
                                 <button className="custom-button-orange" onClick={function () {
-                                    ConfirmedWindow ( false );
-                                }}>Close</button>
+                                    ConfirmedWindow(false);
+                                }}>Close
+                                </button>
                             </div>
                         </div>
 
@@ -229,8 +247,8 @@ class Shedule extends Component {
                         <span className="customer-name">{this.props.user.first_name},</span>
                         <span className="text-note">your next scheduled call is </span>
                         <span className="date">
-                            {moment ( new Date () ).format ( 'MMM D' ) } at {' '}
-                            { moment ( new Date () ).format ( 'HH:mm A' )}
+                            {moment(new Date()).format('MMM D') } at {' '}
+                            { moment(new Date()).format('HH:mm A')}
                         </span>
                     </div>
                     <button onClick={this.props.prev}> {'<'} Back</button>
@@ -248,33 +266,25 @@ class Shedule extends Component {
                 </div>
                 <div className="calendar-days">
                     {
-                        weeek.map ( el => {
-                          const classname = parsedEvents[ el.format('MMM_D_ddd')]!== undefined?'item activated':'item'
+                        weeek.map(el => {
+                            const classname = parsedEvents[el.format('MMM_D_ddd')] !== undefined ? 'item activated' : 'item'
                             return ( <div className={classname}>
                                 <div className="top">
-                                    <span className="left">{el.format ( 'MMM D' )}</span>
-                                    <span className="right">{el.format ( 'ddd' )}</span>
+                                    <span className="left">{el.format('MMM D')}</span>
+                                    <span className="right">{el.format('ddd')}</span>
                                 </div>
                                 <div className="center">
-                            <span className="">
-
-                                {/*{el.format ( 'MMM_D_ddd' )}*/}
-
-                                {parsedEvents[ el.format('MMM_D_ddd')]!== undefined?parsedEvents[ el.format('MMM_D_ddd')].summary: 'NO CALLS' }
-
-
-                            </span>
-                                    <span>
-
+                            <span className="" style={{display: 'flex'}}>
+                                {parsedEvents[el.format('MMM_D_ddd')] !== undefined ? parsedEvents[el.format('MMM_D_ddd')].summary : noCalls() }
                             </span>
 
                                 </div>
                                 <div className="bottom" onClick={function () {
-                                    ChangePopup ( true );
+                                    ChangePopup(true);
                                 }}> change
                                 </div>
                             </div>);
-                        } )
+                        })
                     }
 
 
@@ -298,4 +308,4 @@ const mapDispatchToProps = dispatch => {
     return {};
 };
 
-export default connect ( mapStateToProps, mapDispatchToProps ) ( Shedule );
+export default connect(mapStateToProps, mapDispatchToProps)(Shedule);

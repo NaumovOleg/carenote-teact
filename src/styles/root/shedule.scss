@@ -55,7 +55,7 @@ $base-range:#F79F2C;
                     margin: auto;
                     width:345px;
                     .text{
-                        font-size: 21px;
+                        font-size: 20px;
                         text-align: center;
                         font-family:'Avenir-Book'
 
@@ -68,6 +68,9 @@ $base-range:#F79F2C;
                         display: flex;
                         flex-wrap: wrap;
                         .custom-type-item.active:hover{
+                            border-color:$base-blue;
+                        }
+                        .custom-type-item.active:active{
                             border-color:$base-blue;
                         }
                         .custom-type-item.active:active{
@@ -286,4 +289,8 @@ $base-range:#F79F2C;
     padding-top: 8px;
     text-align: center;
     cursor: pointer;
+    //display:none;
+}
+.shedule-component .calendar-days .item.activated .bottom {
+   display:block;
 }
