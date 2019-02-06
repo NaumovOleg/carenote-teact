@@ -1,10 +1,7 @@
 <!--<script src="https://apis.google.com/js/api.js"></script>-->
-
-
-
-<!--<button id="authorize_button" >autorize</button>-->
-<!--<button id="signout_button" >authorize_button</button>-->
-<!--<div id="content"></div>-->
+<button style="display:none" id="authorize_button" >autorize</button>
+<button style="display:none" id="signout_button" >authorize_button</button>
+<div    style="display:none" id="content"></div>
 <script type="text/javascript">
     // Client ID and API key from the Developer Console
     var CLIENT_ID = '1001705151822-qme1fk5m2k70r73dea6bag79b5vob82b.apps.googleusercontent.com';
@@ -23,15 +20,17 @@
             discoveryDocs: DISCOVERY_DOCS,
             scope: SCOPES
         }).then(function () {
-            gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-            updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-            authorizeButton.onclick = handleAuthClick;
-            signoutButton.onclick = handleSignoutClick;
+//            gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+//            updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+//            authorizeButton.onclick = handleAuthClick;
+//            signoutButton.onclick = handleSignoutClick;
         }, function(error) {
             appendPre(JSON.stringify(error, null, 2));
         });
     }
-//    function updateSigninStatus(isSignedIn) {
+    function updateSigninStatus(isSignedIn) {
+
+        listUpcomingEvents();
 //        if (isSignedIn) {
 //            authorizeButton.style.display = 'none';
 //            signoutButton.style.display = 'block';
@@ -40,7 +39,7 @@
 //            authorizeButton.style.display = 'block';
 //            signoutButton.style.display = 'none';
 //        }
-//    }
+    }
     function handleAuthClick(event) {
         gapi.auth2.getAuthInstance().signIn();
     }
@@ -78,6 +77,12 @@
 //                appendPre('No upcoming events found.');
 //            }
         });
+    }
+    window.loginWithGoogle = function () {
+        gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+            updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+            authorizeButton.onclick = handleAuthClick;
+            signoutButton.onclick = handleSignoutClick;
     }
 
 </script>
