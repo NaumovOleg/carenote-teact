@@ -95,6 +95,10 @@
 
 // Confirmation modal window
 
+.p-dialog .p-dialog-content {
+  border: none;
+}
+
 .change-subscriptions-modal-container {
   height: 221px;
   width: 484px;

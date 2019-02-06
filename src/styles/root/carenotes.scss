@@ -104,7 +104,7 @@
 }
 
 .carenotes-modal-window {
-  padding-bottom: 12px;
+  padding-bottom: 27px;
   max-height: 69vh;
   width: 63vw;
   background: #fff;
@@ -123,11 +123,19 @@
   border-top-right-radius: 17px;
 }
 
-.carenotes-modal-window.p-dialog-content {
+.carenotes-modal-window .p-dialog-content {
   border: none;
   border-bottom-left-radius: 17px;
-  overflow: scroll;
   max-height: 59vh;
+}
+
+.p-dialog-content {
+  padding-right: 2px;
+}
+
+.carenotes-modal-container{
+  max-height: 59vh;
+  overflow-y: scroll;
 }
 
 .p-dialog-titlebar {
@@ -190,20 +198,20 @@
   margin-bottom: 35px;
 }
 
-.carenotes-modal-window{::-webkit-scrollbar {
+.carenotes-modal-container::-webkit-scrollbar {
   width: 10px;
   display: block;
   background: white;
   border-top-right-radius: 50px;
   border-bottom-right-radius: 50px;
   border: 3px solid white;
-}}
+}
 
-.carenotes-modal-window::-webkit-scrollbar-track {
+.carenotes-modal-container::-webkit-scrollbar-track {
   border-radius: 10px;
 }
 
-.carenotes-modal-window{::-webkit-scrollbar-thumb {
+.carenotes-modal-container::-webkit-scrollbar-thumb {
   background: #A5A3A1;
   border-radius: 50px;
-}}
+}
