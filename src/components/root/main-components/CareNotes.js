@@ -45,7 +45,6 @@ class Notes extends Component {
 
                     <Dialog visible={this.state.visible} onHide={this.onHide} className="carenotes-modal-window">
                         <div className="carenotes-modal-container">
-                            <div className="header-carenote">X</div>
                             <div className="carenotes-modal-header">
                                 <h3>Carenote 04</h3>
                                 <p>2/1/19</p>
