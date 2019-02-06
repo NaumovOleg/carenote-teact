@@ -28,8 +28,8 @@ class Main extends Component {
     getData = async () => {
         //await  this.props.getProducts ();
         //await  this.props.getCustomer ( this.props.initOrders );
-        // await this.props.getRCustomer ( this.state.userId );
-        // await  this.props.getAddress(this.props.r_customer.id);
+        await this.props.getRCustomer ( this.state.userId );
+        await  this.props.getAddress(this.props.r_customer.id);
         // await  this.props.getSubscriptions(this.state.userId)
 
     };

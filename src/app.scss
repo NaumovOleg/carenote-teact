@@ -17,6 +17,7 @@ $base-range:#F79F2C;
 
 
 #root{
+
   @import "./styles/header";
   @import "./styles/auth";
   @import "./styles/left-menu";

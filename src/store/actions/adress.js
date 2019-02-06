@@ -1,5 +1,6 @@
 import * as actionTypes from './actionTypes';
 import { request, setRechargeToken } from '../../utils/request';
+const req = require('request');
 setRechargeToken ();
 export const initAddress = ( address ) => {
     return {
@@ -12,7 +13,7 @@ export const initAddress = ( address ) => {
 export const getAddress = ( cutomer ) => dispatch => {
 
     return request ( {
-        url:    'https://cors-anywhere.herokuapp.com/api.rechargeapps.com/customers/' + cutomer + '/addresses',
+        url:    'https://api.rechargeapps.com/customers/' + cutomer + '/addresses',
         method: 'GET',
     } ).then ( res => {
 
