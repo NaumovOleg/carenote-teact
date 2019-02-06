@@ -2,6 +2,16 @@ $base-blue : #008BE2;
 $base-range:#F79F2C;
 
 
+
+@mixin screen1380px (){
+  @media(min-width:1380px){
+    width:1380px;
+  }
+}
+.App{
+  min-height: 100%;
+}
+
 .custom-button-orange{
   background: $base-range;
   border:none;
@@ -14,7 +24,9 @@ $base-range:#F79F2C;
   cursor: pointer;
 }
 
-
+body{
+  margin:0
+}
 
 #root{
   background-color: #f1f1f1;

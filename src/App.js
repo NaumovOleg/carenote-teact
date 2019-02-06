@@ -13,7 +13,7 @@ class App extends Component {
   render() {
       const routers = window.currntCustomer == undefined?<Auth/>:<div><Header/><Main/></div>
     return (
-      <div className="App" style={{height:'100%'}}>
+      <div className="App" >
           <Header/>
           <Main/>
       </div>
