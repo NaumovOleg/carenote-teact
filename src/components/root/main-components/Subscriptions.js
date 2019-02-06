@@ -14,18 +14,13 @@ class Subscriptions extends Component {
         this.setState({
             activeRoute:route
         })
-    }
-
-
-
-
+    };
 
     render () {
-
         const routes  = {
             subscriptions:<Subscriptions_description changeSubscription={this.selectPlan}  />,
             schange_subscritions:<ChangeSubscription/>
-        }
+        };
 
         return (
             <div > {

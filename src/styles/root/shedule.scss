@@ -215,11 +215,20 @@
 .shedule-component .calendar-days .item .top {
     padding-top: 28px;
     width: 94px;
+    border-bottom: 6px solid #EAEDEF;
+    align-self: center;
+    display: flex;
+    justify-content: space-between;
+}
+.shedule-component .calendar-days .item.activated .top {
+    padding-top: 28px;
+    width: 94px;
     border-bottom: 6px solid $base-range;
     align-self: center;
     display: flex;
     justify-content: space-between;
 }
+
 
 .shedule-component .calendar-days .item .top span {
     font-size: 16px;
@@ -227,6 +236,16 @@
 }
 
 .shedule-component .calendar-days .item .center {
+    border-bottom: 6px solid #EAEDEF ;
+    align-self: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 94px;
+    height: 111px;
+}
+
+.shedule-component .calendar-days .item.activated .center {
     border-bottom: 6px solid $base-range;
     align-self: center;
     display: flex;

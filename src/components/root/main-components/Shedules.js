@@ -5,8 +5,9 @@ import { Dialog } from 'primereact/dialog';
 import * as moment from 'moment';
 import arrowIcon from '../../../assets/Down_arrow_small@2x.png';
 import closeIcon from '../../../assets/No@2x.png';
-import google from '../../../utils/gapi';moment.locales ( 'us' );
-google.google.gapi.load('client', google.google.start );
+import google from '../../../utils/gapi';
+moment.locales ( 'us' );
+
 class Shedule extends Component {
     state = {
         start:            0,
@@ -23,6 +24,8 @@ class Shedule extends Component {
             date:  moment ( new Date () ),
         },
     };
+
+
 
     constructor ( props ) {
         super ( props );
@@ -102,6 +105,19 @@ class Shedule extends Component {
         const getDatesArray = this.getDatesArray;
         const ConfirmedWindow = this.ConfirmedWindow;
         const weeek = getDatesArray ();
+
+        const events = window.events;
+        console.log( events );
+        let parsedEvents = {
+
+        }
+        if( events.length ){
+            events.forEach(el=>{
+                parsedEvents[  moment(el.end.dateTime).format('MMM_D_ddd') ] = el
+            })
+        }
+
+        console.log( parsedEvents )
         return (
             <div className="shedule-component">
                 <Dialog className="change-call custom-popup" header="" visible={this.state.changePopup} modal={true} onHide={( e ) => this.setState ( { changePopup: false } )}>
@@ -233,17 +249,23 @@ class Shedule extends Component {
                 <div className="calendar-days">
                     {
                         weeek.map ( el => {
-                            return ( <div className="item">
+                          const classname = parsedEvents[ el.format('MMM_D_ddd')]!== undefined?'item activated':'item'
+                            return ( <div className={classname}>
                                 <div className="top">
                                     <span className="left">{el.format ( 'MMM D' )}</span>
                                     <span className="right">{el.format ( 'ddd' )}</span>
                                 </div>
                                 <div className="center">
                             <span className="">
-                             10:30 AM
+
+                                {/*{el.format ( 'MMM_D_ddd' )}*/}
+
+                                {parsedEvents[ el.format('MMM_D_ddd')]!== undefined?parsedEvents[ el.format('MMM_D_ddd')].summary: 'NO CALLS' }
+
+
                             </span>
                                     <span>
-                                Call
+
                             </span>
 
                                 </div>
