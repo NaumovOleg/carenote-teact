@@ -17,7 +17,7 @@ class Subscriptions_description extends Component {
                     <div className="main-container">
                         <div className="subscriptions">
                             <p>Subscriptions</p>
-                            <p><a onClick={function () {
+                            <p><a className="change-plan-button" onClick={function () {
                                 selectPlan( 'schange_subscritions' )
                             }}>Change Plan</a></p>
                         </div>

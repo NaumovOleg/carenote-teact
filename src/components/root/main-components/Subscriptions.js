@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import ChangeSubscription from './subscriptions/CahngeSubscription';
 import Subscriptions_description from'./subscriptions/Subscriptions_description';
+import Confirmation from './subscriptions/Confirmation'
 class Subscriptions extends Component {
     state = {
         activeRoute:'subscriptions'
@@ -19,7 +20,8 @@ class Subscriptions extends Component {
     render () {
         const routes  = {
             subscriptions:<Subscriptions_description changeSubscription={this.selectPlan}  />,
-            schange_subscritions:<ChangeSubscription/>
+            schange_subscritions:<ChangeSubscription returnRoute={this.selectPlan}  />,
+            confirmation :<Confirmation returnRoute={this.selectPlan}  />
         };
 
         return (

@@ -48,3 +48,11 @@
 .choosenSubscription p:first-child {
   font-weight: bold;
 }
+.change-plan-button{
+  cursor: pointer;
+}
+.change-subscriptions-modal-window, .subscriptions-modal-window{
+  border-radius: 10px;
+  overflow: hidden;
+}
+
