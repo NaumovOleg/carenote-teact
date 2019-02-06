@@ -123,10 +123,9 @@
   border-top-right-radius: 17px;
 }
 
-.carenotes-modal-window.p-dialog-content {
+.carenotes-modal-window .p-dialog-content {
   border: none;
   border-bottom-left-radius: 17px;
-  overflow: scroll;
   max-height: 59vh;
 }
 
