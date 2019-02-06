@@ -1,3 +1,6 @@
+$base-blue : #008BE2;
+$base-range:#F79F2C;
+
 .shedule-component {
     width: 1080px;
     height: 655px;
@@ -6,6 +9,7 @@
     flex-direction: column;
     background: #fff;
     padding-top: 60px;
+    margin-left: 110px;
 
 
     .custom-popup{
@@ -261,5 +265,6 @@
     color: $base-blue;
     font-size: 12px;
     padding-top: 8px;
+    text-align: center;
     cursor: pointer;
 }

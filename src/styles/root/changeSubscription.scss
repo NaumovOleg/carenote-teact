@@ -3,7 +3,8 @@
 }
 
 .change-subscriptions-container {
-  width: 70%;
+  width: 100%;
+  padding: 47px 69px;
   background-color: #fff;
 }
 
@@ -56,12 +57,12 @@
     background-color: #F79F2C;
     border: 1px solid transparent;
     border-radius: 50px;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Avenir-Heavy', sans-serif;
+    outline: none;
     flex-basis: 50%;
-    a {
-      color: #fff;
-      font-size: 16px;
-      font-family: 'Avenir-Heavy', sans-serif;
-    }
+    cursor: pointer;
   }
 }
 
@@ -83,11 +84,79 @@
     background-color: #F79F2C;
     border: 1px solid transparent;
     border-radius: 50px;
+    color: #fff;
+    font-size: 16px;
+    font-family: 'Avenir-Heavy', sans-serif;
+    outline: none;
     flex-basis: 50%;
-    a {
-      color: #fff;
-      font-size: 16px;
-      font-family: 'Avenir-Heavy', sans-serif;
-    }
+    cursor: pointer;
+  }
+}
+
+// Confirmation modal window
+
+.change-subscriptions-modal-container {
+  height: 221px;
+  width: 484px;
+}
+
+.change-subscriptions-modal-text-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    font-size: 21px;
+    line-height: 5px;
+    font-family: 'Avenir-Light', sans-serif;
+  }
+  button{
+    height: 40px;
+    width: 155px;
+    margin-top: 25px;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    color: #fff;
+    background-color: #F79F2C;
+    font-family: 'Avenir-Heavy', sans-serif;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
+  }
+}
+
+// Second Confirmation modal window
+
+.subscriptions-modal-container {
+  height: 384px;
+  width: 458px;
+}
+
+.subscriptions-modal-text-box {
+  padding-top: 30px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    text-align: center;
+    font-size: 21px;
+    line-height: 30px;
+    font-family: 'Avenir-Light', sans-serif;
+  }
+
+  &:last-child {
+    margin-top: 0;
+  }
+  button{
+    height: 40px;
+    width: 155px;
+    margin-top: 25px;
+    border: 1px solid transparent;
+    border-radius: 50px;
+    color: #fff;
+    background-color: #F79F2C;
+    font-family: 'Avenir-Heavy', sans-serif;
+    font-size: 16px;
+    outline: none;
+    cursor: pointer;
   }
 }
