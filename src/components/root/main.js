@@ -5,6 +5,7 @@ import Notes from './main-components/CareNotes';
 import Shedule from './main-components/Shedules';
 import Subscriptions from './main-components/Subscriptions';
 import * as actions from '../../store/actions/index';
+import NotesDescriptions from '../root/main-components/CareNoteDescription'
 class Main extends Component {
 
     constructor ( props ) {
@@ -15,7 +16,8 @@ class Main extends Component {
                 'profile':       { active: false, component: <Profile/> },
                 'subscriptions': { active: true, component: <Subscriptions/> },
                 'shedule':       { active: false, component: <Shedule prev={this.switchPreviousRoute}/> },
-                'notes':         { active: false, component: <Notes/> },
+                'notes':         { active: false, component: <Notes swithcRoute={this.switchNotePrewiewRoute}/> },
+                'notePreview' :  { }
             },
             currentRoute:  { name: 'subscriptions', component: <Subscriptions/> },
             previousRoute: {
@@ -33,12 +35,27 @@ class Main extends Component {
         await  this.props.getSubscriptions(this.state.userId)
 
     };
-
     componentWillMount () {
         this.getData ();
     }
 
-
+    switchNotePrewiewRoute = ( props )=>{
+        let routes = this.state.routes;
+        let currentRoute = this.state.currentRoute;
+        let previousRoute = this.state.currentRoute;
+        Object.keys ( routes ).map ( el => {
+            routes[ el ].active = false;
+        } );
+        routes[ 'notePreview' ].active = true;
+        const noteComponent = <NotesDescriptions note={props} switchBackRoute={this.switchRoute} swithcRoute={this.switchRoute}/>;
+        routes[ 'notePreview' ].component = noteComponent;
+        currentRoute = { name: 'notePreview', component: noteComponent };
+        this.setState ( {
+            routes:        routes,
+            currentRoute:  currentRoute,
+            previousRoute: previousRoute,
+        } );
+    }
     switchRoute = ( route ) => {
         if ( this.state.currentRoute.name === route ) {
             return;
@@ -79,9 +96,8 @@ class Main extends Component {
 
     render () {
         const switchRoute = this.switchRoute;
-
         const styleForMenu = {
-            display: this.state.currentRoute.name === 'shedule'?'none':'flex',
+            display: this.state.currentRoute.name === 'shedule' || this.state.currentRoute.name === 'notePreview' ?'none':'flex',
         };
 
         const stylesForActivRoutes = {

@@ -3,99 +3,171 @@ import * as actionTypes from '../actions/actionTypes';
 const initialState = [
     {
         date:new Date(),
-        title:'Carenote 01'
+        title:'Carenote 01',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 02'
+        title:'Carenote 02',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 03'
+        title:'Carenote 03',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 04'
+        title:'Carenote 04',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 05'
+        title:'Carenote 05',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 06'
+        title:'Carenote 06',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 07'
+        title:'Carenote 07',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 08'
+        title:'Carenote 08',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 09'
+        title:'Carenote 09',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 10'
+        title:'Carenote 10',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 11'
+        title:'Carenote 11',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 12'
+        title:'Carenote 12',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 13'
+        title:'Carenote 13',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 14'
+        title:'Carenote 14',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 15'
+        title:'Carenote 15',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 16'
+        title:'Carenote 16',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 17'
+        title:'Carenote 17',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 18'
+        title:'Carenote 18',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 19'
+        title:'Carenote 19',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 20'
+        title:'Carenote 20',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 21'
+        title:'Carenote 21',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 22'
+        title:'Carenote 22',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 23'
+        title:'Carenote 23',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
     {
         date:new Date(),
-        title:'Carenote 24'
+        title:'Carenote 24',
+        name:'Barry',
+        image:'',
+        link:'google.com'
     },
 ];
 const reducer = ( state = initialState, action ) => {
