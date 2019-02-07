@@ -8,16 +8,19 @@
   text-align: left;
   color: #323334;
   border-bottom: 7px solid #EAEDEF;
-  font-size: 23px;
+  font-family: 'Avenir-Heavy', sans-serif;
+  font-size: 24px;
 }
 
-form h5 {
+div h5 {
   margin-top: 48px;
   margin-bottom: 31px;
   text-indent: 3px;
   text-transform: uppercase;
   text-align: left;
   color: #323334;
+  font-size: 14px;
+  font-family: 'Avenir-Heavy', sans-serif;
 }
 
 input {
@@ -25,7 +28,8 @@ input {
   padding: 15px 7px;
   border: none;
   border-bottom: 1px solid #A1A2A5;
-  font-size: 15px;
+  font-size: 14px;
+  font-family: 'Avenir-Heavy', sans-serif;
   outline: none;
 }
 
@@ -79,16 +83,19 @@ input::placeholder {
 .paymentSection h5 {
   text-transform: uppercase;
   color: #323334;
+  font-size: 14px;
+  font-family: 'Avenir-Heavy', sans-serif;
 }
 
 .profileButton {
-  margin: auto;
   margin-top: 29px;
   padding: 11px 63px;
   border-radius: 50px;
   border: none;
   outline: none;
   color: #fff;
+  font-size: 16px;
+  font-family: 'Avenir-Heavy', sans-serif;
   background-color: #F79F2C;
   display: flex;
   cursor: pointer;
@@ -101,7 +108,8 @@ input::placeholder {
   padding-left: 29px;
   margin-bottom: 12px;
   cursor: pointer;
-  font-size: 15px;
+  font-size: 16px;
+  font-family: 'Avenir-Heavy', sans-serif;
   color: #A1A2A5;
   -webkit-user-select: none;
   -moz-user-select: none;
