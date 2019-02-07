@@ -17,19 +17,20 @@ class Shedule extends Component {
             start: moment(new Date()).weekday(0),
             end: moment(new Date()).weekday(6),
         },
-        changePopup: false,
-        selectTime: false,
+        popupDateDialog: false,
+        popupTimeDialog: false,
         confirmedPopup: false,
         selectedDateTime: {
             time: '',
-            date: moment(new Date()),
+            date: '',
         },
+        selectedDateError: '',
+        selectedTimeError: ''
     };
 
 
     constructor(props) {
         super(props);
-
     };
 
     nextWeek = async () => {
@@ -44,13 +45,15 @@ class Shedule extends Component {
             },
         });
     };
-
-    selectDateTime = (type, value, event ) => {
-        let newValue = this.state.selectedDateTime;
-        newValue[type] = value;
-        this.setState({
-            selectedDateTime: {
-                ...newValue
+    prevWeek = async () => {
+        const end = this.state.end - 7;
+        const start = this.state.start - 7;
+        await  this.setState({
+            end: end,
+            start: start,
+            week: {
+                start: moment(new Date()).weekday(start),
+                end: moment(new Date()).weekday(end),
             },
         });
 
@@ -67,48 +70,125 @@ class Shedule extends Component {
         dates.push(endDate);
         return dates;
     };
-    prevWeek = async () => {
-        const end = this.state.end - 7;
-        const start = this.state.start - 7;
-        await  this.setState({
-            end: end,
-            start: start,
-            week: {
-                start: moment(new Date()).weekday(start),
-                end: moment(new Date()).weekday(end),
+
+    selectDateTime = async (type, value, event) => {
+        const containers = ReactDOM.findDOMNode(event.target).parentNode.childNodes;
+        if (event.target.tagName === 'SPAN') {
+            return
+        }
+        containers.forEach(el => {
+            el.classList = 'item active custom-type-item';
+        });
+        event.target.classList = 'item active custom-type-item selected';
+        let newValue = this.state.selectedDateTime;
+        newValue[type] = value;
+        if (type === 'date') {
+            await this.setState({
+                selectedDateError: ''
+            })
+        }
+        await this.setState({
+            selectedDateTime: {
+                ...newValue
             },
         });
-
     };
 
-    ChangePopup = (statevalue) => {
+    validateDate = () => {
+        if (this.state.selectedDateTime.date === '') {
+            this.setState({
+                selectedDateError: 'Please select valid date',
+            });
+            return false
+        }
+        return true
+    };
+    validateTime = () => {
+        if (this.state.selectedDateTime.time === '') {
+            this.setState({
+                selectedTimeError: 'Please select valid time',
+            });
+            return false
+        }
+        return true
+    };
+
+    closeDatePopup = () => {
         this.setState({
-            changePopup: statevalue,
+            selectedDateError: '',
+            popupDateDialog: false
         });
     };
-    SelectTime = (statevalue) => {
+    openDatePopup = () => {
         this.setState({
-            selectTime: statevalue,
+            selectedDateError: '',
+            popupDateDialog: true
         });
     };
 
-    ConfirmedWindow = (value) => {
+    openTimePopup = () => {
         this.setState({
-            confirmedPopup: value
+            popupTimeDialog: true
+        })
+    }
+    closeTimePopup = () => {
+        this.setState({
+            popupTimeDialog: false
         })
     };
 
+    closeConfirmWindow = () => {
+        this.setState({
+            confirmedPopup: false,
+            selectedDateTime: {
+                time: '',
+                date: '',
+            },
+            selectedDateError: '',
+            selectedTimeError: ''
+        });
+
+        ReactDOM.findDOMNode(this.dayItemsContainer).childNodes.forEach(el => {
+            el.classList = 'item active custom-type-item'
+        });
+        ReactDOM.findDOMNode(this.hoursItemsContainer).childNodes.forEach(el => {
+            el.classList = 'item active custom-type-item'
+        })
+    };
+    openConfirmPopup = () => {
+        this.setState({
+            confirmedPopup: true,
+        })
+    };
+
+    getConfirmedText = () => {
+        if (this.state.selectedDateTime.date !== '' && this.state.selectedDateTime.time !== '') {
+
+            return (
+                this.state.selectedDateTime.date.format('MMM D ddd') +
+                '@' + this.state.selectedDateTime.time
+            )
+        } else return null
+    };
+
+
     render() {
-        const ChangePopup = this.ChangePopup;
-        const SelectTime = this.SelectTime;
         const selectDateTime = this.selectDateTime;
         const getDatesArray = this.getDatesArray;
-        const ConfirmedWindow = this.ConfirmedWindow;
-        const weeek = getDatesArray();
+        const week = getDatesArray();
+        const closeDatePopup = this.closeDatePopup;
+        const openDatePopup = this.openDatePopup;
+        const validateDate = this.validateDate;
+        const closeTimePopup = this.closeTimePopup;
+        const openTimePopup = this.openTimePopup;
+        const validateTime = this.validateTime;
+        const openConfirmPopup = this.openConfirmPopup;
+        const closeConfirmWindow = this.closeConfirmWindow;
+        const getConfirmedText = this.getConfirmedText;
 
         const events = window.events || [];
-        console.log(events);
-        let parsedEvents = {}
+        let parsedEvents = {};
+
         if (events.length) {
             events.forEach(el => {
                 parsedEvents[moment(el.end.dateTime).format('MMM_D_ddd')] = el
@@ -119,7 +199,7 @@ class Shedule extends Component {
                 <span style={    {
                     'margin': 'auto',
                     'width': '50px',
-                    textAlign:'center'
+                    textAlign: 'center'
                 }}>
                     NO  CALLS
                 </span>
@@ -127,35 +207,38 @@ class Shedule extends Component {
         };
         return (
             <div className="shedule-component">
-                <Dialog className="change-call custom-popup" header="" visible={this.state.changePopup} modal={true}
-                        onHide={(e) => this.setState({changePopup: false})}>
+                <Dialog className="change-call custom-popup" header="" visible={this.state.popupDateDialog}
+                        modal={ true } onHide={function () {}}>
                     <div className="modal-body">
                         <div className="header custom-popup-header">
                             <button onClick={function () {
-                                ChangePopup(false);
+                                closeDatePopup()
                             }}><img src={closeIcon}/></button>
                         </div>
                         <div className="body-content custom-body-content">
                             <div className="text">
                                 What day would you like to change your call to?
                             </div>
-                            <div className="items custom-type-items" ref={el=>this.dayItemsContainer = el }>
+                            <div className="items custom-type-items" ref={el => this.dayItemsContainer = el }>
                                 {
-                                    weeek.map(el => {
+                                    week.map(el => {
                                         return (
-                                            <div key={el.format('MMM ddd D')}  className="item active custom-type-item"
-                                                 onClick={function ( ev, elem  ) {
-                                                     selectDateTime( 'date', el , ev )
+                                            <div key={el.format('MMM ddd D')} className="item active custom-type-item"
+                                                 onClick={function (ev, elem) {
+                                                     selectDateTime('date', el, ev)
                                                  }}>
-                                                <span>{el.format('MMM ddd D')}</span>
+                                                {el.format('MMM ddd D')}
                                             </div>);
                                     })
                                 }
                             </div>
                             <div className="select-button">
+                                <div className="error">{this.state.selectedDateError}</div>
                                 <button className="custom-button-orange" onClick={function () {
-                                    ChangePopup(false);
-                                    SelectTime(true);
+                                    if (validateDate()) {
+                                        closeDatePopup();
+                                        openTimePopup();
+                                    }
                                 }}>Select
                                 </button>
                             </div>
@@ -163,88 +246,81 @@ class Shedule extends Component {
 
                     </div>
                 </Dialog>
-                <Dialog className="select-time custom-popup" header="" visible={this.state.selectTime} modal={true}
-                        onHide={(e) => this.setState({selectTime: false})}>
+                <Dialog className="select-time custom-popup" header="" visible={this.state.popupTimeDialog}
+                        onHide={function () {}}
+                        modal={true}>
                     <div className="modal-body">
                         <div className="header custom-popup-header">
                             <button onClick={function () {
-
-                                SelectTime(false);
+                                closeTimePopup()
                             }}><img src={closeIcon}/></button>
                         </div>
                         <div className="body-content custom-body-content">
                             <div className="text">
                                 Please select from one of the available times below.
                             </div>
-                            <div className="items custom-type-items">
+                            <div ref={el => this.hoursItemsContainer = el } className="items custom-type-items">
                                 <div onClick={function (ev) {
-                                    ev.target.style.borderColor = '#008BE2';
-                                    selectDateTime('time', '10:00 AM');
-                                }} className="item active custom-type-item" >
-                                    <span >10:00 AM</span>
+                                    selectDateTime('time', '10:00 AM', ev);
+                                }} className="item active custom-type-item">
+                                    10:00 AM
                                 </div>
                                 <div onClick={function (ev) {
-                                    ev.target.style.borderColor = '#008BE2';
-                                    selectDateTime('time', '11:00 AM');
+                                    selectDateTime('time', '11:00 AM', ev);
                                 }} className="item active custom-type-item">
-                                    <span>11:00 AM</span>
+                                    11:00 AM
                                 </div>
                                 <div onClick={function (ev) {
-                                    ev.target.style.borderColor = '#008BE2';
-                                    selectDateTime('time', '12:00 PM');
+                                    selectDateTime('time', '12:00 AM', ev);
                                 }} className="item active custom-type-item">
-                                    <span>12:00 PM</span>
+                                    12:00 PM
                                 </div>
                                 <div onClick={function (ev) {
-                                    ev.target.style.borderColor = '#008BE2';
-                                    selectDateTime('time', '1:00 PM');
+
+                                    selectDateTime('time', '1:00 PM', ev);
                                 }} className="item active custom-type-item">
-                                    <span>1:00 PM</span>
+                                    1:00 PM
                                 </div>
                             </div>
                             <div className="select-button">
+                                <div className="error">{this.state.selectedTimeError}</div>
                                 <button className="custom-button-orange" onClick={function () {
-                                    SelectTime(false);
-                                    ConfirmedWindow(true)
+                                    if (validateTime()) {
+                                        closeTimePopup();
+                                        openConfirmPopup();
+                                    }
+
                                 }}>Select
                                 </button>
                             </div>
                         </div>
-
                     </div>
                 </Dialog>
-
                 <Dialog className="confirmed-popup custom-popup" header="" visible={this.state.confirmedPopup}
-                        modal={true} onHide={(e) => this.setState({confirmedPopup: false})}>
+                        onHide={function () {}}
+                        modal={true}>
                     <div className="modal-body">
                         <div className="header custom-popup-header">
-                            <button onClick={function () {
-                                ConfirmedWindow(false);
-                            }}><img src={closeIcon}/></button>
+                            <button onClick={closeConfirmWindow}><img src={closeIcon}/></button>
                         </div>
                         <div className="body-content custom-body-content">
                             <div className="text light">
                                 Your new scheduled call is confirmed:
                             </div>
                             <div className="text text-bold">
-                                {this.state.selectedDateTime.date.format('MMM D ddd')}
-                                @ {this.state.selectedDateTime.time}
+                                {getConfirmedText()}
                             </div>
-
                             <div className="select-button">
-                                <button className="custom-button-orange" onClick={function () {
-                                    ConfirmedWindow(false);
-                                }}>Close
+                                <button className="custom-button-orange" onClick={closeConfirmWindow}>Close
                                 </button>
                             </div>
                         </div>
-
                     </div>
                 </Dialog>
                 <div className="top-content">
                     <div className="text">Schedule</div>
                     <div className="center-content">
-                        <span className="customer-name">{this.props.user.first_name},</span>
+                        <span className="customer-name">{this.props.user.first_name}  , &nbsp;</span>
                         <span className="text-note">your next scheduled call is </span>
                         <span className="date">
                             {moment(new Date()).format('MMM D') } at {' '}
@@ -252,55 +328,49 @@ class Shedule extends Component {
                         </span>
                     </div>
                     <button onClick={this.props.prev}> {'<'} Back</button>
-
                 </div>
                 <div className="calendar-header">
                     <button className="prev-mont" onClick={this.prevWeek}>
                         <img src={arrowIcon}/>
                         Prev week
                     </button>
-                    <div className="date-text">Week of Jan 8</div>
+                    <div className="date-text">Week of {week[0].format('MMM D')}</div>
                     <button className="next-button" onClick={this.nextWeek}> Next week
                         <img src={arrowIcon}/>
                     </button>
                 </div>
                 <div className="calendar-days">
                     {
-                        weeek.map(el => {
+                        week.map((el, index) => {
                             const classname = parsedEvents[el.format('MMM_D_ddd')] !== undefined ? 'item activated' : 'item'
-                            return ( <div className={classname}>
-                                <div className="top">
-                                    <span className="left">{el.format('MMM D')}</span>
-                                    <span className="right">{el.format('ddd')}</span>
-                                </div>
-                                <div className="center">
-                            <span className="" style={{display: 'flex'}}>
-                                {parsedEvents[el.format('MMM_D_ddd')] !== undefined ? parsedEvents[el.format('MMM_D_ddd')].summary : noCalls() }
-                            </span>
-
-                                </div>
-                                <div className="bottom" onClick={function () {
-                                    ChangePopup(true);
-                                }}> change
-                                </div>
-                            </div>);
+                            return ( <div key={index} className={classname}>
+                                        <div className="top">
+                                            <span className="left">{el.format('MMM D')}</span>
+                                            <span className="right">{el.format('ddd')}</span>
+                                        </div>
+                                        <div className="center">
+                                            <span className="" style={{display: 'flex'}}>
+                                                {parsedEvents[el.format('MMM_D_ddd')] !== undefined ? parsedEvents[el.format('MMM_D_ddd')].summary : noCalls() }
+                                            </span>
+                                        </div>
+                                        <div className="bottom" onClick={function () {
+                                            openDatePopup();
+                                        }}> change
+                                        </div>
+                                    </div>);
                         })
                     }
-
-
                 </div>
                 <div className="calendar-footer">
                     <span>Click “Change” to edit your call schedule to another day and time.</span>
                 </div>
-
-
             </div>
         );
     }
 }
 const mapStateToProps = state => {
     return {
-        user: state.auth.user,
+        user: state.r_customer,
     };
 };
 
