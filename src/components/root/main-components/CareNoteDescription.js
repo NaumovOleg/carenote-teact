@@ -43,8 +43,9 @@ class NotesDescriptions extends Component {
                         tastes for luxury goods grow. We focused primarily on Russia, but for next week I
                         promised to share my insights on what I’ve observed in the Asian markets.</p>
                     <div className="carenotes-modal-link">
-                        <a href="#">{this.props.note.link}</a>
+                        <a href={'http://'+this.props.note.link}>{this.props.note.link}</a>
                     </div>
+                    <img src={lady}/>
                     <div className="carenotes-employee-info">
                         <p>{this.props.note.name}<br/>Carenote Team Member</p>
                     </div>

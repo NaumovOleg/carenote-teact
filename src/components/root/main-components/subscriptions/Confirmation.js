@@ -15,7 +15,7 @@ class Confirmation extends Component {
                             <p>Subscription confirmation</p>
                             <p><a onClick={function () {
                                 returnRoute( 'subscriptions' )
-                            }}>  back </a></p>
+                            }}>&#x3c; Back </a></p>
                         </div>
                         <div className="choosenSubscription">
                             <p>Thank you. You're confirmed for a change to the Platinum Plan.</p>

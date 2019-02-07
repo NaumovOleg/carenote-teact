@@ -59,7 +59,7 @@
   width: 19px;
 }
 
-.p-paginator {
+.notes-component .p-paginator {
   padding: 21px 85px 125px;
   display: flex;
   justify-content: flex-end;
@@ -67,16 +67,16 @@
   border: none;
 }
 
-.p-paginator-first,
-.p-paginator-last {
+.notes-component .p-paginator-first,
+.notes-component .p-paginator-last {
   display: none;
 }
 
-.p-paginator-page {
+.notes-component .p-paginator-page {
   display: none;
 }
 
-.p-highlight {
+.notes-component .p-highlight {
   min-width: auto;
   display: inline-block;
   background: transparent;
@@ -84,20 +84,20 @@
   color: #A1A2A5;
 }
 
-.p-link:focus {
+.notes-component .p-link:focus {
   box-shadow: none;
 }
 
-.pi-caret-left:before {
+.notes-component .pi-caret-left:before {
   content: "\003C";
 }
 
-.pi-caret-right:before {
+.notes-component .pi-caret-right:before {
   content: "\003E";
 }
 
-.p-paginator-next:hover,
-.p-paginator-prev:hover {
+.notes-component .p-paginator-next:hover,
+.notes-component .p-paginator-prev:hover {
   background-color: transparent;
   color: #008BE2;
 }

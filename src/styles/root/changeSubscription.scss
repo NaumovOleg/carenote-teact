@@ -97,9 +97,24 @@
 }
 
 // Confirmation modal window
+.p-dialog .p-dialog-titlebar {
+  border: 1px solid #fff;
+}
 
-.p-dialog .p-dialog-content {
+.p-dialog .p-dialog-content{
   border: none;
+}
+.change-subscriptions-modal-window .p-dialog-titlebar {
+  background-color: #fff;
+  padding-bottom: 19px;
+}
+
+.change-subscriptions-modal-window .p-dialog .p-dialog-titlebar{
+  border: 1px solid #fff;
+}
+
+.change-subscriptions-modal-window .pi-times:before {
+  content: '\2715';
 }
 
 .change-subscriptions-modal-container {
@@ -131,6 +146,18 @@
 }
 
 // Second Confirmation modal window
+.subscriptions-modal-window .p-dialog-titlebar {
+  background-color: #fff;
+  padding-bottom: 18px;
+}
+
+.subscriptions-modal-window .p-dialog .p-dialog-titlebar{
+  border: 1px solid #fff;
+}
+
+.subscriptions-modal-window .pi-times:before {
+  content: '\2715';
+}
 
 .subscriptions-modal-container {
   height: 384px;
