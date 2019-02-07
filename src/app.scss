@@ -10,6 +10,7 @@ $base-range:#F79F2C;
 }
 .App{
   min-height: 100%;
+  background-color: #F5F8FA;
 }
 
 .custom-button-orange{
@@ -25,7 +26,7 @@ $base-range:#F79F2C;
 }
 
 body{
-  margin:0
+  margin:0;
 }
 .p-dialog .p-dialog-content{
   border-bottom-left-radius: 13px;
