@@ -67,16 +67,19 @@ $base-range:#F79F2C;
                         padding-top:55px;
                         display: flex;
                         flex-wrap: wrap;
-                        .custom-type-item.active:hover{
+                        div.custom-type-item.active:hover{
                             border-color:$base-blue;
                         }
-                        .custom-type-item.active:active{
+                        div.custom-type-item.selected{
                             border-color:$base-blue;
                         }
-                        .custom-type-item.active:active{
+                        div.custom-type-item.active:active{
                             border-color:$base-blue;
                         }
-                        .custom-type-item{
+                        div.custom-type-item.active:active{
+                            border-color:$base-blue;
+                        }
+                        div.custom-type-item{
                             height:40px;
                             width:155px;
                             padding:0;
@@ -87,20 +90,23 @@ $base-range:#F79F2C;
                             border-radius:40px;
                             text-align: center;
                             color:$base-blue;
-                            span{
-                                margin:auto;
-                            }
-
-                        }
-                        .custom-type-item.inactive{
-                            color:#D0D3D5;
+                            display: flex;
+                            flex-direction: column;
+                            justify-content: center;
 
                         }
                     }
+
                     .select-button{
                         display: flex;
                         justify-content: center;
-                        padding-top: 20px;
+                        flex-direction: column;
+                        align-items: center;
+                        .error{
+                            color: #c53b3b;
+                            font-size: 11px;
+                            height: 20px;
+                        }
                     }
                 }
             }
@@ -296,4 +302,13 @@ $base-range:#F79F2C;
 }
 .shedule-component .calendar-days .item.activated .bottom {
    display:block;
+}
+
+.confirmed-popup .body-content.custom-body-content{
+    margin: auto;
+    width: 345px;
+    height: 165px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
 }
