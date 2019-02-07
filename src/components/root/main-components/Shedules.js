@@ -175,7 +175,7 @@ class Shedule extends Component {
     render() {
         const selectDateTime = this.selectDateTime;
         const getDatesArray = this.getDatesArray;
-        const weeek = getDatesArray();
+        const week = getDatesArray();
         const closeDatePopup = this.closeDatePopup;
         const openDatePopup = this.openDatePopup;
         const validateDate = this.validateDate;
@@ -188,6 +188,7 @@ class Shedule extends Component {
 
         const events = window.events || [];
         let parsedEvents = {};
+
         if (events.length) {
             events.forEach(el => {
                 parsedEvents[moment(el.end.dateTime).format('MMM_D_ddd')] = el
@@ -220,7 +221,7 @@ class Shedule extends Component {
                             </div>
                             <div className="items custom-type-items" ref={el => this.dayItemsContainer = el }>
                                 {
-                                    weeek.map(el => {
+                                    week.map(el => {
                                         return (
                                             <div key={el.format('MMM ddd D')} className="item active custom-type-item"
                                                  onClick={function (ev, elem) {
@@ -319,7 +320,7 @@ class Shedule extends Component {
                 <div className="top-content">
                     <div className="text">Schedule</div>
                     <div className="center-content">
-                        <span className="customer-name">{this.props.user.first_name},</span>
+                        <span className="customer-name">{this.props.user.first_name}  , &nbsp;</span>
                         <span className="text-note">your next scheduled call is </span>
                         <span className="date">
                             {moment(new Date()).format('MMM D') } at {' '}
@@ -333,14 +334,14 @@ class Shedule extends Component {
                         <img src={arrowIcon}/>
                         Prev week
                     </button>
-                    <div className="date-text">Week of Jan 8</div>
+                    <div className="date-text">Week of {week[0].format('MMM D')}</div>
                     <button className="next-button" onClick={this.nextWeek}> Next week
                         <img src={arrowIcon}/>
                     </button>
                 </div>
                 <div className="calendar-days">
                     {
-                        weeek.map((el, index) => {
+                        week.map((el, index) => {
                             const classname = parsedEvents[el.format('MMM_D_ddd')] !== undefined ? 'item activated' : 'item'
                             return ( <div key={index} className={classname}>
                                         <div className="top">
@@ -369,7 +370,7 @@ class Shedule extends Component {
 }
 const mapStateToProps = state => {
     return {
-        user: state.auth.user,
+        user: state.r_customer,
     };
 };
 
