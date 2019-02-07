@@ -15,8 +15,11 @@
   p {
     &:first-child {
       color: #323334;
-      line-height: 24px;
-      font-size: 20px;
+      font-size: 24px;
+      font-family: 'Avenir-Heavy', sans-serif;
+    }
+    a {
+      font-size: 14px;
       font-family: 'Avenir-Heavy', sans-serif;
     }
   }

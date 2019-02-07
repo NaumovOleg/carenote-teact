@@ -1,0 +1,79 @@
+.notes-description-component {
+  width: 1080px;
+  padding-top: 38px;
+  padding-bottom: 98px;
+  background-color: #fff;
+}
+
+.modal-button {
+  display: none;
+}
+
+.carenotes-modal-window {
+  width: 63vw;
+  background: #fff;
+  border-radius: 13px;
+}
+
+.carenotes-modal-header {
+  padding: 0 81px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  h3 {
+    margin-top: 24px;
+    font-family: 'Avenir-Heavy', sans-serif;
+    font-size: 24px;
+    color: #323334;
+  }
+
+  button {
+    border: none;
+    background: transparent;
+    font-size: 14px;
+    font-family: 'Avenir-Heavy', sans-serif;
+    color: #008BE2;
+    cursor: pointer;
+    &:before {
+      content: '< ';
+    }
+  }
+
+}
+
+.carenotes-modal-text-box {
+  padding-left: 78px;
+  padding-right: 83px;
+}
+
+.carenotes-modal-text {
+  padding-left: 63px;
+  padding-right: 63px;
+  padding-top: 32px;
+  border-top: 8px solid #F79F2C;
+  text-align: left;
+  line-height: 30px;
+  font-size: 18px;
+  font-family: 'SourceSerifPro-Regular', sans-serif;
+}
+
+.carenotes-modal-link {
+  margin-top: 35px;
+  margin-bottom: 35px;
+  padding-left: 64px;
+  padding-right: 83px;
+  padding-bottom: 36px;
+  text-align: left;
+  font-size: 18px;
+  font-family: 'SourceSerifPro-Regular', sans-serif;
+}
+
+.carenotes-employee-info {
+  padding-bottom: 29px;
+  padding-left: 64px;
+  padding-right: 83px;
+  text-align: left;
+  border-bottom: 7px solid #008BE2;
+  font-family: 'Avenir-Light', sans-serif;
+  font-size: 16px;
+}
