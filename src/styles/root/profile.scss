@@ -127,10 +127,10 @@ input::placeholder {
 
 .checkmark {
   position: absolute;
-  top: 0;
+  top: -3px;
   left: 0;
-  height: 16px;
-  width: 16px;
+  height: 21px;
+  width: 21px;
   background-color: #fff;
   border: 1px solid #A1A2A5;
 }
@@ -146,8 +146,8 @@ input::placeholder {
 }
 
 .checkboxContainer .checkmark:after {
-  left: 5px;
-  top: 0;
+  left: 6px;
+  top: 2px;
   width: 5px;
   height: 10px;
   border: solid #707070;

@@ -69,7 +69,7 @@ class Profile extends Component {
                     <input type="text" name="phone" placeholder="Phone Number" />
                     <input type="email" name="email" placeholder="Email address" />
                     <label className="checkboxContainer">
-                      <span className="checkboxText">Receive notifications vis text/SMS</span>
+                      <span className="checkboxText">Receive notifications via text/SMS</span>
                       <input type="checkbox" />
                       <span className="checkmark"></span>
                     </label>
@@ -97,7 +97,7 @@ class Profile extends Component {
                                    updateCustomer('email', el.target.value )
                                }
                            } value={this.state.user.email} />
-                    <label className="checkboxContainer">Receive notifications vis text/SMS
+                    <label className="checkboxContainer">Receive notifications via text/SMS
                       <input type="checkbox" />
                       <span className="checkmark"></span>
                     </label>
