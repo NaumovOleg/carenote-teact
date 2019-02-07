@@ -6,11 +6,12 @@ import searchIcon from '../../../assets/Search@2x.png';
 import {Dialog} from 'primereact/dialog';
 moment.localeData('uk');
 
-
 class Notes extends Component {
     state = {
         first: 0,
-        visible: false
+        visible: false,
+        currentRoute: "list",
+        selectedNote: {}
     };
 
     constructor(props) {
@@ -21,22 +22,16 @@ class Notes extends Component {
     getNotes = () => {
         return this.props.notes.slice(this.state.first, 10 + this.state.first)
     };
-    openPopup = () => {
-        this.setState({
-            visible: true
-        })
-    }
-    onClick = (event) => {
-        this.setState({visible: true});
-    }
-
-
+    previewNote = (event) => {
+        this.props.swithcRoute( event )
+    };
     onHide = (event) => {
         this.setState({visible: false});
     }
 
     render() {
         const notes = this.getNotes();
+        const previewNote = this.previewNote;
         return (
             <div className="notes-component">
                 <button label="Show" className="modal-button"/>
@@ -81,8 +76,10 @@ class Notes extends Component {
                                 return <div className="item" key={el.date + el.title}>
                                     <div className="date"> {moment(el.date).format('mm/D')}</div>
                                     <div className='title'>{el.title}</div>
-                                    <a className="search-img" onClick={this.onClick}><img src={searchIcon}
-                                                                                          className="search-icon"/></a>
+                                    <a className="search-img" onClick={function () {
+                                        previewNote( el )
+                                    }}><img src={searchIcon}
+                                            className="search-icon"/></a>
                                 </div>
                             })
                         }

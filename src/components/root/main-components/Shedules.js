@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import   ReactDOM  from 'react-dom';
 import {connect} from 'react-redux';
 import * as actions from '../../../store/actions/index';
 import {Dialog} from 'primereact/dialog';
@@ -44,7 +45,7 @@ class Shedule extends Component {
         });
     };
 
-    selectDateTime = (type, value) => {
+    selectDateTime = (type, value, event ) => {
         let newValue = this.state.selectedDateTime;
         newValue[type] = value;
         this.setState({
@@ -138,14 +139,13 @@ class Shedule extends Component {
                             <div className="text">
                                 What day would you like to change your call to?
                             </div>
-                            <div className="items custom-type-items">
+                            <div className="items custom-type-items" ref={el=>this.dayItemsContainer = el }>
                                 {
                                     weeek.map(el => {
                                         return (
                                             <div key={el.format('MMM ddd D')}  className="item active custom-type-item"
-                                                 onClick={function ( ev ) {
-                                                     ev.target.style.borderColor = '#008BE2';
-                                                     selectDateTime('date', el);
+                                                 onClick={function ( ev, elem  ) {
+                                                     selectDateTime( 'date', el , ev )
                                                  }}>
                                                 <span>{el.format('MMM ddd D')}</span>
                                             </div>);
