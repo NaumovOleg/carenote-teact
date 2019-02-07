@@ -45,8 +45,9 @@ class NotesDescriptions extends Component {
                     <div className="carenotes-modal-link">
                         <a href={'http://'+this.props.note.link}>{this.props.note.link}</a>
                     </div>
-                    <img src={lady}/>
+                
                     <div className="carenotes-employee-info">
+                        <img src={lady}/>
                         <p>{this.props.note.name}<br/>Carenote Team Member</p>
                     </div>
                 </div>
