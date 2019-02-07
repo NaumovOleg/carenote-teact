@@ -104,7 +104,6 @@
 }
 
 .carenotes-modal-window {
-  padding-bottom: 27px;
   max-height: 69vh;
   width: 63vw;
   background: #fff;
@@ -126,7 +125,7 @@
 .carenotes-modal-window .p-dialog-content {
   border: none;
   border-bottom-left-radius: 17px;
-  max-height: 59vh;
+  border-bottom-right-radius: 17px;
 }
 
 .p-dialog-content {
