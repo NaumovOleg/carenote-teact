@@ -27,8 +27,6 @@ class Shedule extends Component {
         selectedDateError: '',
         selectedTimeError: ''
     };
-
-
     constructor(props) {
         super(props);
     };
@@ -165,7 +163,7 @@ class Shedule extends Component {
         if (this.state.selectedDateTime.date !== '' && this.state.selectedDateTime.time !== '') {
 
             return (
-                this.state.selectedDateTime.date.format('MMM D ddd') +
+                this.state.selectedDateTime.date.format('MMM D , ddd')  +
                 '@' + this.state.selectedDateTime.time
             )
         } else return null
