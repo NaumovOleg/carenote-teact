@@ -68,7 +68,7 @@
   "scripts": {
     "sass": "node-sass src/app.scss -o build/",
     "start": "node scripts/start.js  ",
-    "build": "node scripts/build.js && node-sass src/app.scss -o build/",
+    "build": "node scripts/build.js && node-sass src/react.maincss.scss -o build/static/css",
     "test": "node scripts/test.js"
   },
   "eslintConfig": {

@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Auth from './components/auth/auth';
 import Main from './components/root/main';
 import Header from './components/header';
-import  './app.scss';
+import  './react.maincss.scss';
 
 
 class App extends Component {
