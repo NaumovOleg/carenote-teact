@@ -21,6 +21,12 @@
     a {
       font-size: 14px;
       font-family: 'Avenir-Heavy', sans-serif;
+      display: flex;
+      align-items: center;
+      img {
+        margin-right: 10px;
+        cursor: pointer;
+      }
     }
   }
 }

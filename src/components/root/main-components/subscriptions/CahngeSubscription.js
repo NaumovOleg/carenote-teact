@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import {Dialog} from 'primereact/dialog';
+import backimg from '../../../../assets/Group 268.png';
 
 class ChangeSubscription extends Component {
     state = {
@@ -81,7 +82,7 @@ class ChangeSubscription extends Component {
                         <p>Change Subscription</p>
                         <p><a onClick={function () {
                             returnRoute( 'subscriptions' )
-                        }}>&#60; Back</a></p>
+                        }}><img src={backimg}/> Back</a></p>
                     </div>
                     <div className="current-subscription">
                         <p><strong>Current Subscription: Gold Plan</strong><br />

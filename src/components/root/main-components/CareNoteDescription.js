@@ -5,6 +5,7 @@ import {Paginator} from 'primereact/paginator';
 import searchIcon from '../../../assets/Search@2x.png';
 import {Dialog} from 'primereact/dialog';
 import lady from '../../../assets/lady.png'
+import backimg from '../../../assets/Group 268.png';
 moment.localeData('uk');
 
 
@@ -23,7 +24,7 @@ class NotesDescriptions extends Component {
                     <h3>{this.props.note.title}</h3>
                   <button onClick={function () {
                         switchBackRoute('notes');
-                    }}> Back</button>
+                    }}> <img src={backimg}/> Back</button>
                 </div>
                 <div className="carenotes-modal-text-box">
                     <p className="carenotes-modal-text">Dear Elbert,<br />
@@ -45,7 +46,7 @@ class NotesDescriptions extends Component {
                     <div className="carenotes-modal-link">
                         <a href={'http://'+this.props.note.link}>{this.props.note.link}</a>
                     </div>
-                
+
                     <div className="carenotes-employee-info">
                         <img src={lady}/>
                         <p>{this.props.note.name}<br/>Carenote Team Member</p>

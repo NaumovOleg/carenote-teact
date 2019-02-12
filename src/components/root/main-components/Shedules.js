@@ -7,6 +7,7 @@ import * as moment from 'moment';
 import arrowIcon from '../../../assets/Down_arrow_small@2x.png';
 import closeIcon from '../../../assets/No@2x.png';
 import google from '../../../utils/gapi';
+import backimg from '../../../assets/Group 268.png';
 moment.locales('us');
 
 class Shedule extends Component {
@@ -325,7 +326,7 @@ class Shedule extends Component {
                             { moment(new Date()).format('HH:mm A')}
                         </span>
                     </div>
-                    <button onClick={this.props.prev}> {'<'} Back</button>
+                    <button onClick={this.props.prev}> <img src={backimg}/> Back</button>
                 </div>
                 <div className="calendar-header">
                     <button className="prev-mont" onClick={this.prevWeek}>

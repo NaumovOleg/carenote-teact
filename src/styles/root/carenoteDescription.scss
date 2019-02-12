@@ -34,8 +34,11 @@
     font-family: 'Avenir-Heavy', sans-serif;
     color: #008BE2;
     cursor: pointer;
-    &:before {
-      content: '< ';
+    display: flex;
+    align-items: center;
+    outline: none;
+    img {
+      margin-right: 10px;
     }
   }
 
