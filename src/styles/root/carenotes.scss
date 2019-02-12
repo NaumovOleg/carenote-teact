@@ -67,6 +67,7 @@
   border: none;
 }
 
+
 .notes-component .p-paginator-first,
 .notes-component .p-paginator-last {
   display: none;
@@ -76,12 +77,18 @@
   display: none;
 }
 
+.notes-component .p-paginator .p-paginator-icon {
+  margin-top: -0.5em;
+}
+
 .notes-component .p-highlight {
   min-width: auto;
   display: inline-block;
   background: transparent;
   border: none;
   color: #A1A2A5;
+  font-size: 16px;
+  font-family: 'Avenir-Heavy', sans-serif;
 }
 
 .notes-component .p-link:focus {
