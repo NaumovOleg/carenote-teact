@@ -5,10 +5,11 @@ import Subscriptions_description from'./subscriptions/Subscriptions_description'
 import Confirmation from './subscriptions/Confirmation'
 class Subscriptions extends Component {
     state = {
-        activeRoute:'subscriptions'
+        activeRoute:'subscriptions',
     };
     constructor ( props ) {
         super ( props );
+
     }
 
     selectPlan = ( route )=>{

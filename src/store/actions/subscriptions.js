@@ -10,10 +10,11 @@ export const initSubscriptions = ( subscriptions ) => {
 
 export const getSubscriptions = ( scutomer ) => dispatch => {
     return request ( {
-        url:    'https://cors-anywhere.herokuapp.com/api.rechargeapps.com/subscriptions?shopify_customer_id='+scutomer+'',
+        url:    'api/subscriptions/'+scutomer,
         method: 'GET',
     } ).then ( res => {
-        dispatch( initSubscriptions( res.data.subscriptions ) )
+        console.log( res.data )
+        dispatch( initSubscriptions( res.data ) )
     } )
        .catch ( e => {
            console.log ( 'error in reac eeeet  products', e );

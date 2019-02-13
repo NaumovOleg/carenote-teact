@@ -5,9 +5,9 @@ const reducer = ( state = initialState, action ) => {
     switch ( action.type ) {
         case actionTypes.GET_SUBSCRIPTIONS:
 
-            return [
+            return {
                 ...action.subscriptions
-            ];
+            };
         default:
             return state;
     }

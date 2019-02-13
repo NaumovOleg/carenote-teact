@@ -12,10 +12,11 @@ export const initAddress = ( address ) => {
 export const getAddress = ( cutomer ) => dispatch => {
 
     return request ( {
-        url:    'https://api.rechargeapps.com/customers/' + cutomer + '/addresses',
+        url:    'api/addresses/'+cutomer,
         method: 'GET',
     } ).then ( res => {
-        dispatch ( initAddress ( res.data.addresses[ 0 ] ) );
+        dispatch ( initAddress ( res.data ) );
+        return res.data;
     } )
        .catch ( e => {
            console.log ( 'error in react  products', e );
