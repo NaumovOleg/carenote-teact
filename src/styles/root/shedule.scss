@@ -145,6 +145,11 @@ $base-range:#F79F2C;
     cursor: pointer;
     margin-top: 4px;
     margin-right: -7px;
+    display: flex;
+    align-items: center;
+    img {
+      margin-right: 10px;
+    }
 }
 
 .shedule-component .top-content .center-content {
