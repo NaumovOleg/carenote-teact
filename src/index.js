@@ -24,7 +24,8 @@ const rootReducer = combineReducers ( {
     notes:notesReduser,
     address:addressReducer,
     subscriptions:subscriptionReduser,
-    orders:ordersReducer
+    orders:ordersReducer,
+    products:productsReducer
 } );
 const logger = store => {
     return next => {

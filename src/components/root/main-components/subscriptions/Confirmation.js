@@ -7,6 +7,7 @@ class Confirmation extends Component {
     }
     render () {
         const returnRoute = this.props.returnRoute;
+
         return (
             <div className="subscription-confirmation">
                 <div className="subscriptions-component">

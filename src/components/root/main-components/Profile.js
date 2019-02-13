@@ -120,7 +120,7 @@ class Profile extends Component {
                             function ( el ) {
                                 updateCustomer('billing_address2', el.target.value )
                             }
-                        } value={this.state.user.billing_address1} placeholder="Address 2" />
+                        } value={this.state.user.billing_address2} placeholder="Address 2" />
                         <input onChange={
                             function ( el ) {
                                 updateCustomer('billing_city', el.target.value )

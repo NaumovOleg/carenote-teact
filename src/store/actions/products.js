@@ -11,9 +11,10 @@ export const initProducts = ( products ) => {
 
 export const getProducts = () => dispatch => {
     return request({
-        url: `/admin/products.json`,
+        url: `/api/products`,
         method: 'GET',
     }).then ( res => {
+        console.log( res )
         dispatch(initProducts(res.data.products))
     } )
       .catch ( e => {

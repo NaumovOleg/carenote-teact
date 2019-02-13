@@ -28,7 +28,6 @@ class Subscriptions_description extends Component {
     render () {
         const selectPlan = this.props.changeSubscription;
 
-        console.log( this.state.planSubscription[this.props.subscriptions.shopify_product_id] , this.props.subscriptions.shopify_product_id );
         return (
             <div className="change-subscriptions-component">
                 <div className="subscriptions-component">
