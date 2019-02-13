@@ -1,6 +1,6 @@
 import * as actionTypes from './actionTypes';
 import { request, setRechargeToken } from '../../utils/request';
-setRechargeToken ();
+
 export const initSubscriptions = ( subscriptions ) => {
     return {
         type: actionTypes.GET_SUBSCRIPTIONS,
@@ -13,7 +13,6 @@ export const getSubscriptions = ( scutomer ) => dispatch => {
         url:    'api/subscriptions/'+scutomer,
         method: 'GET',
     } ).then ( res => {
-        console.log( res.data )
         dispatch( initSubscriptions( res.data ) )
     } )
        .catch ( e => {
@@ -27,7 +26,6 @@ export const updateSubscriptions = ( subscription ) => dispatch => {
         url:    'https://api.rechargeapps.com/subscriptions/'+subscription.id,
         method: 'PUT',
     } ).then ( res => {
-        console.log( res )
         dispatch( initSubscriptions( res.data.subscriptions ) )
     } )
        .catch ( e => {

@@ -6,7 +6,6 @@ import {Dialog} from 'primereact/dialog';
 import * as moment from 'moment';
 import arrowIcon from '../../../assets/Down_arrow_small@2x.png';
 import closeIcon from '../../../assets/No@2x.png';
-import google from '../../../utils/gapi';
 import backimg from '../../../assets/Group 268.png';
 moment.locales('us');
 
@@ -369,7 +368,7 @@ class Shedule extends Component {
 }
 const mapStateToProps = state => {
     return {
-        user: state.r_customer,
+        user: state.auth.user,
     };
 };
 

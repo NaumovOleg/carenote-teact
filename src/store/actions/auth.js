@@ -54,4 +54,19 @@ export const getCustomer = ( CID ) => dispatch => {
         } );
 };
 
+export const updateCustomer = ( CID, customer ) => dispatch => {
+
+    return request ( {
+        url:    'api/users/'+CID,
+        method: 'PUT',
+        data:customer
+    } ).then ( res => {
+        dispatch( initCustomerData( res.data ) );
+        return res.data
+    } )
+        .catch ( e => {
+            console.log ( 'error in reac t  products', e );
+        } );
+};
+
 
