@@ -26,7 +26,6 @@ export const updateSubscriptions = ( SID, subscription ) => dispatch => {
         method: 'PUT',
         data:subscription
     } ).then ( res => {
-        console.log( res )
         dispatch( initSubscriptions( res.data.subscription ) )
     } )
        .catch ( e => {

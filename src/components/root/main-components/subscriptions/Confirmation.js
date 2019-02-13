@@ -19,7 +19,7 @@ class Confirmation extends Component {
                             }}>&#x3c; Back </a></p>
                         </div>
                         <div className="choosenSubscription">
-                            <p>Thank you. You're confirmed for a change to the Platinum Plan.</p>
+                            <p>Thank you. You're confirmed for a change to the {this.props.planName.name} Plan.</p>
                             <p>The plan change will take affect starting April 1, 2019</p>
                         </div>
                     </div>

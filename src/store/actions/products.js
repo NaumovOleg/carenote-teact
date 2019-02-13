@@ -14,7 +14,7 @@ export const getProducts = () => dispatch => {
         url: `/api/products`,
         method: 'GET',
     }).then ( res => {
-        console.log( res )
+
         dispatch(initProducts(res.data.products))
     } )
       .catch ( e => {

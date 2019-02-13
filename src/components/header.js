@@ -6,7 +6,17 @@ class Header extends Component {
 
     constructor ( props ) {
         super ( props );
-        this.state = {
+        this.state = {};
+        this.planSubscription = {
+            1859628302425: {
+                name: "Silver",
+            },
+            1859628367961: {
+                name: "Gold",
+            },
+            1859628433497: {
+                name: "Platinum",
+            },
         }
     }
     render () {
@@ -14,8 +24,8 @@ class Header extends Component {
             display: this.props.auth.loggedIn?'flex':'flex',
         };
         let planName = '';
-        if( this.props.subscriptions.length>0){
-            planName = this.props.subscriptions[0].product_title
+        if( this.props.subscriptions.shopify_product_id!==undefined){
+            planName = this.planSubscription[this.props.subscriptions.shopify_product_id].name
         }
 
         return (
@@ -27,9 +37,8 @@ class Header extends Component {
                         </div>
                         <div className="separator"></div>
                         <div className="plan">
-                            { this.props.subscriptions.product_title}
+                            { planName } Plan
                         </div>
-
                     </div>
                     <div className="logo-container">
                         <div className="logo">

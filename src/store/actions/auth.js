@@ -40,7 +40,6 @@ export const logIn = ( data ) => dispatch => {
 
 export const getCustomer = ( CID ) => dispatch => {
 
-    console.log( CID )
     return request ( {
         url:    'api/users/'+CID,
         method: 'GET',
