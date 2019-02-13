@@ -28,11 +28,11 @@ class Main extends Component {
     }
 
     getData = async () => {
-        // await  this.props.getProducts ();
-        // await  this.props.getCustomer ( this.props.initOrders );
-        await this.props.getRCustomer ( this.state.userId );
-        await  this.props.getAddress(this.props.r_customer.id);
-        await  this.props.getSubscriptions(this.state.userId)
+
+        const user  =  await this.props.getCustomer ( this.state.userId );
+        const subscriptions = this.props.getSubscriptions(user.id);
+        const address =   this.props.getAddress(user.id);
+
 
     };
     componentWillMount () {
@@ -162,10 +162,7 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = dispatch => {
     return {
-        //getProducts:  () => dispatch ( actions.getProducts () ),
-        //getCustomer:  ( cb ) => dispatch ( actions.getCustomer ( cb ) ),
-        //initOrders:   () => dispatch ( actions.initOrders () ),
-        getRCustomer: ( scutomerId ) => dispatch ( actions.getRCustomer ( scutomerId ) ),
+        getCustomer: ( CID  ) => dispatch ( actions.getCustomer ( CID ) ),
         getAddress: ( scutomerId ) => dispatch ( actions.getAddress ( scutomerId ) ),
         getSubscriptions:(scustomer)=>dispatch(actions.getSubscriptions(scustomer))
 

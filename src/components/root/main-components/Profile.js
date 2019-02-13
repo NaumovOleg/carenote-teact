@@ -157,8 +157,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        updateCustomer:(customer)=>dispatch(actions.updateRCustomer(customer)),
-        updateSubscriptions:(subscription)=>dispatch(actions.updateSubscriptions(subscription))
+        // updateCustomer:(customer)=>dispatch(actions.updateRCustomer(customer)),
+        // updateSubscriptions:(subscription)=>dispatch(actions.updateSubscriptions(subscription))
     };
 };
 

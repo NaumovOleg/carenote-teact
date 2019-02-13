@@ -4,14 +4,9 @@ import { connect } from 'react-redux';
 import * as actions from '../store/actions/index';
 class Header extends Component {
 
-
-
     constructor ( props ) {
         super ( props );
-
-
         this.state = {
-            //plan:props.subscriptions[0]
         }
     }
     render () {
@@ -32,7 +27,7 @@ class Header extends Component {
                         </div>
                         <div className="separator"></div>
                         <div className="plan">
-                            { planName}
+                            { this.props.subscriptions.product_title}
                         </div>
 
                     </div>
@@ -51,7 +46,7 @@ class Header extends Component {
 
 const mapStateToProps = state => {
     return {
-        user: state.r_customer,
+        user: state.auth.user,
         auth:state.auth,
         subscriptions:state.subscriptions
     };

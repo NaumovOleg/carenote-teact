@@ -2,15 +2,33 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 class Subscriptions_description extends Component {
+    state = {
+        planSubscription:{
+            1859628302425:{
+                name:"Silver",
+                description:'1 Care Call per week, Unlimited text messaging, Carenotes sent weekly'
+            },
+            1859628367961:{
+                name:"Gold",
+                description:'2 Care Calls per week, 2 Outbound calls per week, Unlimited text messaging, Carentes sent weekly'
+            },
+            1859628433497:{
+                name:"Platinum",
+                description:'7 Care Calls per week, Unlimited outbound calls, Unlimited text messaging, Carentes sent daily, Dedicated personal concierge'
+            },
+            undefined:{
+                name:'',
+                description:''
+            }
+        }
+    };
     constructor ( props ) {
         super ( props );
     }
     render () {
-        let planName = '';
-        if( this.props.subscriptions.length>0){
-            planName = this.props.subscriptions[0].product_title
-        }
         const selectPlan = this.props.changeSubscription;
+
+        console.log( this.state.planSubscription[this.props.subscriptions.shopify_product_id] , this.props.subscriptions.shopify_product_id );
         return (
             <div className="change-subscriptions-component">
                 <div className="subscriptions-component">
@@ -22,8 +40,8 @@ class Subscriptions_description extends Component {
                             }}>Change Plan</a></p>
                         </div>
                         <div className="choosenSubscription">
-                            <p>Gold Plan</p>
-                            <p>{planName}</p>
+                            <p>{this.state.planSubscription[this.props.subscriptions.shopify_product_id].name }</p>
+                            <p>{this.state.planSubscription[this.props.subscriptions.shopify_product_id].description }</p>
                         </div>
                     </div>
                 </div>
