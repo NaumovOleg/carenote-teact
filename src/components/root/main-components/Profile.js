@@ -34,7 +34,7 @@ class Profile extends Component {
 
     saveChanges = ()=>{
         this.saveCustomer();
-        this.saveAddress();
+        // this.saveAddress();
     };
 
 
@@ -43,8 +43,8 @@ class Profile extends Component {
     }
 
     saveCustomer = ()=>{
-        let  {first_name,email,last_name,billing_phone,id} = this.state.user;
-        let user = {first_name,email,last_name,billing_phone};
+        let  {first_name,email,last_name,billing_phone,id ,billing_address1,billing_address2,billing_province,billing_city,billing_zip} = this.state.user;
+        let user = {first_name,email,last_name,billing_phone,billing_address1,billing_address2,billing_province,billing_city,billing_zip};
         this.props.updateCustomer(id, user )
     };
 
@@ -113,25 +113,32 @@ class Profile extends Component {
                       <h5>Billing Address</h5>
                         <input type="text" name="addressOne"  onChange={
                             function ( el ) {
-                                updateAddress('address1', el.target.value )
+                                updateCustomer('billing_address1', el.target.value )
                             }
-                        }  value={address.address1} placeholder="Address 1" />
+                        }  value={this.state.user.billing_address1} placeholder="Address 1" />
                         <input type="text" name="addressTwo" onChange={
                             function ( el ) {
-                                updateAddress('address2', el.target.value )
+                                updateCustomer('billing_address2', el.target.value )
                             }
-                        } value={address.address2} placeholder="Address 2" />
+                        } value={this.state.user.billing_address1} placeholder="Address 2" />
                         <input onChange={
                             function ( el ) {
-                                updateAddress('city', el.target.value )
+                                updateCustomer('billing_city', el.target.value )
                             }
-                        } type="text" name="city" value={address.city} placeholder="City" />
-                        <input type="text" name="State" placeholder="State" />
+                        } type="text" name="city" value={this.state.user.billing_city} placeholder="City" />
+                        <input type="text" value={this.state.user.billing_province}
+                               onChange={
+                                   function ( el ) {
+                                       updateCustomer('billing_province', el.target.value )
+                                   }
+                               }
+
+                               name="State" placeholder="State" />
                         <input onChange={
                             function ( el ) {
-                                updateAddress('zip', el.target.value )
+                                updateCustomer( 'billing_zip', el.target.value )
                             }
-                        } type="text" name="zipCode" value={address.zip} placeholder="Zip code" />
+                        } type="text" name="zipCode" value={this.state.user.billing_zip} placeholder="Zip code" />
                     </div>
                     <div className="paymentInfo">
                       <h5>Payment Info</h5>
