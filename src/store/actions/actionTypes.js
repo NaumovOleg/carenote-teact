@@ -11,6 +11,7 @@ export const GET_R_CUSTOMER = 'GET_R_CUSTOMER';
 export const GET_ADDRESS = 'GET_ADDRESS';
 
 export const GET_SUBSCRIPTIONS = 'GET_SUBSCRIPTIONS';
+export const GET_ORDERS = 'GET_ORDERS';
 
 
 

@@ -8,10 +8,48 @@ class ChangeSubscription extends Component {
         first: 0,
         visible1: false,
         visible2: false,
+        planSubscription:{
+            1859628302425:{
+                name:"Silver",
+                description:'1 Care Call per week, Unlimited text messaging, Carenotes sent weekly'
+            },
+            1859628367961:{
+                name:"Gold",
+                description:'2 Care Calls per week, 2 Outbound calls per week, Unlimited text messaging, Carentes sent weekly'
+            },
+            1859628433497:{
+                name:"Platinum",
+                description:'7 Care Calls per week, Unlimited outbound calls, Unlimited text messaging, Carentes sent daily, Dedicated personal concierge'
+            },
+            undefined:{
+                name:'',
+                description:''
+            }
+        }
+
     };
+
+
 
     constructor(props) {
         super(props);
+        this.avaliablePlans = {
+            1859628302425:{
+                name:"Silver",
+                price:49,
+                description:'1 Care Call per week, Unlimited text messaging, Carenotes sent weekly'
+            },
+            1859628367961:{
+                name:"Gold",
+                price:'89',
+                description:'2 Care Calls per week, 2 Outbound calls per week, Unlimited text messaging, Carentes sent weekly'
+            },
+            1859628433497:{
+                name:"Platinum",
+                price:'299',
+                description:'7 Care Calls per week, Unlimited outbound calls, Unlimited text messaging, Carentes sent daily, Dedicated personal concierge'
+            },
+        }
     }
 
     openPopup = () => {
@@ -39,6 +77,7 @@ class ChangeSubscription extends Component {
         const hidewindow = this.onHide;
         const onClickOpen = this.onClickOpen;
         const returnRoute = this.props.returnRoute;
+        delete this.avaliablePlans[this.props.subscriptions.shopify_product_id];
 
         return (
             <div className="change-subscriptions-component">
@@ -85,27 +124,23 @@ class ChangeSubscription extends Component {
                         }}><img src={backimg}/> Back</a></p>
                     </div>
                     <div className="current-subscription">
-                        <p><strong>Current Subscription: Gold Plan</strong><br />
+                        <p><strong>Current Subscription: {this.state.planSubscription[this.props.subscriptions.shopify_product_id].name} Plan</strong><br />
                             2 Care calls per week, 2 outbound calls, unlimited text messaging</p>
                         <p>$89/mo</p>
                     </div>
-                    <div className="silver-plan-subscription">
-                        <p><strong>Silver Plan $49/mo</strong><br />
-                            1 Care call per week, unlimited text messaging</p>
-                        <button onClick={function () {
-                            onClickOpen('visible1')
-                        }}>Change to Silver
-                        </button>
-                    </div>
-                    <div className="platinum-plan-subscription">
-                        <p><strong>Platinum Plan $299/mo</strong><br />
-                            7 Care calls per week, unlimited outbound calls,
-                            unlimited text messaging</p>
-                        <button onClick={function () {
-                            onClickOpen('visible1')
-                        }}>Change to Platinum
-                        </button>
-                    </div>
+                    {
+                        Object.keys(this.avaliablePlans).map(el=>{
+                          return(  <div className="avaliable-plan-subscription " key={el}>
+                                <p><strong>{this.avaliablePlans[el].name} Plan ${this.avaliablePlans[el].price}/mo</strong><br />
+                                    {this.avaliablePlans[el].description}</p>
+                                <button onClick={function () {
+                                    onClickOpen('visible1')
+                                }}>Change to Silver
+                                </button>
+                            </div>)
+                        })
+                    }
+
                 </div>
             </div>
         );

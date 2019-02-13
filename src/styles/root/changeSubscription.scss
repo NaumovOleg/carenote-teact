@@ -46,7 +46,7 @@
   }
 }
 
-.silver-plan-subscription {
+.avaliable-plan-subscription {
   padding: 35px 0;
   display: flex;
   justify-content: space-between;
@@ -75,32 +75,6 @@
   }
 }
 
-.platinum-plan-subscription {
-  padding: 35px 0;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  p {
-    color: #323334;
-    line-height: 24px;
-    font-size: 16px;
-    font-family: 'Avenir-Light', sans-serif;
-    flex-basis: 50%;
-  }
-  button {
-    max-width: 186px;
-    height: 40px;
-    background-color: #F79F2C;
-    border: 1px solid transparent;
-    border-radius: 50px;
-    color: #fff;
-    font-size: 16px;
-    font-family: 'Avenir-Heavy', sans-serif;
-    outline: none;
-    flex-basis: 50%;
-    cursor: pointer;
-  }
-}
 
 // Confirmation modal window
 .p-dialog .p-dialog-titlebar {

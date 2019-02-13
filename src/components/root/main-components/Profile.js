@@ -32,27 +32,33 @@ class Profile extends Component {
         })
     };
 
-    saveAddress = ()=>{
-        console.log( this.state.address )
-    }
+    saveChanges = ()=>{
+        this.saveCustomer();
+        this.saveAddress();
+    };
+
 
     componentWillMount(){
 
     }
 
-
-
     saveCustomer = ()=>{
         let  {first_name,email,last_name,billing_phone,id} = this.state.user;
-        let user = {first_name,email,last_name,billing_phone,id};
-        this.props.updateCustomer(user)
+        let user = {first_name,email,last_name,billing_phone};
+        this.props.updateCustomer(id, user )
     };
+
+    saveAddress = ()=>{
+        let  { address1,address2,city,zip, id  } = this.state.address;
+        const address = { address1,address2,city,zip };
+        this.props.updateAddress( id, address)
+    }
     render() {
         console.log( this.state );
         const address = this.state.address;
         const updateCustomer = this.updateCustomer;
         const updateAddress = this.updateAddress;
-        const saveAddress = this.saveAddress;
+        const saveChanges = this.saveChanges;
         return (
             <div className="accaunt-component">
               <div className="profileContainer">
@@ -136,8 +142,8 @@ class Profile extends Component {
                   </div>
                     <button  type="submit" value="Save" className="profileButton" onClick={
                         function (  ) {
-                            saveAddress()
-                            //this.saveCustomer()
+                            // saveAddress()
+                            saveChanges()
                         }
                         }>Save</button>
                 </div>
@@ -149,7 +155,7 @@ class Profile extends Component {
 }
 const mapStateToProps = state => {
     return {
-        user:state.r_customer,
+        user:state.auth.user,
         address:state.address,
         subscription:state.subscriptions[0]
     };
@@ -157,7 +163,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        // updateCustomer:(customer)=>dispatch(actions.updateRCustomer(customer)),
+        updateAddress:(AID,address)=>dispatch(actions.updateAddress(AID,address)),
+        updateCustomer:(CID, customer)=>dispatch(actions.updateCustomer(CID,customer)),
         // updateSubscriptions:(subscription)=>dispatch(actions.updateSubscriptions(subscription))
     };
 };

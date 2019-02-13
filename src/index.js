@@ -7,7 +7,7 @@ import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import authReducer from './store/reducers/auth';
-import planReducer from './store/reducers/plan';
+import  ordersReducer from './store/reducers/orders';
 import productsReducer   from './store/reducers/products';
 import notesReduser from './store/reducers/notes';
 import helper from './utils/helper';
@@ -23,8 +23,8 @@ const rootReducer = combineReducers ( {
     auth: authReducer,
     notes:notesReduser,
     address:addressReducer,
-    subscriptions:subscriptionReduser
-
+    subscriptions:subscriptionReduser,
+    orders:ordersReducer
 } );
 const logger = store => {
     return next => {
