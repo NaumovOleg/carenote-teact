@@ -13,20 +13,20 @@ export const getSubscriptions = ( scutomer ) => dispatch => {
         url:    'api/subscriptions/'+scutomer,
         method: 'GET',
     } ).then ( res => {
-        dispatch( initSubscriptions( res.data ) )
+        dispatch( initSubscriptions( res.data.subscriptions[0] ) )
     } )
        .catch ( e => {
            console.log ( 'error in reac eeeet  products', e );
        } );
 };
 
-export const updateSubscriptions = ( subscription ) => dispatch => {
-    console.log ( subscription );
+export const updateSubscriptions = ( SID, subscription ) => dispatch => {
     return request ( {
-        url:    'https://api.rechargeapps.com/subscriptions/'+subscription.id,
+        url:    'api/subscriptions/'+SID,
         method: 'PUT',
+        data:subscription
     } ).then ( res => {
-        dispatch( initSubscriptions( res.data.subscriptions ) )
+        dispatch( initSubscriptions( res.data.subscription ) )
     } )
        .catch ( e => {
            console.log ( 'error in reac eeeet  products', e );

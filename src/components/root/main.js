@@ -28,10 +28,11 @@ class Main extends Component {
     }
 
     getData = async () => {
-
+        const products = this.props.getProducts();
         const user  =  await this.props.getCustomer ( this.state.userId );
         const subscriptions = this.props.getSubscriptions(user.id);
         const address =   this.props.getAddress(user.id);
+
 
 
     };
@@ -164,7 +165,8 @@ const mapDispatchToProps = dispatch => {
     return {
         getCustomer: ( CID  ) => dispatch ( actions.getCustomer ( CID ) ),
         getAddress: ( scutomerId ) => dispatch ( actions.getAddress ( scutomerId ) ),
-        getSubscriptions:(scustomer)=>dispatch(actions.getSubscriptions(scustomer))
+        getSubscriptions:(scustomer)=>dispatch(actions.getSubscriptions(scustomer)),
+        getProducts:()=>dispatch(actions.getProducts())
 
     };
 };

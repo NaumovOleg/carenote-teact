@@ -6,16 +6,15 @@ class Header extends Component {
 
     constructor ( props ) {
         super ( props );
-        this.state = {
-        }
+        this.state = {};
     }
     render () {
         const style = {
             display: this.props.auth.loggedIn?'flex':'flex',
         };
         let planName = '';
-        if( this.props.subscriptions.length>0){
-            planName = this.props.subscriptions[0].product_title
+        if( this.props.subscriptions.shopify_product_id!==undefined){
+            planName = this.props.parcedProducts [this.props.subscriptions.shopify_product_id].name
         }
 
         return (
@@ -27,9 +26,8 @@ class Header extends Component {
                         </div>
                         <div className="separator"></div>
                         <div className="plan">
-                            { this.props.subscriptions.product_title}
+                            { planName } Plan
                         </div>
-
                     </div>
                     <div className="logo-container">
                         <div className="logo">
@@ -48,7 +46,8 @@ const mapStateToProps = state => {
     return {
         user: state.auth.user,
         auth:state.auth,
-        subscriptions:state.subscriptions
+        subscriptions:state.subscriptions,
+        parcedProducts:state.parcedProducts
     };
 
 };

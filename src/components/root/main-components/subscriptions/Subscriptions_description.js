@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-
+import * as R from 'ramda/dist/ramda.min'
 class Subscriptions_description extends Component {
     state = {
         planSubscription:{
@@ -27,8 +27,13 @@ class Subscriptions_description extends Component {
     }
     render () {
         const selectPlan = this.props.changeSubscription;
+        let plan = {
 
-        console.log( this.state.planSubscription[this.props.subscriptions.shopify_product_id] , this.props.subscriptions.shopify_product_id );
+        }
+        if( this.props.subscriptions.shopify_product_id!==undefined && !R.isEmpty(this.props.parcedProducts) ){
+            plan = this.props.parcedProducts[this.props.subscriptions.shopify_product_id];
+        }
+
         return (
             <div className="change-subscriptions-component">
                 <div className="subscriptions-component">
@@ -40,8 +45,8 @@ class Subscriptions_description extends Component {
                             }}>Change Plan</a></p>
                         </div>
                         <div className="choosenSubscription">
-                            <p>{this.state.planSubscription[this.props.subscriptions.shopify_product_id].name }</p>
-                            <p>{this.state.planSubscription[this.props.subscriptions.shopify_product_id].description }</p>
+                            <p>{plan.name }</p>
+                            <p>{plan.plan_description }</p>
                         </div>
                     </div>
                 </div>
@@ -52,6 +57,7 @@ class Subscriptions_description extends Component {
 const mapStateToProps = state => {
     return {
         subscriptions: state.subscriptions,
+        parcedProducts: state.parcedProducts
     };
 };
 
