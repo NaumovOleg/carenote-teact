@@ -30,30 +30,7 @@ class ChangeSubscription extends Component {
     };
     constructor(props) {
         super(props);
-        this.avaliablePlans = {
-            1859628302425:{
-                name:"Silver",
-                price:'',
-                description:'1 Care Call per week, Unlimited text messaging, Carenotes sent weekly'
-            },
-            1859628367961:{
-                name:"Gold",
-                price:'',
-                description:'2 Care Calls per week, 2 Outbound calls per week, Unlimited text messaging, Carentes sent weekly'
-            },
-            1859628433497:{
-                name:"Platinum",
-                price:'',
-                description:'7 Care Calls per week, Unlimited outbound calls, Unlimited text messaging, Carentes sent daily, Dedicated personal concierge'
-            },
 
-        };
-
-        props.products.forEach(el=>{
-            if(  this.avaliablePlans[el.id]!=undefined ){
-                this.avaliablePlans[el.id].price = el.variants[0].price
-            }
-        })
     }
 
     openPopup = () => {
@@ -79,24 +56,16 @@ class ChangeSubscription extends Component {
         const onClickOpen = this.onClickOpen;
         const returnRoute = this.props.returnRoute;
         const setSelectedPlan = this.props.setSelectedPlan;
-        const currentPlan = this.avaliablePlans[ this.props.subscriptions.shopify_product_id ];
-        const alreadySelected = this.props.selectedPlan;
+        const currentPlan = this.props.parcedProducts[ this.props.subscriptions.shopify_product_id ];
         const confirm = this.props.confirm;
-        const avaliablePlans = this.avaliablePlans;
+        const selectedPlan = this.props.selectedPlan;
+        let avaliablePlans = {};
 
-        const popUpPlan = {
-            name:'',
-            price:''
-        };
-        if( alreadySelected.id!==undefined ){
-            popUpPlan.name =   avaliablePlans[alreadySelected.id].name;
-            popUpPlan.price =  avaliablePlans[alreadySelected.id].price;
-        }
-
-        let  selecteddPlanName = '';
-        if( alreadySelected.id !==undefined ){
-            selecteddPlanName = avaliablePlans[alreadySelected.id].name
-        }
+        Object.keys(this.props.parcedProducts).forEach(el=>{
+            if( el!=this.props.subscriptions.shopify_product_id ){
+                avaliablePlans[ el ] = this.props.parcedProducts[el]
+            }
+        });
         return (
             <div className="change-subscriptions-component">
                 <Dialog visible={this.state.visible1} onHide={function () {
@@ -105,7 +74,7 @@ class ChangeSubscription extends Component {
                     <div className="change-subscriptions-modal-container">
                         <div className="change-subscriptions-modal-text-box">
                             <p>Please confirm change in subscription to:</p>
-                            <p className="change-subscriptions-choosen-plan"><strong> { popUpPlan.name} Plan ${popUpPlan.price}/mo</strong></p>
+                            <p className="change-subscriptions-choosen-plan"><strong> {selectedPlan.name} Plan $/mo</strong></p>
                             <button onClick={
                                 function () {
                                     confirm();
@@ -123,7 +92,7 @@ class ChangeSubscription extends Component {
                 }} className="subscriptions-modal-window">
                     <div className="subscriptions-modal-container">
                         <div className="subscriptions-modal-text-box">
-                            <p><strong>Thank you. You’re confirmed for a<br />change to the {selecteddPlanName} Plan.</strong></p>
+                            <p><strong>Thank you. You’re confirmed for a<br />change to the {selectedPlan.name}Plan.</strong></p>
                             <p className="subscriptions-choosen-plan">The plan change will take affect<br />
                                 starting April 1, 2019.</p>
                             <button onClick={function () {
@@ -147,11 +116,11 @@ class ChangeSubscription extends Component {
                         <p>${currentPlan.price }/mo</p>
                     </div>
                     {
-                        Object.keys(this.avaliablePlans).map(el=>{
+                        Object.keys(avaliablePlans).map(el=>{
                             if( el!=this.props.subscriptions.shopify_product_id ) {
                                 return(  <div className="avaliable-plan-subscription " key={el}>
-                                    <p><strong>{this.avaliablePlans[el].name} Plan ${this.avaliablePlans[el].price}/mo</strong><br />
-                                        {this.avaliablePlans[el].description}</p>
+                                    <p><strong>{avaliablePlans[el].name} Plan ${avaliablePlans[el].price}/mo</strong><br />
+                                        {avaliablePlans[el].plan_description}</p>
                                     <button onClick={function () {
                                         setSelectedPlan( el );
                                         onClickOpen('visible1')
@@ -169,7 +138,8 @@ class ChangeSubscription extends Component {
 const mapStateToProps = state => {
     return {
         subscriptions: state.subscriptions,
-        products:state.products
+        products:state.products,
+        parcedProducts:state.parcedProducts
     };
 };
 

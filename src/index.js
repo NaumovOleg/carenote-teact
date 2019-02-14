@@ -13,6 +13,7 @@ import notesReduser from './store/reducers/notes';
 import helper from './utils/helper';
 import addressReducer from './store/reducers/address';
 import subscriptionReduser from './store/reducers/subscriptions';
+import parsedProductsReducer from './store/reducers/parcedProducts'
 import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/nova-light/theme.css';
@@ -25,7 +26,8 @@ const rootReducer = combineReducers ( {
     address:addressReducer,
     subscriptions:subscriptionReduser,
     orders:ordersReducer,
-    products:productsReducer
+    products:productsReducer,
+    parcedProducts:parsedProductsReducer
 } );
 const logger = store => {
     return next => {

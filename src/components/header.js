@@ -7,17 +7,6 @@ class Header extends Component {
     constructor ( props ) {
         super ( props );
         this.state = {};
-        this.planSubscription = {
-            1859628302425: {
-                name: "Silver",
-            },
-            1859628367961: {
-                name: "Gold",
-            },
-            1859628433497: {
-                name: "Platinum",
-            },
-        }
     }
     render () {
         const style = {
@@ -25,7 +14,7 @@ class Header extends Component {
         };
         let planName = '';
         if( this.props.subscriptions.shopify_product_id!==undefined){
-            planName = this.planSubscription[this.props.subscriptions.shopify_product_id].name
+            planName = this.props.parcedProducts [this.props.subscriptions.shopify_product_id].name
         }
 
         return (
@@ -57,7 +46,8 @@ const mapStateToProps = state => {
     return {
         user: state.auth.user,
         auth:state.auth,
-        subscriptions:state.subscriptions
+        subscriptions:state.subscriptions,
+        parcedProducts:state.parcedProducts
     };
 
 };

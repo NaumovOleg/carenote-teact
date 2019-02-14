@@ -28,11 +28,11 @@ class Main extends Component {
     }
 
     getData = async () => {
-
+        const products = this.props.getProducts();
         const user  =  await this.props.getCustomer ( this.state.userId );
         const subscriptions = this.props.getSubscriptions(user.id);
         const address =   this.props.getAddress(user.id);
-        const products = this.props.getProducts();
+
 
 
     };

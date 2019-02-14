@@ -13,17 +13,6 @@ class Subscriptions extends Component {
 
     constructor(props) {
         super(props);
-        this.planSubscription = {
-            1859628302425: {
-                name: "Silver",
-            },
-            1859628367961: {
-                name: "Gold",
-            },
-            1859628433497: {
-                name: "Platinum",
-            },
-        }
     }
 
     selectPlan = (route) => {
@@ -32,14 +21,9 @@ class Subscriptions extends Component {
         })
     };
     setSelectedPlan = async (id) => {
-        await this.props.products.forEach(el => {
-            if (el.id == id) {
-                this.setState({
-                    selectedPlanId: id,
-                    selectedPlan: el
-                });
-                return
-            }
+        this.setState({
+            selectedPlanId: id,
+            selectedPlan: {...this.props.parcedProducts[id]}
         });
     };
 
@@ -61,7 +45,7 @@ class Subscriptions extends Component {
                                                       selectedPlan={this.state.selectedPlan}
                                                       setSelectedPlan={this.setSelectedPlan}
                                                       returnRoute={this.selectPlan}/>,
-            confirmation: <Confirmation planName={this.planSubscription[this.state.selectedPlanId]} returnRoute={this.selectPlan}/>
+            confirmation: <Confirmation planName={this.state.selectedPlan.name} returnRoute={this.selectPlan}/>
         };
 
         return (
@@ -76,7 +60,8 @@ class Subscriptions extends Component {
 const mapStateToProps = state => {
     return {
         subscriptions: state.subscriptions,
-        products: state.products
+        products: state.products,
+        parcedProducts: state.parcedProducts
     };
 };
 
