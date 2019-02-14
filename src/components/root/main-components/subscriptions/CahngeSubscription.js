@@ -74,7 +74,7 @@ class ChangeSubscription extends Component {
                     <div className="change-subscriptions-modal-container">
                         <div className="change-subscriptions-modal-text-box">
                             <p>Please confirm change in subscription to:</p>
-                            <p className="change-subscriptions-choosen-plan"><strong> {selectedPlan.name} Plan $/mo</strong></p>
+                            <p className="change-subscriptions-choosen-plan"><strong> {selectedPlan.name} Plan ${selectedPlan.price}/mo</strong></p>
                             <button onClick={
                                 function () {
                                     confirm();
@@ -111,8 +111,8 @@ class ChangeSubscription extends Component {
                         }}><img src={backimg}/> Back</a></p>
                     </div>
                     <div className="current-subscription">
-                        <p><strong>Current Subscription: { currentPlan.name} Plan</strong><br />
-                            {currentPlan.description}</p>
+                        <p><strong>Current Subscription: { currentPlan.name} Planss</strong><br />
+                            {currentPlan.plan_description}</p>
                         <p>${currentPlan.price }/mo</p>
                     </div>
                     {

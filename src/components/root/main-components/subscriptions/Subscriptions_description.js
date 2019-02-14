@@ -3,24 +3,7 @@ import { connect } from 'react-redux';
 import * as R from 'ramda/dist/ramda.min'
 class Subscriptions_description extends Component {
     state = {
-        planSubscription:{
-            1859628302425:{
-                name:"Silver",
-                description:'1 Care Call per week, Unlimited text messaging, Carenotes sent weekly'
-            },
-            1859628367961:{
-                name:"Gold",
-                description:'2 Care Calls per week, 2 Outbound calls per week, Unlimited text messaging, Carentes sent weekly'
-            },
-            1859628433497:{
-                name:"Platinum",
-                description:'7 Care Calls per week, Unlimited outbound calls, Unlimited text messaging, Carentes sent daily, Dedicated personal concierge'
-            },
-            undefined:{
-                name:'',
-                description:''
-            }
-        }
+
     };
     constructor ( props ) {
         super ( props );
@@ -46,7 +29,7 @@ class Subscriptions_description extends Component {
                         </div>
                         <div className="choosenSubscription">
                             <p>{plan.name }</p>
-                            <p>{plan.plan_description }</p>
+                            <p>{ plan.plan_description }</p>
                         </div>
                     </div>
                 </div>
