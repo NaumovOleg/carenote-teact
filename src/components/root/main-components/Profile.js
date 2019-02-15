@@ -63,6 +63,10 @@ class Profile extends Component {
          var reg = new RegExp('^[+0-9]+$');
          return await this.validateField(reg.test(this.state.user.billing_phone),'billing_phone',  'Enter correct phone number')
     };
+    validateZip = async () => {
+        var reg = new RegExp('^[0-9]+$');
+        return await this.validateField(reg.test(this.state.user.billing_zip),'billing_zip',  'Invalid zip')
+    };
 
     validateField = ( state, fieldname, value ) =>{
         if ( !state ) {
@@ -91,7 +95,8 @@ class Profile extends Component {
         let validSurname = await this.validateSurname();
         let email = await  this.validateEmail();
         let phone  = await this.validatePhone();
-        return validName && validSurname && email && phone;
+        let zip = await  this.validateZip();
+        return validName && validSurname && email && phone && zip;
 
     };
 
