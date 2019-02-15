@@ -47,29 +47,42 @@ class Profile extends Component {
     saveChanges = () => {
         this.saveCustomer();
     };
-    componentWillMount() {}
+
+    componentWillMount() {
+    }
+
     validateName = async () => {
-        return  await this.validateField(/^[a-zA-Z]+$/.test(this.state.user.first_name),'first_name',  'Enter correct  name');
+        return await this.validateField(/^[a-zA-Z]+$/.test(this.state.user.first_name), 'first_name', 'Enter correct  name');
     };
 
     validateSurname = async () => {
-       return  await this.validateField(/^[a-zA-Z]+$/.test(this.state.user.last_name),'last_name',  'Enter correct last name');
+        return await this.validateField(/^[a-zA-Z]+$/.test(this.state.user.last_name), 'last_name', 'Enter correct last name');
     };
     validateEmail = async () => {
         var reg = /^(([^<>()\[\]\.,;:\s@\"]+(\.[^<>()\[\]\.,;:\s@\"]+)*)|(\".+\"))@(([^<>()[\]\.,;:\s@\"]+\.)+[^<>()[\]\.,;:\s@\"]{2,})$/i;
-        return  await this.validateField(reg.test(this.state.user.email),'email',  'Enter correct email');
+        return await this.validateField(reg.test(this.state.user.email), 'email', 'Enter correct email');
     };
     validatePhone = async () => {
-         var reg = new RegExp('^[+0-9]+$');
-         return await this.validateField(reg.test(this.state.user.billing_phone),'billing_phone',  'Enter correct phone number')
+        var reg = new RegExp('^[+0-9]+$');
+        if (this.state.user.billing_phone.length > 20) {
+            this.setState({
+                fieldValidations: {
+                    ...this.state.fieldValidations,
+                    ['billing_phone']: 'Enter correct phone number'
+                }
+            });
+
+           return false
+        }
+        return await this.validateField(reg.test(this.state.user.billing_phone), 'billing_phone', 'Enter correct phone number')
     };
     validateZip = async () => {
         var reg = new RegExp('^[0-9]+$');
-        return await this.validateField(reg.test(this.state.user.billing_zip),'billing_zip',  'Invalid zip')
+        return await this.validateField(reg.test(this.state.user.billing_zip), 'billing_zip', 'Invalid zip')
     };
 
-    validateField = ( state, fieldname, value ) =>{
-        if ( !state ) {
+    validateField = (state, fieldname, value) => {
+        if (!state) {
             this.setState({
                 fieldValidations: {
                     ...this.state.fieldValidations,
@@ -94,7 +107,7 @@ class Profile extends Component {
         let validName = await this.validateName();
         let validSurname = await this.validateSurname();
         let email = await  this.validateEmail();
-        let phone  = await this.validatePhone();
+        let phone = await this.validatePhone();
         let zip = await  this.validateZip();
         return validName && validSurname && email && phone && zip;
 
@@ -159,7 +172,9 @@ class Profile extends Component {
                                         updateCustomer('first_name', el.target.value)
                                     }
                                 } value={this.state.user.first_name}/>
-                                <label htmlFor="name">{this.state.fieldValidations.first_name}</label>
+                                <label
+                                    className={this.state.fieldValidations.first_name === '' ? 'label' : 'label error'}
+                                    htmlFor="name">{this.state.fieldValidations.first_name}</label>
 
                             </div>
 
@@ -170,7 +185,9 @@ class Profile extends Component {
                                         updateCustomer('last_name', el.target.value)
                                     }
                                 } value={this.state.user.last_name}/>
-                                <label htmlFor="name">{this.state.fieldValidations.last_name}</label>
+                                <label
+                                    className={this.state.fieldValidations.last_name === '' ? 'label' : 'label error'}
+                                    htmlFor="name">{this.state.fieldValidations.last_name}</label>
                             </div>
 
                             <div className="field-item">
@@ -179,7 +196,9 @@ class Profile extends Component {
                                         updateCustomer('billing_phone', el.target.value)
                                     }
                                 } value={this.state.user.billing_phone}/>
-                                <label htmlFor="name">{this.state.fieldValidations.billing_phone}</label>
+                                <label
+                                    className={this.state.fieldValidations.billing_phone === '' ? 'label' : 'label error'}
+                                    htmlFor="name">{this.state.fieldValidations.billing_phone}</label>
                             </div>
                             <div className="field-item">
                                 <input type="email" name="email" placeholder="Email address"
@@ -188,7 +207,9 @@ class Profile extends Component {
                                                updateCustomer('email', el.target.value)
                                            }
                                        } value={this.state.user.email}/>
-                                <label htmlFor="name">{this.state.fieldValidations.email}</label>
+                                <label
+                                    className={this.state.fieldValidations.email === '' ? 'label' : 'label error'}
+                                    htmlFor="name">{this.state.fieldValidations.email}</label>
                             </div>
                             <label className="checkboxContainer">Receive notifications via text/SMS
                                 <input type="checkbox"/>
@@ -228,7 +249,9 @@ class Profile extends Component {
                                         }
                                     } type="text" name="zipCode" value={this.state.user.billing_zip}
                                            placeholder="Zip code"/>
-                                    <label htmlFor="name">{this.state.fieldValidations.billing_zip}</label>
+                                    <label
+                                        className={this.state.fieldValidations.billing_zip === '' ? 'label' : 'label error'}
+                                        htmlFor="name">{this.state.fieldValidations.billing_zip}</label>
                                 </div>
                             </div>
 

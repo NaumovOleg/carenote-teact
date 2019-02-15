@@ -171,8 +171,14 @@ input::placeholder {
     }
     label{
       position: absolute;
-      bottom: 10px;
+      bottom: 8px;
+      height:20px;
+      width:100%;
       color: #e20d0a;
+      font-size: 12px;
+    }
+    label.error{
+      border-top:1px solid #e20d0a;
     }
   }
 }
