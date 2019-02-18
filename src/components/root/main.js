@@ -7,7 +7,11 @@ import Subscriptions from './main-components/Subscriptions';
 import * as actions from '../../store/actions/index';
 import NotesDescriptions from '../root/main-components/CareNoteDescription';
 import Cookies  from 'universal-cookie';
-const isMobile = window.innerWidth<415
+import { Icon } from 'react-icons-kit'
+import {twitter} from 'react-icons-kit/icomoon/twitter';
+import {facebook} from 'react-icons-kit/icomoon/facebook';
+import {instagram} from 'react-icons-kit/icomoon/instagram'
+const isMobile = window.innerWidth<415;
 class Main extends Component {
 
     constructor(props) {
@@ -163,6 +167,19 @@ class Main extends Component {
                                     switchRoute('notes');
                                 }} className="text">Carenotes
                                 </div>
+                            </div>
+
+                        </div>
+                        <div className="logout-menu">Logout</div>
+                        <div className="bottom-mobile-menu">
+                            <div className="bottom-mobile-menu-item">FAQs</div>
+                            <div className="bottom-mobile-menu-item">Terms & Conditions</div>
+                            <div className="bottom-mobile-menu-item">Privacy Policy</div>
+                            <div className="bottom-mobile-menu-item">Contact</div>
+                            <div className="social-icons">
+                                <div className="icon"><Icon icon={twitter} /></div>
+                                <div className="icon"><Icon icon={facebook} /></div>
+                                <div className="icon"><Icon icon={instagram} /></div>
                             </div>
                         </div>
                     </div>
