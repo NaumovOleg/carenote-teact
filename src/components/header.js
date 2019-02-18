@@ -2,11 +2,13 @@ import React, { Component } from 'react';
 import headerIcon from '../assets/CareNote.png';
 import { connect } from 'react-redux';
 import * as actions from '../store/actions/index';
+import Cookies  from 'universal-cookie';
 class Header extends Component {
 
     constructor ( props ) {
         super ( props );
         this.state = {};
+        this.cookies =  new Cookies();
     }
     render () {
         const style = {
@@ -16,6 +18,8 @@ class Header extends Component {
         if( this.props.subscriptions.shopify_product_id!==undefined ){
             planName = this.props.parcedProducts [this.props.subscriptions.shopify_product_id].name
         }
+
+        const cookies = this.cookies;
 
 
         return (
@@ -35,8 +39,10 @@ class Header extends Component {
                             <img src={headerIcon}/>
                         </div>
                     </div>
-                    <div className="log-out__button" style={style}>
-                        <a href="/account/logout" className="log-out" onClick={this.props.logOut}>Logout</a>
+                    <div onClick={function () {
+                        cookies.remove('care-note-api-user')
+                    }} className="log-out__button" style={style}>
+                        <a   href="/account/logout" className="log-out" onClick={this.props.logOut}>Logout</a>
                     </div>
                 </div>
             </div>);
