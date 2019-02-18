@@ -10,12 +10,20 @@ import  './react.maincss.scss';
 
 
 class App extends Component {
+
+    setMenuRef = ( ref )=>{
+        this.menu = ref
+    };
+    showMenu = (value)=>{
+        this.menu.style.display = value
+    }
+
   render() {
       const routers = window.currntCustomer == undefined?<Auth/>:<div><Header/><Main/></div>
     return (
       <div className="App" >
-          <Header/>
-          <Main/>
+          <Header showMenu={this.showMenu}/>
+          <Main showMenu={this.showMenu} setMenuRef={this.setMenuRef}  />
       </div>
     );
   }

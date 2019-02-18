@@ -46,3 +46,14 @@ $base-range:#F79F2C;
   @import "./styles/root/carenoteDescription";
 
 }
+
+@media (max-width:415px ){
+  body{
+    margin:0;
+  }
+  .main-component{
+    padding:0!important;
+    height:100%;
+    background: #fff;
+  }
+}
