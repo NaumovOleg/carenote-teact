@@ -11,6 +11,9 @@ export const initProducts = ( products ) => {
 export const initParcedProducts = ( productsArray ) => {
     const products  = {};
     productsArray.forEach(el=>{
+        if( el.product_type.includes('Auto renew')){
+            return
+        }
 
         products[el.id] = {
             name: el.product_type,

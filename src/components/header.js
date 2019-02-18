@@ -13,9 +13,10 @@ class Header extends Component {
             display: this.props.auth.loggedIn?'flex':'flex',
         };
         let planName = '';
-        if( this.props.subscriptions.shopify_product_id!==undefined){
+        if( this.props.subscriptions.shopify_product_id!==undefined ){
             planName = this.props.parcedProducts [this.props.subscriptions.shopify_product_id].name
         }
+
 
         return (
             <div className="header-coponent">

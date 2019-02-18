@@ -45,10 +45,13 @@ export const getCustomer = ( CID ) => dispatch => {
         method: 'GET',
     } ).then ( res => {
 
+        console.log( res )
+
         dispatch( initCustomerData( res.data ) );
         return res.data
     } )
         .catch ( e => {
+            dispatch(initCustomerData({} ) );
             console.log ( 'error in reac t  products', e );
         } );
 };

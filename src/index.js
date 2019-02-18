@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
+
 import { MemoryRouter  } from 'react-router';
 import { Provider } from 'react-redux';
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
@@ -19,7 +20,6 @@ import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/nova-light/theme.css';
 
 helper();
-
 const rootReducer = combineReducers ( {
     auth: authReducer,
     notes:notesReduser,
@@ -40,11 +40,14 @@ const logger = store => {
 const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 const store = createStore ( rootReducer, composeEnhancers ( applyMiddleware ( logger, thunk ) ) );
 const app = (
+
     <Provider store={store}>
         <MemoryRouter >
             <App />
         </MemoryRouter>
+
     </Provider>
+
 );
 
 ReactDOM.render ( app, document.getElementById ( 'root' ) );
