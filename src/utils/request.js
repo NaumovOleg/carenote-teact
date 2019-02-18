@@ -2,7 +2,10 @@ import axios from 'axios';
 
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
-
+var axiosInstance = axios.create({
+    baseURL: 'https://carenote-api.herokuapp.com/',
+    /* other custom settings */
+});
 /**
  * Set Authorization header for requests
  *
@@ -11,14 +14,14 @@ axios.defaults.headers.post['Content-Type'] = 'application/json';
  * @return {object}           An object containing either "data" or "err"
  */
 function setAuthToken(token) {
-	axios.defaults.headers.common['Authorization'] = token;
+    axiosInstance.defaults.headers.common['Authorization'] = token;
 }
 function setRechargeToken() {
-    axios.defaults.headers.common['X-Recharge-Access-Token'] = '64d455fb70f02865e7e742c4d67e9bc288663d6ede2f111e9b89c589';
-    axios.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
-    axios.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,PATCH,OPTIONS';
-    axios.defaults.headers.common['Accept'] = 'application/json';
-    axios.defaults.headers.common['Content-Type'] = 'application/json';
+    axiosInstance.defaults.headers.common['X-Recharge-Access-Token'] = '64d455fb70f02865e7e742c4d67e9bc288663d6ede2f111e9b89c589';
+    axiosInstance.defaults.headers.common['Access-Control-Allow-Origin'] = '*';
+    axiosInstance.defaults.headers.common['Access-Control-Allow-Methods'] = 'GET,PUT,POST,DELETE,PATCH,OPTIONS';
+    axiosInstance.defaults.headers.common['Accept'] = 'application/json';
+    axiosInstance.defaults.headers.common['Content-Type'] = 'application/json';
 }
 
 /**
@@ -29,7 +32,7 @@ function setRechargeToken() {
  * @return {object}           An object containing either "data" or "err"
  */
 function request(options) {
-  return axios(options)
+  return axiosInstance(options)
     .then(response => response)
     .catch(err => {
       const error = err.response;
