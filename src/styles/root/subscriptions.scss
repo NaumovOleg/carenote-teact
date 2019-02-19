@@ -39,6 +39,7 @@
 
 .subscriptions a img {
   margin-right: 10px;
+  margin-left: 10px;
 }
 
 .choosenSubscription {
@@ -78,5 +79,9 @@
 @media(max-width: 616px) {
   .main-container {
     padding: 48px 30px;
+  }
+
+  .subscriptions a img {
+    margin-right: 0;
   }
 }

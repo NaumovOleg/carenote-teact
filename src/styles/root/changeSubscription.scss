@@ -1,7 +1,3 @@
-body .p-dialog .p-dialog-titlebar .p-dialog-titlebar-icon {
-  transition: color 0.2s, box-shadow 0.2s;
-  color: transparent;
-}
 .change-subscriptions-component {
 font-family: sans-serif;
 }
@@ -204,6 +200,9 @@ p {
     a {
       span {
         display: none;
+      }
+      img {
+        margin-right: 0;
       }
     }
   }
