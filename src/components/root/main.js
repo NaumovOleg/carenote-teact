@@ -10,8 +10,11 @@ import Cookies  from 'universal-cookie';
 import { Icon } from 'react-icons-kit'
 import {twitter} from 'react-icons-kit/icomoon/twitter';
 import {facebook} from 'react-icons-kit/icomoon/facebook';
-import {instagram} from 'react-icons-kit/icomoon/instagram'
+import {instagram} from 'react-icons-kit/icomoon/instagram';
+import mobphone from '../../assets/mob-phone.png';
+import backarrow from '../../assets/arrow-left.png'
 const isMobile = window.innerWidth<415;
+const isNotMobile = window.innerWidth>415;
 class Main extends Component {
 
     constructor(props) {
@@ -30,6 +33,7 @@ class Main extends Component {
             previousRoute: {
                 name: 'subscriptions', component: <Subscriptions/>,
             },
+            view: ''
         };
     }
 
@@ -108,16 +112,22 @@ class Main extends Component {
         if (window.currntCustomer == undefined) {
             window.location = '/pages/login';
         }
-    }
+    };
+
+
 
     render() {
+
+
+
         const switchRoute = this.switchRoute;
         const styleForMenu = {
             display: this.state.currentRoute.name === 'shedule' || this.state.currentRoute.name === 'notePreview' ? 'none' : 'flex',
         };
-        if( isMobile ){
-            styleForMenu.display = 'none'
-        }
+
+        if(isMobile) styleForMenu.display = 'none';
+        if(isNotMobile) styleForMenu.display = 'flex';
+
         const stylesForActivRoutes = {
             subscriptions: this.state.routes.subscriptions.active ? 'header-navigation-menu header-navigation__selected' : 'header-navigation-menu',
             shedule: this.state.routes.shedule.active ? 'header-navigation-menu header-navigation__selected' : 'header-navigation-menu',
@@ -133,16 +143,31 @@ class Main extends Component {
         const setMenuRef = this.props.setMenuRef;
         const showMenu = this.props.showMenu;
 
+        let planName = '';
+        if (this.props.subscriptions.shopify_product_id !== undefined) {
+            planName = this.props.parcedProducts [this.props.subscriptions.shopify_product_id].name
+        }
+
         return (
 
             <div className="main-component">
                 <div className="menu-component" ref={el => setMenuRef(el)}   style={styleForMenu}>
                     <div className="mobile-menu-header"  >
-                        <i onClick={function () {
+                        <div onClick={function () {
                             showMenu('none')
-                        }} class="pi pi-angle-left"></i>
+                        }}><img src={backarrow} /></div>
                     </div>
+
                     <div className="menu-container">
+                        <div className="welcome-wrapper">
+                            <div className="user-first-name">
+                                Hi { this.props.auth.user.first_name }
+                            </div>
+                            <div className="separator"></div>
+                            <div className="user-choosed-plan">
+                                { planName } Plan
+                            </div>
+                        </div>
                         <div className="menu-items">
                             <div className={stylesForActivRoutes.subscriptions}>
                                 <div onClick={function () {
@@ -181,6 +206,10 @@ class Main extends Component {
                                 <div className="icon"><Icon icon={facebook} /></div>
                                 <div className="icon"><Icon icon={instagram} /></div>
                             </div>
+                        </div>
+                        <div className="footer-mobile-menu">
+                            <div className="phone-number"><img src={mobphone} />1-888-449-8989</div>
+                            <div className="rights-text">2019 Copyright Carenote.com. All Rights Reserved.</div>
                         </div>
                     </div>
                 </div>
