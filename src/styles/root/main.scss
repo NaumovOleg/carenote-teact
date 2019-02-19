@@ -1,5 +1,4 @@
 $breakpoint-tablet: 1140px;
-$breakpoint-sm: 685px;
 
 .main-component{
     display: flex;
@@ -12,24 +11,15 @@ $breakpoint-sm: 685px;
       padding-left: 20px;
       padding-right: 20px;
   }
-  @media (max-width: $breakpoint-sm) {
-    padding: 100px;
+}
+
+@media(max-width:616px) {
+  .main-component {
+    padding: 0;
   }
-
-
 }
 
-@media (max-width: $breakpoint-tablet) {
-  .main-component{
-    padding-left: 20px;
-  padding-right: 20px;}
-}
-
-.routers-montainer {
-
-  //margin:auto;
-}
-@media(max-width:415px) {
+@media(max-width:416px) {
     .routers-montainer{
         width:100vw;
     }
