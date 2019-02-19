@@ -182,3 +182,36 @@ input::placeholder {
     }
   }
 }
+
+@media(max-width:440px){
+  .profileContainer{
+    padding:20px;
+  }
+   .relative input{
+    width:100%;
+     .checkboxContainer{
+       input[type="checkbox"]{
+         width: 0;
+       }
+     }
+  }
+  .relative {
+    width:100%;
+    .checkboxContainer{
+      input[type="checkbox"]{
+        width: 0;
+      }
+    }
+  }
+  .userInfo{
+    .field-item{
+      width:100%;
+    }
+  }
+  .paymentSection{
+    flex-direction: column;
+    .paymentInfo , .billingAddress{
+      width:100%;
+    }
+  }
+}
