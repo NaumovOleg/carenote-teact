@@ -29,3 +29,9 @@ $breakpoint-sm: 685px;
 
   //margin:auto;
 }
+@media(max-width:415px) {
+    .routers-montainer{
+        width:100vw;
+    }
+}
+

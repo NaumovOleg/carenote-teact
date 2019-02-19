@@ -1,71 +1,110 @@
-.header-coponent{
-    border-bottom: 1px solid #D0D3D5;
-    background: #fff;
+.header-coponent {
+  border-bottom: 1px solid #D0D3D5;
+  background: #fff;
+  .mobile-welcome-container {
+    display: none;
+  }
+  .phone-icon{
+    display:none
+  }
 }
 
-.header-container{
-    height:95px;
-    width:100%;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin:auto;
-    @include screen1380px()
+.header-container {
+  height: 95px;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: auto;
+  @include screen1380px()
 
 }
-.header-container .logo-container{
-    //flex-basis: 40%;
-    display: flex;
-    justify-content: center;
-    height: auto;
-    align-items: center;
+
+.header-container .logo-container {
+  //flex-basis: 40%;
+  display: flex;
+  justify-content: center;
+  height: auto;
+  align-items: center;
 
 }
-.header-container .logo-container .logo img{
-    height:26px;
+
+.header-container .logo-container .logo img {
+  height: 26px;
 }
+
 .header-container .welcome-container {
-    //flex-basis: 26%;
-    justify-content: flex-start;
-    flex-direction: row;
-    align-self: center;
-    height: 21px;
-    font-size:16px;
-}
-.header-container .welcome-container .separator{
-    margin: 0 5px;
-    height: 100%;
-    width: 0px;
-    border-left: 1px solid #000;
-}
-.header-container .welcome-container .plan{
-    font-weight:700
+  //flex-basis: 26%;
+  justify-content: flex-start;
+  flex-direction: row;
+  align-self: center;
+  height: 21px;
+  font-size: 16px;
 }
 
-.header-container .log-out__button{
-    //flex-basis: 30%;
-    height:40px;
-    justify-content: center;
-    align-self: center;
+.header-container .welcome-container .separator {
+  margin: 0 5px;
+  height: 100%;
+  width: 0px;
+  border-left: 1px solid #000;
 }
-.header-container .log-out__button a{
-    width:115px;
-    height:40px;
-    border:1px solid #D0D3D5;
-    background: none;
-    color:#008BE2;
-    border-radius: 40px;
-    font-family: 'Avenir-Heavy', sans-serif;
-    font-size:14px;
-    cursor:pointer;
-    outline:none;
-    line-height: 40px;
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+.header-container .welcome-container .plan {
+  font-weight: 700
+}
+
+.header-container .log-out__button {
+  //flex-basis: 30%;
+  height: 40px;
+  justify-content: center;
+  align-self: center;
+}
+
+.header-container .log-out__button a {
+  width: 115px;
+  height: 40px;
+  border: 1px solid #D0D3D5;
+  background: none;
+  color: #008BE2;
+  border-radius: 40px;
+  font-family: 'Avenir-Heavy', sans-serif;
+  font-size: 14px;
+  cursor: pointer;
+  outline: none;
+  line-height: 40px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 
 }
-.header-container .log-out__button a:hover{
-    border: 1px solid #008BE2;
+
+.header-container .log-out__button a:hover {
+  border: 1px solid #008BE2;
+}
+
+@media (max-width: 414px) {
+  .header-coponent {
+    .log-out__button{a{
+      display:none;}
+
+    }
+
+    .phone-icon{
+      margin-right: 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .mobile-welcome-container {
+      display: flex;
+      margin-left: 30px;
+      font-size: 20px;
+    }
+    .welcome-container {
+      .user-name, .separator, .plan {
+        display: none;
+      }
+    }
+  }
 }

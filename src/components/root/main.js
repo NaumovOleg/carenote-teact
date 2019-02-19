@@ -7,6 +7,11 @@ import Subscriptions from './main-components/Subscriptions';
 import * as actions from '../../store/actions/index';
 import NotesDescriptions from '../root/main-components/CareNoteDescription';
 import Cookies  from 'universal-cookie';
+import { Icon } from 'react-icons-kit'
+import {twitter} from 'react-icons-kit/icomoon/twitter';
+import {facebook} from 'react-icons-kit/icomoon/facebook';
+import {instagram} from 'react-icons-kit/icomoon/instagram'
+const isMobile = window.innerWidth<415;
 class Main extends Component {
 
     constructor(props) {
@@ -110,7 +115,9 @@ class Main extends Component {
         const styleForMenu = {
             display: this.state.currentRoute.name === 'shedule' || this.state.currentRoute.name === 'notePreview' ? 'none' : 'flex',
         };
-
+        if( isMobile ){
+            styleForMenu.display = 'none'
+        }
         const stylesForActivRoutes = {
             subscriptions: this.state.routes.subscriptions.active ? 'header-navigation-menu header-navigation__selected' : 'header-navigation-menu',
             shedule: this.state.routes.shedule.active ? 'header-navigation-menu header-navigation__selected' : 'header-navigation-menu',
@@ -119,19 +126,22 @@ class Main extends Component {
         };
 
         const routesStyle = {
-            ...this.state.currentRoute.name !== 'shedule' ?
-                {
-                    width: '860px',
-                } :
-                {
-                    margin: 'auto'
-                }
+            ...this.state.currentRoute.name !== 'shedule' ? {width: '860px',} : {margin: 'auto'}
         }
+
+
+        const setMenuRef = this.props.setMenuRef;
+        const showMenu = this.props.showMenu;
 
         return (
 
             <div className="main-component">
-                <div className="menu-component" style={styleForMenu}>
+                <div className="menu-component" ref={el => setMenuRef(el)}   style={styleForMenu}>
+                    <div className="mobile-menu-header"  >
+                        <i onClick={function () {
+                            showMenu('none')
+                        }} class="pi pi-angle-left"></i>
+                    </div>
                     <div className="menu-container">
                         <div className="menu-items">
                             <div className={stylesForActivRoutes.subscriptions}>
@@ -157,6 +167,19 @@ class Main extends Component {
                                     switchRoute('notes');
                                 }} className="text">Carenotes
                                 </div>
+                            </div>
+
+                        </div>
+                        <div className="logout-menu">Logout</div>
+                        <div className="bottom-mobile-menu">
+                            <div className="bottom-mobile-menu-item">FAQs</div>
+                            <div className="bottom-mobile-menu-item">Terms & Conditions</div>
+                            <div className="bottom-mobile-menu-item">Privacy Policy</div>
+                            <div className="bottom-mobile-menu-item">Contact</div>
+                            <div className="social-icons">
+                                <div className="icon"><Icon icon={twitter} /></div>
+                                <div className="icon"><Icon icon={facebook} /></div>
+                                <div className="icon"><Icon icon={instagram} /></div>
                             </div>
                         </div>
                     </div>
