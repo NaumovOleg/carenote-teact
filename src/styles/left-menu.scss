@@ -51,12 +51,16 @@
       flex-direction: column;
       margin-top: 40px;
       .bottom-mobile-menu-item{
-        margin: 10px 0;
+        margin: 10px 0 0 0;
+        font-size: 14px;
+        font-family: 'Avenir-Heavy', sans-serif;
+        color: #323334;
       }
       .social-icons{
         display: flex;
         flex-direction: row;
-        justify-content: flex-start;    margin-top: 20px;
+        justify-content: flex-start;
+        margin-top: 38px;
 
         .icon{
           height: 30px;
@@ -69,8 +73,8 @@
           justify-content: center;
           align-items: center;
           svg{
-            width: 20px;
-            height: 20px;
+            width: 12px;
+            height: 12px;
 
             fill:#fff;
           }
@@ -84,23 +88,43 @@
       justify-content: flex-end;
       padding: 25px;
     }
-    .mobile-menu-header i{
 
-      width: 30px;
-      height: 30px;
-      font-size: 27px;
-      border: 2px solid #000;
-      border-radius: 50%;
+    .welcome-wrapper {
       display: flex;
-
+      padding-left: 70px;
+      padding-bottom: 42px;
     }
+
+    .menu-container {
+      overflow-y: scroll;
+    }
+
+    .separator {
+      width: 1px;
+      height: 15px;
+      margin: 0 10px;
+      background-color: #323334;
+    }
+
+    .user-first-name {
+      font-size: 14px;
+      font-family: 'Avenir-Light', sans-serif;
+      color: #323334;
+    }
+
+    .user-choosed-plan {
+      font-size: 14px;
+      font-family: 'Avenir-Heavy', sans-serif;
+      color: #323334;
+    }
+    
     .menu-component {
-      position: absolute;
+      position: fixed;
       left: 0;
       right: 0;
       bottom: 0;
       top: 0;
-      background: #e9e9e9;
+      background: #F5F8FA;
       display: none;
       //display: flex;
       flex-direction: column;
@@ -108,14 +132,51 @@
       .menu-items{
         padding-left:20%;
         .header-navigation-menu{
-          font-size: 30px;
+          font-size: 21px;
         }
       }
       .logout-menu{
         display: flex;
         padding-left: 20%;
-        margin-top: 10px;
+        margin-top: 31px;
+        font-size: 14px;
+        font-family: 'Avenir-Heavy', sans-serif;
+        color: #323334;
+      }
+    }
+
+    .footer-mobile-menu {
+      padding-left: 20%;
+      margin-top: 19px;
+      .phone-number {
+        font-size: 16px;
+        font-family: 'Avenir-Black', sans-serif;
+        display: flex;
+        align-items: center;
+        color: #323334;
+        img {
+          margin-right: 8px;
+        }
+      }
+
+      .rights-text {
+        margin: 19px 0;
+        font-size: 10px;
+        font-family: 'Avenir-Medium', sans-serif;
+        color: #939392;
       }
     }
   }
+}
+
+@media(min-width: 415px) {
+  .welcome-wrapper,
+  .footer-mobile-menu {
+    display: none;
+  }
+
+  .menu-component {
+      display: block;
+  }
+
 }
