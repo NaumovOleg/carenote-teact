@@ -30,7 +30,7 @@ class Main extends Component {
 
     getData = async () => {
         const products = this.props.getProducts();
-        const shopifyuserId = this.cookies.get('care-note-api-user');
+        const shopifyuserId = this.cookies.get('care-note-api-user')||1205206646873 ;
         console.log( shopifyuserId );
         const user = await this.props.getCustomer(shopifyuserId);
         const subscriptions = this.props.getSubscriptions(user.id);

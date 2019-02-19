@@ -1,9 +1,17 @@
+$breakpoint-tablet: 1140px;
+$breakpoint-sm: 685px;
+
 .menu-component{
     margin-right: 0;
     flex-basis: 26%;
     min-width:250px;
     flex-direction: row;
     justify-content: flex-start;
+    @media (max-width: $breakpoint-tablet) {
+        flex-basis: 17%;
+        min-width: 176px;
+    }
+
 }
 
 .header-navigation-menu {
