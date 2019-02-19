@@ -42,7 +42,7 @@ class Header extends Component {
                         <div className="mobile-welcome-container" onClick={function () {
                             menuClick('flex')
                         }}>
-                            <i class="pi pi-user"></i>
+                            <i className="pi pi-user"></i>
                         </div>
                     </div>
 

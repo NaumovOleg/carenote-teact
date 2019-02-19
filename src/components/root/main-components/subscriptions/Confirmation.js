@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import backimg from "../../../../assets/Group 268.png";
 
 class Confirmation extends Component {
     constructor ( props ) {
@@ -16,7 +17,7 @@ class Confirmation extends Component {
                             <p>Subscription confirmation</p>
                             <p><a onClick={function () {
                                 returnRoute( 'subscriptions' )
-                            }}>&#x3c; Back </a></p>
+                            }}><img src={backimg}/> <span> Back</span> </a></p>
                         </div>
                         <div className="choosenSubscription">
                             <p>Thank you. You're confirmed for a change to the {this.props.planName} Plan.</p>

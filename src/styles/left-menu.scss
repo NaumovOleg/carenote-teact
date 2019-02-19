@@ -43,7 +43,14 @@
   border-bottom: 4px solid #F79F2C;
 }
 
-@media(max-width: 415px) {
+@media(min-width: 616px) and (max-width: 1140px) {
+  .menu-component {
+    flex-basis: 17%;
+    min-width: 153px;
+  }
+}
+
+@media(max-width: 616px) {
   .main-component {
     .bottom-mobile-menu{
       display: flex;
@@ -91,7 +98,7 @@
 
     .welcome-wrapper {
       display: flex;
-      padding-left: 70px;
+      padding-left: 20%;
       padding-bottom: 42px;
     }
 
@@ -169,14 +176,12 @@
   }
 }
 
-@media(min-width: 415px) {
+@media(min-width: 416px) {
   .welcome-wrapper,
   .footer-mobile-menu {
     display: none;
   }
 
-  .menu-component {
-      display: block;
-  }
-
 }
+
+

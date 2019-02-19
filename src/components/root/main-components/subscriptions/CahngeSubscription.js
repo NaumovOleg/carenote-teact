@@ -108,7 +108,7 @@ class ChangeSubscription extends Component {
                         <p>Change Subscription</p>
                         <p><a onClick={function () {
                             returnRoute( 'subscriptions' )
-                        }}><img src={backimg}/> Back</a></p>
+                        }}><img src={backimg}/> <span>Back</span></a></p>
                     </div>
                     <div className="current-subscription">
                         <p><strong>Current Subscription: { currentPlan.name} Planss</strong><br />

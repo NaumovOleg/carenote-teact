@@ -13,8 +13,7 @@ import {facebook} from 'react-icons-kit/icomoon/facebook';
 import {instagram} from 'react-icons-kit/icomoon/instagram';
 import mobphone from '../../assets/mob-phone.png';
 import backarrow from '../../assets/arrow-left.png'
-const isMobile = window.innerWidth<415;
-const isNotMobile = window.innerWidth>415;
+const isMobile = window.innerWidth<616;
 class Main extends Component {
 
     constructor(props) {
@@ -126,7 +125,6 @@ class Main extends Component {
         };
 
         if(isMobile) styleForMenu.display = 'none';
-        if(isNotMobile) styleForMenu.display = 'flex';
 
         const stylesForActivRoutes = {
             subscriptions: this.state.routes.subscriptions.active ? 'header-navigation-menu header-navigation__selected' : 'header-navigation-menu',
