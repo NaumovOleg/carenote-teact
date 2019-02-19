@@ -1,3 +1,16 @@
-.notes-component{
+.notes-component {
 
+}
+
+@media(max-width: 440px) {
+  .notes-container {
+    padding: 20px 20px;
+    .items-container {
+      .item{
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+    }
+  }
 }
