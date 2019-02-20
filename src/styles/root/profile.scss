@@ -39,6 +39,7 @@
   border-bottom: 7px solid #EAEDEF;
   font-family: 'Avenir-Heavy', sans-serif;
   font-size: 24px;
+  transition: all 1s;
   -webkit-animation: fadein .8s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein .8s; /* Firefox < 16 */
   -ms-animation: fadein .8s; /* Internet Explorer */
@@ -48,6 +49,7 @@
 
 .profileContainer {
   div{
+    transition: all 1s;
     -webkit-animation: fadein .8s; /* Safari, Chrome and Opera > 12.1 */
     -moz-animation: fadein .8s; /* Firefox < 16 */
     -ms-animation: fadein .8s; /* Internet Explorer */

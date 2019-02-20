@@ -6,6 +6,7 @@
 
 .main-container {
   padding: 64px 65px;
+  transition: all 1s;
   -webkit-animation: fadein .8s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein .8s; /* Firefox < 16 */
   -ms-animation: fadein .8s; /* Internet Explorer */

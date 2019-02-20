@@ -1,7 +1,9 @@
-body #root .p-link{
-  &:focus {
-    box-shadow: 0 0 0 0.1em #fff;
-  }
+body .p-link:focus{
+    box-shadow: 0 0 0 0.1em #fff!important;
+}
+
+body #root .p-link {
+  display: none !important;
 }
 .change-subscriptions-component {
 font-family: sans-serif;
@@ -11,11 +13,14 @@ font-family: sans-serif;
 width: 100%;
 padding: 47px 69px;
 background-color: #fff;
-  -webkit-animation: fadein .8s; /* Safari, Chrome and Opera > 12.1 */
-  -moz-animation: fadein .8s; /* Firefox < 16 */
-  -ms-animation: fadein .8s; /* Internet Explorer */
-  -o-animation: fadein .8s; /* Opera < 12.1 */
-  animation: fadein .8s;
+  div {
+    transition: all 1s;
+    -webkit-animation: fadein .8s; /* Safari, Chrome and Opera > 12.1 */
+    -moz-animation: fadein .8s; /* Firefox < 16 */
+    -ms-animation: fadein .8s; /* Internet Explorer */
+    -o-animation: fadein .8s; /* Opera < 12.1 */
+    animation: fadein .8s;
+  }
 }
 
 @keyframes fadein {
@@ -66,8 +71,23 @@ a {
     margin-right: 10px;
     cursor: pointer;
   }
+  span {
+    color: #008BE2;
+  }
 }
 }
+}
+
+.subscriptions {
+  p {
+    &:last-child {
+      a {
+        span {
+          color: #008BE2;
+        }
+      }
+    }
+  }
 }
 
 .current-subscription {
@@ -254,6 +274,18 @@ p {
 .change-subscriptions-container {
 padding: 48px 30px;
 }
+
+  .subscriptions {
+    p {
+      &:last-child {
+        a {
+          img {
+            margin-right: 0;
+          }
+        }
+      }
+    }
+  }
 }
 
 @media (max-width: 504px) {
@@ -266,10 +298,6 @@ width: 87%;
 .subscriptions-modal-container{
 width: 100%;
 height: 240px;
-}
-
-.change-subscriptions-modal-container {
-padding-top: 25px;
 }
 
 .change-subscriptions-modal-text-box {

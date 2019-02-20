@@ -146,6 +146,11 @@ class Main extends Component {
             planName = this.props.parcedProducts [this.props.subscriptions.shopify_product_id].name
         }
 
+        const hideMenu = () => {
+            let menu = document.getElementsByClassName('menu-component')[0];
+            menu.style.display = 'none'
+        }
+
         return (
 
             <div className="main-component">
@@ -169,6 +174,7 @@ class Main extends Component {
                         <div className="menu-items">
                             <div className={stylesForActivRoutes.subscriptions}>
                                 <div onClick={function () {
+                                    if(isMobile) hideMenu();
                                     switchRoute('subscriptions');
                                 }} className="text">Subscriptions
                                 </div>
@@ -181,12 +187,14 @@ class Main extends Component {
                             </div>
                             <div className={stylesForActivRoutes.profile}>
                                 <div onClick={function () {
+                                    if(isMobile) hideMenu();
                                     switchRoute('profile');
                                 }} className="text">My Profile
                                 </div>
                             </div>
                             <div className={stylesForActivRoutes.notes}>
                                 <div onClick={function () {
+                                    if(isMobile) hideMenu();
                                     switchRoute('notes');
                                 }} className="text">Carenotes
                                 </div>
