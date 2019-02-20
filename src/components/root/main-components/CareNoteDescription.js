@@ -24,7 +24,7 @@ class NotesDescriptions extends Component {
                     <h3>{this.props.note.title}</h3>
                   <button onClick={function () {
                         switchBackRoute('notes');
-                    }}> <img src={backimg}/> Back</button>
+                    }}> <img src={backimg}/> <span>Back</span></button>
                 </div>
                 <div className="carenotes-modal-text-box">
                     <p className="carenotes-modal-text">Dear Elbert,<br />
