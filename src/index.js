@@ -24,7 +24,8 @@ const rootReducer = combineReducers ( {
     auth: authReducer,
     notes:notesReduser,
     address:addressReducer,
-    subscriptions:subscriptionReduser,
+    subscriptions:subscriptionReduser.subscriptions,
+    additionalSubscrData:subscriptionReduser.additionalSubscriptions,
     orders:ordersReducer,
     products:productsReducer,
     parcedProducts:parsedProductsReducer

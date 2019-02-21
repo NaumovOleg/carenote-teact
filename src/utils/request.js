@@ -3,7 +3,8 @@ import axios from 'axios';
 axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
 axios.defaults.headers.post['Content-Type'] = 'application/json';
 var axiosInstance = axios.create({
-    baseURL: 'https://carenote-api.herokuapp.com/',
+    // baseURL: 'https://carenote-api.herokuapp.com/',
+    baseURL: 'http://localhost:3000',
     /* other custom settings */
 });
 /**
