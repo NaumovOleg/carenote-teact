@@ -337,6 +337,7 @@ class Shedule extends Component {
                         <img src={arrowIcon}/>
                     </button>
                 </div>
+                <div className="container">
                 <div className="calendar-days">
                     {
                         week.map((el, index) => {
@@ -359,6 +360,7 @@ class Shedule extends Component {
                         })
                     }
                 </div>
+                    </div>
                 <div className="calendar-footer">
                     <span>Click “Change” to edit your call schedule to another day and time.</span>
                 </div>

@@ -5,6 +5,7 @@ import * as actions from '../store/actions/index';
 import Cookies  from 'universal-cookie';
 import {Icon} from 'react-icons-kit'
 import {phone} from 'react-icons-kit/icomoon/phone';
+import User from '../assets/Profile.png';
 
 class Header extends Component {
 
@@ -42,7 +43,7 @@ class Header extends Component {
                         <div className="mobile-welcome-container" onClick={function () {
                             menuClick('flex')
                         }}>
-                            <i className="pi pi-user"></i>
+                            <div><img src={User}/></div>
                         </div>
                     </div>
 
