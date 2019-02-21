@@ -4,6 +4,7 @@
 }
 
 .carenotes-modal-container {
+  transition: all 1s;
   -webkit-animation: fadein .8s; /* Safari, Chrome and Opera > 12.1 */
   -moz-animation: fadein .8s; /* Firefox < 16 */
   -ms-animation: fadein .8s; /* Internet Explorer */
@@ -154,6 +155,9 @@
     button {
       span {
         display: none;
+      }
+      img {
+        margin-right: 0;
       }
     }
   }
