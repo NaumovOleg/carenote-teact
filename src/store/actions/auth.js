@@ -44,9 +44,6 @@ export const getCustomer = ( CID ) => dispatch => {
         url:    'api/users/'+CID,
         method: 'GET',
     } ).then ( res => {
-
-        console.log( res )
-
         dispatch( initCustomerData( res.data ) );
         return res.data
     } )

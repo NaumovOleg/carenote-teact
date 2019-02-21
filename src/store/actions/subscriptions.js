@@ -53,3 +53,17 @@ export const getAdditionalSubscriptionsData = ( cutomer ) => dispatch => {
             console.log ( 'error in reac eeeet  products', e );
         } );
 };
+
+export const updateAdditionalSubscriptionsData = ( cutomer, data  ) => dispatch => {
+    return request ( {
+        url:    'api/subscriptions/additional/'+cutomer,
+        method: 'PUT',
+        data:data
+    } ).then ( res => {
+        dispatch( initAdditionalSubscriptions( res.data ) );
+        return res.data
+    } )
+        .catch ( e => {
+            console.log ( 'error in reac eeeet  products', e );
+        } );
+};

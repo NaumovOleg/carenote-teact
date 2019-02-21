@@ -1,7 +1,12 @@
 import {authStart, logIn, initCustomerData, logOut, getCustomer, updateCustomer} from './auth';
 import {initProducts, getProducts} from './products';
 import {getAddress, updateAddress} from './adress';
-import {getSubscriptions, updateSubscriptions, getAdditionalSubscriptionsData} from './subscriptions';
+import {
+    getSubscriptions,
+    updateSubscriptions,
+    getAdditionalSubscriptionsData,
+    updateAdditionalSubscriptionsData
+} from './subscriptions';
 export  {
     authStart,
     initCustomerData,
@@ -15,6 +20,7 @@ export  {
     getAddress,
     getSubscriptions,
     updateSubscriptions,
-    getAdditionalSubscriptionsData
+    getAdditionalSubscriptionsData,
+    updateAdditionalSubscriptionsData
     ,
 };

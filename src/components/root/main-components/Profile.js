@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import * as actions from '../../../store/actions'
 class Profile extends Component {
     constructor(props) {
-        console.log(props.additional);
         super(props);
         this.state = {
             fieldValidations: {
@@ -34,7 +33,6 @@ class Profile extends Component {
             }
         })
     };
-
     updateAddress = (field, value) => {
         this.setState({
             user: this.state.user,
@@ -47,6 +45,7 @@ class Profile extends Component {
 
     saveChanges = () => {
         this.saveCustomer();
+        this.props.updateAdditionalSubscriptionsData( this.props.user.id ,this.state.additionalData )
     };
 
     componentWillMount() {}
@@ -133,13 +132,22 @@ class Profile extends Component {
         const address = {address1, address2, city, zip};
         this.props.updateAddress(id, address)
     };
+
+    updtatStateAdditionalData = (field, value )=>{
+        this.setState({
+            additionalData:{
+                ...this.state.additionalData,
+                [field]:value
+            }
+        });
+    }
+
     render() {
         const address = this.state.address;
         const updateCustomer = this.updateCustomer;
         const updateAddress = this.updateAddress;
         const saveChanges = this.saveChanges;
-
-        console.log( this.state.additionalData )
+        const updtatStateAdditionalData = this.updtatStateAdditionalData;
 
         return (
             <div className="accaunt-component">
@@ -148,15 +156,31 @@ class Profile extends Component {
                     <div>
                         <h5>{this.props.additional.relationship_status} 's Info</h5>
                         <div className="relative">
-                            <input type="text" value={this.state.additionalData.first_name} name="name" placeholder="First name"/>
-                            <input type="text" value={this.state.additionalData.last_name} name="lastName" placeholder="Last name"/>
-                            <input type="text" value={this.state.additionalData.address} name="residenceAddress" placeholder="Residence Address"/>
-                            <input type="text" value={this.state.additionalData.city} name="city" placeholder="City"/>
-                            <input type="text" value={this.state.additionalData.state} name="State" placeholder="State"/>
-                            <input type="text" value={this.state.additionalData.zip_code} name="zipCode" placeholder="Zip code"/>
-                            <input type="text" value={this.state.additionalData.phone} name="phone" placeholder="Phone Number"/>
-                            <input type="email"  value={this.state.additionalData.email} name="email" placeholder="Email address"/>
-                            <label className="checkboxContainer">
+                            <input type="text" onChange={function (el) {
+                                updtatStateAdditionalData('first_name', el.target.value )
+                            }} value={this.state.additionalData.first_name} name="name" placeholder="First name"/>
+                            <input onChange={function (el) {
+                                updtatStateAdditionalData('last_name', el.target.value )
+                            }} type="text" value={this.state.additionalData.last_name} name="lastName" placeholder="Last name"/>
+                            <input onChange={function (el) {
+                                updtatStateAdditionalData('address', el.target.value )
+                            }} type="text" value={this.state.additionalData.address} name="residenceAddress" placeholder="Residence Address"/>
+                            <input onChange={function (el) {
+                                updtatStateAdditionalData('city', el.target.value )
+                            }} type="text" value={this.state.additionalData.city} name="city" placeholder="City"/>
+                            <input onChange={function (el) {
+                                updtatStateAdditionalData('state', el.target.value )
+                            }} type="text" value={this.state.additionalData.state} name="State" placeholder="State"/>
+                            <input onChange={function (el) {
+                                updtatStateAdditionalData('zip_code', el.target.value )
+                            }} type="text" value={this.state.additionalData.zip_code} name="zipCode" placeholder="Zip code"/>
+                            <input onChange={function (el) {
+                                updtatStateAdditionalData('phone', el.target.value )
+                            }} type="text" value={this.state.additionalData.phone} name="phone" placeholder="Phone Number"/>
+                            <input  onChange={function (el) {
+                                updtatStateAdditionalData('email', el.target.value )
+                            }} type="email"  value={this.state.additionalData.email} name="email" placeholder="Email address"/>
+                            <label  className="checkboxContainer">
                                 <span className="checkboxText">Receive notifications via text/SMS</span>
                                 <input type="checkbox"/>
                                 <span className="checkmark"></span>
@@ -294,6 +318,9 @@ const mapDispatchToProps = dispatch => {
     return {
         updateAddress: (AID, address) => dispatch(actions.updateAddress(AID, address)),
         updateCustomer: (CID, customer) => dispatch(actions.updateCustomer(CID, customer)),
+        updateAdditionalSubscriptionsData:(CID,data)=>{
+            dispatch(actions.updateAdditionalSubscriptionsData(CID,data))
+        }
 
         // updateSubscriptions:(subscription)=>dispatch(actions.updateSubscriptions(subscription))
     };
