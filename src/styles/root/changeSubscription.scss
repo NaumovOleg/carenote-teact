@@ -111,6 +111,9 @@ display: flex;
 justify-content: space-between;
 align-items: center;
 border-bottom: 2px solid #EAEDEF;
+  &:last-child {
+    border-bottom: none;
+  }
 p {
 color: #323334;
 line-height: 24px;

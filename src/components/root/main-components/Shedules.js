@@ -318,7 +318,7 @@ class Shedule extends Component {
                 <div className="top-content">
                     <div className="text">Schedule</div>
                     <div className="center-content">
-                        <span className="customer-name">{this.props.user.first_name}  , &nbsp;</span>
+                        <span className="customer-name">{this.props.user.first_name}, </span>
                         <span className="text-note">your next scheduled call is </span>
                         <span className="date">
                             {moment(new Date()).format('MMM D') } at {' '}
@@ -337,6 +337,7 @@ class Shedule extends Component {
                         <img src={arrowIcon}/>
                     </button>
                 </div>
+                <div className="container">
                 <div className="calendar-days">
                     {
                         week.map((el, index) => {
@@ -359,6 +360,7 @@ class Shedule extends Component {
                         })
                     }
                 </div>
+                    </div>
                 <div className="calendar-footer">
                     <span>Click “Change” to edit your call schedule to another day and time.</span>
                 </div>

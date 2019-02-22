@@ -127,7 +127,7 @@ class Main extends Component {
         };
 
         const routesStyle = {
-            ...this.state.currentRoute.name !== 'shedule' ? {width: '860px',} : {margin: 'auto'}
+            ...this.state.currentRoute.name !== 'shedule' ? {width: '860px',} : {margin: '0 auto'}
         }
 
 
@@ -172,6 +172,7 @@ class Main extends Component {
                             </div>
                             <div className={stylesForActivRoutes.shedule}>
                                 <div onClick={function () {
+                                    if(isMobile) hideMenu();
                                     switchRoute('shedule');
                                 }} className="text">Schedule
                                 </div>
