@@ -35,8 +35,12 @@ class Main extends Component {
             view: ''
         };
     }
-
     getData = async () => {
+        // this.cookies.set('additional-subscription_data',{
+        //     relationship_status:'other relative',
+        //     call_quantity:'10',
+        //     whos_signing:'me'
+        // });
         const products = this.props.getProducts();
         const shopifyuserId = this.cookies.get('care-note-api-user')||1205206646873 ;
         const user = await this.props.getCustomer(shopifyuserId);
@@ -44,10 +48,10 @@ class Main extends Component {
         const subscriptions = this.props.getSubscriptions(user.id);
         const address = this.props.getAddress(user.id);
 
-
     };
     componentWillMount() {
         this.getData();
+
     }
     switchNotePrewiewRoute = (props) => {
         let routes = this.state.routes;
@@ -66,7 +70,7 @@ class Main extends Component {
             currentRoute: currentRoute,
             previousRoute: previousRoute,
         });
-    }
+    };
     switchRoute = (route) => {
         if (this.state.currentRoute.name === route) {
             return;
@@ -106,17 +110,7 @@ class Main extends Component {
         });
     };
 
-    checkAuth = () => {
-        if (window.currntCustomer == undefined) {
-            window.location = '/pages/login';
-        }
-    };
-
-
-
     render() {
-
-
 
         const switchRoute = this.switchRoute;
         const styleForMenu = {
@@ -144,12 +138,10 @@ class Main extends Component {
         if (this.props.subscriptions.shopify_product_id !== undefined) {
             planName = this.props.parcedProducts [this.props.subscriptions.shopify_product_id].name
         }
-
         const hideMenu = () => {
             let menu = document.getElementsByClassName('menu-component')[0];
             menu.style.display = 'none'
-        }
-
+        };
         return (
 
             <div className="main-component">
@@ -236,7 +228,8 @@ const mapDispatchToProps = dispatch => {
         getProducts: () => dispatch(actions.getProducts()),
         getAdditionalSubscriptionsData:( CID )=>{
             dispatch(actions.getAdditionalSubscriptionsData(CID))
-        }
+        },
+        updateAdditionalSubscriptionsData:(CID,data)=>dispatch(actions.updateAdditionalSubscriptionsData( CID, data ))
 
     };
 };

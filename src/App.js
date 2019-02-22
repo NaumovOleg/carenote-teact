@@ -1,6 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-
 import { Route, Switch, withRouter, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Auth from './components/auth/auth';
@@ -10,6 +8,10 @@ import  './react.maincss.scss';
 
 
 class App extends Component {
+
+    constructor(props){
+        super( props );
+    }
 
     setMenuRef = ( ref )=>{
         this.menu = ref
