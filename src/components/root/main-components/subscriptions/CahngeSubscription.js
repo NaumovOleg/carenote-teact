@@ -124,7 +124,7 @@ class ChangeSubscription extends Component {
                                     <button onClick={function () {
                                         setSelectedPlan( el );
                                         onClickOpen('visible1')
-                                    }}>Change to Silver
+                                    }}>Change to {avaliablePlans[el].name}
                                     </button>
                                 </div>)
                             }
