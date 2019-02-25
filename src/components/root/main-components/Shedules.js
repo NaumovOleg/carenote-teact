@@ -395,7 +395,7 @@ class Shedule extends Component {
                                     </div>
                                     <div className="bottom" onClick={function () {
                                         openDatePopup();
-                                    }}> change
+                                    }}> Change
                                     </div>
                                 </div>);
                             })
