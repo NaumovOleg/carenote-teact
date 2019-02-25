@@ -266,6 +266,7 @@ $base-range:#F79F2C;
     padding-top:0;
     padding-bottom:0;
     margin-right: 10px;
+    cursor: pointer;
 
 }
 .shedule-component .calendar-days .item {
@@ -309,6 +310,12 @@ $base-range:#F79F2C;
     justify-content: center;
     width: 94px;
     height: 111px;
+    span{
+        span{
+            font-size: 15px;
+            color: #06060670;
+        }
+    }
 }
 
 .shedule-component .calendar-days .item.activated .center {
@@ -326,6 +333,9 @@ $base-range:#F79F2C;
     padding-top: 26px;
     width: 920px;
     align-self: center;
+    display: flex;
+    justify-content: center;
+
 }
 
 .shedule-component .calendar-footer span {

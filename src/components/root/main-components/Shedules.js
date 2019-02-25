@@ -27,25 +27,26 @@ class Shedule extends Component {
         selectedDateError: '',
         selectedTimeError: ''
     };
+
     constructor(props) {
         super(props);
     };
 
 
-   async  componentWillMount(){
-      this.getWeekCalls();
+    async  componentWillMount() {
+        this.getWeekCalls();
 
     }
 
 
-    getWeekCalls = ()=>{
-        const params ={
-            limit:7,
-            timeMin:this.state.week.start,
-            timeMax:this.state.week.end,
-            CID:this.props.user.id
+    getWeekCalls = () => {
+        const params = {
+            limit: 7,
+            timeMin: this.state.week.start,
+            timeMax: this.state.week.end,
+            CID: this.props.user.id
         };
-        this.props.getCalendatData( params );
+        this.props.getCalendatData(params);
     }
 
     nextWeek = async () => {
@@ -184,12 +185,25 @@ class Shedule extends Component {
         if (this.state.selectedDateTime.date !== '' && this.state.selectedDateTime.time !== '') {
 
             return (
-                this.state.selectedDateTime.date.format('MMM D , ddd')  +
+                this.state.selectedDateTime.date.format('MMM D , ddd') +
                 '@' + this.state.selectedDateTime.time
             )
         } else return null
     };
-
+    getEventTime = (event) => {
+        console.log(  )
+        return (
+            <span style={    {
+                'margin': 'auto',
+                'width': '100%',
+                color:'#000',
+                textAlign: 'center'
+            }}>
+                {moment(  event.start.dateTime ).format('hh:mm A')}<br/>
+                Call
+                </span>
+        )
+    }
 
     render() {
         const selectDateTime = this.selectDateTime;
@@ -204,6 +218,7 @@ class Shedule extends Component {
         const openConfirmPopup = this.openConfirmPopup;
         const closeConfirmWindow = this.closeConfirmWindow;
         const getConfirmedText = this.getConfirmedText;
+        const getEventTime = this.getEventTime;
 
         const events = this.props.calendar;
         let parsedEvents = {};
@@ -219,14 +234,17 @@ class Shedule extends Component {
                     'width': '50px',
                     textAlign: 'center'
                 }}>
-                    NO  CALLS
+                    No  Calls
                 </span>
             )
         };
+
+
         return (
             <div className="shedule-component">
                 <Dialog className="change-call custom-popup" header="" visible={this.state.popupDateDialog}
-                        modal={ true } onHide={function () {}}>
+                        modal={ true } onHide={function () {
+                }}>
                     <div className="modal-body">
                         <div className="header custom-popup-header">
                             <button onClick={function () {
@@ -265,7 +283,8 @@ class Shedule extends Component {
                     </div>
                 </Dialog>
                 <Dialog className="select-time custom-popup" header="" visible={this.state.popupTimeDialog}
-                        onHide={function () {}}
+                        onHide={function () {
+                        }}
                         modal={true}>
                     <div className="modal-body">
                         <div className="header custom-popup-header">
@@ -315,7 +334,8 @@ class Shedule extends Component {
                     </div>
                 </Dialog>
                 <Dialog className="confirmed-popup custom-popup" header="" visible={this.state.confirmedPopup}
-                        onHide={function () {}}
+                        onHide={function () {
+                        }}
                         modal={true}>
                     <div className="modal-body">
                         <div className="header custom-popup-header">
@@ -345,7 +365,7 @@ class Shedule extends Component {
                             { moment(new Date()).format('HH:mm A')}
                         </span>
                     </div>
-                    <button onClick={this.props.prev}> <img src={backimg}/> Back</button>
+                    <button onClick={this.props.prev}><img src={backimg}/> Back</button>
                 </div>
                 <div className="calendar-header">
                     <button className="prev-mont" onClick={this.prevWeek}>
@@ -358,30 +378,30 @@ class Shedule extends Component {
                     </button>
                 </div>
                 <div className="container">
-                <div className="calendar-days">
-                    {
-                        week.map((el, index) => {
+                    <div className="calendar-days">
+                        {
+                            week.map((el, index) => {
 
-                            const classname = parsedEvents[el.format('MMM_D_ddd')] !== undefined ? 'item activated' : 'item'
-                            return ( <div key={index} className={classname}>
-                                        <div className="top">
-                                            <span className="left">{el.format('MMM D')}</span>
-                                            <span className="right">{el.format('ddd')}</span>
-                                        </div>
-                                        <div className="center">
+                                const classname = parsedEvents[el.format('MMM_D_ddd')] !== undefined ? 'item activated' : 'item'
+                                return ( <div key={index} className={classname}>
+                                    <div className="top">
+                                        <span className="left">{el.format('MMM D')}</span>
+                                        <span className="right">{el.format('ddd')}</span>
+                                    </div>
+                                    <div className="center">
                                             <span className="" style={{display: 'flex'}}>
-                                                {parsedEvents[el.format('MMM_D_ddd')] !== undefined ? parsedEvents[el.format('MMM_D_ddd')].summary : noCalls() }
+                                                {parsedEvents[el.format('MMM_D_ddd')] !== undefined ? getEventTime(parsedEvents[el.format('MMM_D_ddd')])  : noCalls() }
                                             </span>
-                                        </div>
-                                        <div className="bottom" onClick={function () {
-                                            openDatePopup();
-                                        }}> change
-                                        </div>
-                                    </div>);
-                        })
-                    }
-                </div>
+                                    </div>
+                                    <div className="bottom" onClick={function () {
+                                        openDatePopup();
+                                    }}> change
+                                    </div>
+                                </div>);
+                            })
+                        }
                     </div>
+                </div>
                 <div className="calendar-footer">
                     <span>Click “Change” to edit your call schedule to another day and time.</span>
                 </div>
@@ -392,14 +412,14 @@ class Shedule extends Component {
 const mapStateToProps = state => {
     return {
         user: state.auth.user,
-        calendar:state.calendar
+        calendar: state.calendar
 
     };
 };
 
 const mapDispatchToProps = dispatch => {
     return {
-        getCalendatData:( params )=>dispatch(actions.getCalendatData(params)),
+        getCalendatData: (params) => dispatch(actions.getCalendatData(params)),
     };
 };
 
