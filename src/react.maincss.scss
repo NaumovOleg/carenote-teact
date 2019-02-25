@@ -9,6 +9,10 @@ $base-range:#F79F2C;
   }
 }
 
+button{
+  cursor: pointer;
+}
+
 .App{
   min-height: 100%;
   background-color: #F5F8FA;
@@ -21,7 +25,8 @@ $base-range:#F79F2C;
   text-align: center;
   outline: none;
   height:40px;
-  width:155px;
+  font-size: 13px!important;
+  width:155px!important;
   border-radius:40px;
   cursor: pointer;
 }

@@ -15,7 +15,7 @@ class ChangeSubscription extends Component {
             },
             1859628367961:{
                 name:"Gold",
-                description:'2 Care Calls per week, 2 Outbound calls per week, Unlimited text messaging, Carentes sent weekly'
+                description:'2 Care Calls per week, 2 Outbound calls per week, Unlimited text messaging, Carenotes sent weekly'
             },
             1859628433497:{
                 name:"Platinum",
@@ -111,7 +111,7 @@ class ChangeSubscription extends Component {
                         }}><img src={backimg}/> <span>Back</span></a></p>
                     </div>
                     <div className="current-subscription">
-                        <p><strong>Current Subscription: { currentPlan.name} Planss</strong><br />
+                        <p><strong>Current Subscription: { currentPlan.name} Plans</strong><br />
                             {currentPlan.plan_description}</p>
                         <p>${currentPlan.price }/mo</p>
                     </div>
