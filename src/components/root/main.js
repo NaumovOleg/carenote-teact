@@ -36,16 +36,12 @@ class Main extends Component {
         };
     }
     getData = async () => {
-        // this.cookies.set('additional-subscription_data',{
-        //     relationship_status:'other relative',
-        //     call_quantity:'10',
-        //     whos_signing:'me'
-        // });
-        const products = this.props.getProducts();
-        const shopifyuserId = this.cookies.get('care-note-api-user')||1205206646873 ;
+        // this.cookies.set('care-note-api-user','1205206646873');
+        const products = await this.props.getProducts();
+        const shopifyuserId = this.cookies.get('care-note-api-user');
         const user = await this.props.getCustomer(shopifyuserId);
         const additional = await this.props.getAdditionalSubscriptionsData( user.id );
-        const subscriptions = this.props.getSubscriptions(user.id);
+        const subscriptions = await this.props.getSubscriptions(user.id);
         const address = this.props.getAddress(user.id);
 
     };
@@ -136,7 +132,10 @@ class Main extends Component {
 
         let planName = '';
         if (this.props.subscriptions.shopify_product_id !== undefined) {
-            planName = this.props.parcedProducts [this.props.subscriptions.shopify_product_id].name
+            if(  this.props.parcedProducts [this.props.subscriptions.shopify_product_id]!== undefined){
+                planName = this.props.parcedProducts [this.props.subscriptions.shopify_product_id].name
+            }
+
         }
         const hideMenu = () => {
             let menu = document.getElementsByClassName('menu-component')[0];

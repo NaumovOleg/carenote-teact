@@ -154,7 +154,7 @@ class Profile extends Component {
                 <div className="profileContainer">
                     <p>My Profile</p>
                     <div>
-                        <h5>{this.props.additional.relationship_status} 's Info</h5>
+                        <h5>{this.props.additional.relationship_status}'s Info</h5>
                         <div className="relative">
                             <input type="text" onChange={function (el) {
                                 updtatStateAdditionalData('first_name', el.target.value )

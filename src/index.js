@@ -14,7 +14,8 @@ import notesReduser from './store/reducers/notes';
 import helper from './utils/helper';
 import addressReducer from './store/reducers/address';
 import subscriptionReduser from './store/reducers/subscriptions';
-import parsedProductsReducer from './store/reducers/parcedProducts'
+import parsedProductsReducer from './store/reducers/parcedProducts';
+import calendarReducer from './store/reducers/calendar'
 import 'primeicons/primeicons.css';
 import 'primereact/resources/primereact.min.css';
 import 'primereact/resources/themes/nova-light/theme.css';
@@ -27,6 +28,7 @@ const rootReducer = combineReducers ( {
     subscriptions:subscriptionReduser.subscriptions,
     additionalSubscrData:subscriptionReduser.additionalSubscriptions,
     orders:ordersReducer,
+    calendar:calendarReducer,
     products:productsReducer,
     parcedProducts:parsedProductsReducer
 } );

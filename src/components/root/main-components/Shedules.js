@@ -31,6 +31,23 @@ class Shedule extends Component {
         super(props);
     };
 
+
+   async  componentWillMount(){
+      this.getWeekCalls();
+
+    }
+
+
+    getWeekCalls = ()=>{
+        const params ={
+            limit:7,
+            timeMin:this.state.week.start,
+            timeMax:this.state.week.end,
+            CID:this.props.user.id
+        };
+        this.props.getCalendatData( params );
+    }
+
     nextWeek = async () => {
         const end = this.state.end + 7;
         const start = this.state.start + 7;
@@ -42,6 +59,8 @@ class Shedule extends Component {
                 end: moment(new Date()).weekday(end),
             },
         });
+
+        this.getWeekCalls();
     };
     prevWeek = async () => {
         const end = this.state.end - 7;
@@ -54,6 +73,8 @@ class Shedule extends Component {
                 end: moment(new Date()).weekday(end),
             },
         });
+
+        this.getWeekCalls();
 
     };
     getDatesArray = () => {
@@ -184,9 +205,8 @@ class Shedule extends Component {
         const closeConfirmWindow = this.closeConfirmWindow;
         const getConfirmedText = this.getConfirmedText;
 
-        const events = window.events || [];
+        const events = this.props.calendar;
         let parsedEvents = {};
-
         if (events.length) {
             events.forEach(el => {
                 parsedEvents[moment(el.end.dateTime).format('MMM_D_ddd')] = el
@@ -341,6 +361,7 @@ class Shedule extends Component {
                 <div className="calendar-days">
                     {
                         week.map((el, index) => {
+
                             const classname = parsedEvents[el.format('MMM_D_ddd')] !== undefined ? 'item activated' : 'item'
                             return ( <div key={index} className={classname}>
                                         <div className="top">
@@ -371,11 +392,15 @@ class Shedule extends Component {
 const mapStateToProps = state => {
     return {
         user: state.auth.user,
+        calendar:state.calendar
+
     };
 };
 
 const mapDispatchToProps = dispatch => {
-    return {};
+    return {
+        getCalendatData:( params )=>dispatch(actions.getCalendatData(params)),
+    };
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Shedule);

@@ -13,5 +13,7 @@ export const GET_ORDERS = 'GET_ORDERS';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const GET_PARSED_PRODUCTS = 'GET_PARSED_PRODUCTS';
 
+export const INIT_CALENDAR = 'INIT_CALENDAR';
+
 
 
