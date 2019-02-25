@@ -3,7 +3,6 @@ import {connect} from 'react-redux';
 import * as actions from '../../../store/actions'
 class Profile extends Component {
     constructor(props) {
-        console.log(props);
         super(props);
         this.state = {
             fieldValidations: {
@@ -20,6 +19,7 @@ class Profile extends Component {
             },
             user: {...props.user},
             address: {...props.address},
+            additionalData:props.additional
             //subscription:{...props.subscription}
         };
     }
@@ -33,7 +33,6 @@ class Profile extends Component {
             }
         })
     };
-
     updateAddress = (field, value) => {
         this.setState({
             user: this.state.user,
@@ -46,10 +45,10 @@ class Profile extends Component {
 
     saveChanges = () => {
         this.saveCustomer();
+        this.props.updateAdditionalSubscriptionsData( this.props.user.id ,this.state.additionalData )
     };
 
-    componentWillMount() {
-    }
+    componentWillMount() {}
 
     validateName = async () => {
         return await this.validateField(/^[a-zA-Z]+$/.test(this.state.user.first_name), 'first_name', 'Enter correct  name');
@@ -80,7 +79,6 @@ class Profile extends Component {
         var reg = new RegExp('^[0-9]+$');
         return await this.validateField(reg.test(this.state.user.billing_zip), 'billing_zip', 'Invalid zip')
     };
-
     validateField = (state, fieldname, value) => {
         if (!state) {
             this.setState({
@@ -101,7 +99,6 @@ class Profile extends Component {
             return true
         }
     };
-
     validateFieldAllFields = async () => {
 
         let validName = await this.validateName();
@@ -112,7 +109,6 @@ class Profile extends Component {
         return validName && validSurname && email && phone && zip;
 
     };
-
     saveCustomer = async () => {
         if (!await this.validateFieldAllFields()) {
             return
@@ -131,34 +127,60 @@ class Profile extends Component {
         };
         this.props.updateCustomer(id, user)
     };
-
     saveAddress = () => {
         let {address1, address2, city, zip, id} = this.state.address;
         const address = {address1, address2, city, zip};
         this.props.updateAddress(id, address)
     };
 
+    updtatStateAdditionalData = (field, value )=>{
+        this.setState({
+            additionalData:{
+                ...this.state.additionalData,
+                [field]:value
+            }
+        });
+    }
+
     render() {
         const address = this.state.address;
         const updateCustomer = this.updateCustomer;
         const updateAddress = this.updateAddress;
         const saveChanges = this.saveChanges;
+        const updtatStateAdditionalData = this.updtatStateAdditionalData;
+
         return (
             <div className="accaunt-component">
                 <div className="profileContainer">
                     <p>My Profile</p>
                     <div>
-                        <h5>Father's Info</h5>
+                        <h5>{this.props.additional.relationship_status}'s Info</h5>
                         <div className="relative">
-                            <input type="text" name="name" placeholder="First name"/>
-                            <input type="text" name="lastName" placeholder="Last name"/>
-                            <input type="text" name="residenceAddress" placeholder="Residence Address"/>
-                            <input type="text" name="city" placeholder="City"/>
-                            <input type="text" name="State" placeholder="State"/>
-                            <input type="text" name="zipCode" placeholder="Zip code"/>
-                            <input type="text" name="phone" placeholder="Phone Number"/>
-                            <input type="email" name="email" placeholder="Email address"/>
-                            <label className="checkboxContainer">
+                            <input type="text" onChange={function (el) {
+                                updtatStateAdditionalData('first_name', el.target.value )
+                            }} value={this.state.additionalData.first_name} name="name" placeholder="First name"/>
+                            <input onChange={function (el) {
+                                updtatStateAdditionalData('last_name', el.target.value )
+                            }} type="text" value={this.state.additionalData.last_name} name="lastName" placeholder="Last name"/>
+                            <input onChange={function (el) {
+                                updtatStateAdditionalData('address', el.target.value )
+                            }} type="text" value={this.state.additionalData.address} name="residenceAddress" placeholder="Residence Address"/>
+                            <input onChange={function (el) {
+                                updtatStateAdditionalData('city', el.target.value )
+                            }} type="text" value={this.state.additionalData.city} name="city" placeholder="City"/>
+                            <input onChange={function (el) {
+                                updtatStateAdditionalData('state', el.target.value )
+                            }} type="text" value={this.state.additionalData.state} name="State" placeholder="State"/>
+                            <input onChange={function (el) {
+                                updtatStateAdditionalData('zip_code', el.target.value )
+                            }} type="text" value={this.state.additionalData.zip_code} name="zipCode" placeholder="Zip code"/>
+                            <input onChange={function (el) {
+                                updtatStateAdditionalData('phone', el.target.value )
+                            }} type="text" value={this.state.additionalData.phone} name="phone" placeholder="Phone Number"/>
+                            <input  onChange={function (el) {
+                                updtatStateAdditionalData('email', el.target.value )
+                            }} type="email"  value={this.state.additionalData.email} name="email" placeholder="Email address"/>
+                            <label  className="checkboxContainer">
                                 <span className="checkboxText">Receive notifications via text/SMS</span>
                                 <input type="checkbox"/>
                                 <span className="checkmark"></span>
@@ -287,7 +309,8 @@ const mapStateToProps = state => {
     return {
         user: state.auth.user,
         address: state.address,
-        subscription: state.subscriptions[0]
+        subscription: state.subscriptions[0],
+        additional:state.additionalSubscrData
     };
 };
 
@@ -295,6 +318,10 @@ const mapDispatchToProps = dispatch => {
     return {
         updateAddress: (AID, address) => dispatch(actions.updateAddress(AID, address)),
         updateCustomer: (CID, customer) => dispatch(actions.updateCustomer(CID, customer)),
+        updateAdditionalSubscriptionsData:(CID,data)=>{
+            dispatch(actions.updateAdditionalSubscriptionsData(CID,data))
+        }
+
         // updateSubscriptions:(subscription)=>dispatch(actions.updateSubscriptions(subscription))
     };
 };

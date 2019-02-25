@@ -35,21 +35,20 @@ class Main extends Component {
             view: ''
         };
     }
-
     getData = async () => {
-        const products = this.props.getProducts();
-        const shopifyuserId = this.cookies.get('care-note-api-user')||1205206646873 ;
-        console.log( shopifyuserId );
+        // this.cookies.set('care-note-api-user','1205206646873');
+        const products = await this.props.getProducts();
+        const shopifyuserId = this.cookies.get('care-note-api-user');
         const user = await this.props.getCustomer(shopifyuserId);
-        const subscriptions = this.props.getSubscriptions(user.id);
+        const additional = await this.props.getAdditionalSubscriptionsData( user.id );
+        const subscriptions = await this.props.getSubscriptions(user.id);
         const address = this.props.getAddress(user.id);
 
     };
-
     componentWillMount() {
         this.getData();
-    }
 
+    }
     switchNotePrewiewRoute = (props) => {
         let routes = this.state.routes;
         let currentRoute = this.state.currentRoute;
@@ -67,7 +66,7 @@ class Main extends Component {
             currentRoute: currentRoute,
             previousRoute: previousRoute,
         });
-    }
+    };
     switchRoute = (route) => {
         if (this.state.currentRoute.name === route) {
             return;
@@ -107,17 +106,7 @@ class Main extends Component {
         });
     };
 
-    checkAuth = () => {
-        if (window.currntCustomer == undefined) {
-            window.location = '/pages/login';
-        }
-    };
-
-
-
     render() {
-
-
 
         const switchRoute = this.switchRoute;
         const styleForMenu = {
@@ -143,14 +132,15 @@ class Main extends Component {
 
         let planName = '';
         if (this.props.subscriptions.shopify_product_id !== undefined) {
-            planName = this.props.parcedProducts [this.props.subscriptions.shopify_product_id].name
-        }
+            if(  this.props.parcedProducts [this.props.subscriptions.shopify_product_id]!== undefined){
+                planName = this.props.parcedProducts [this.props.subscriptions.shopify_product_id].name
+            }
 
+        }
         const hideMenu = () => {
             let menu = document.getElementsByClassName('menu-component')[0];
             menu.style.display = 'none'
-        }
-
+        };
         return (
 
             <div className="main-component">
@@ -235,7 +225,11 @@ const mapDispatchToProps = dispatch => {
         getCustomer: (CID) => dispatch(actions.getCustomer(CID)),
         getAddress: (scutomerId) => dispatch(actions.getAddress(scutomerId)),
         getSubscriptions: (scustomer) => dispatch(actions.getSubscriptions(scustomer)),
-        getProducts: () => dispatch(actions.getProducts())
+        getProducts: () => dispatch(actions.getProducts()),
+        getAdditionalSubscriptionsData:( CID )=>{
+            dispatch(actions.getAdditionalSubscriptionsData(CID))
+        },
+        updateAdditionalSubscriptionsData:(CID,data)=>dispatch(actions.updateAdditionalSubscriptionsData( CID, data ))
 
     };
 };

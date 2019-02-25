@@ -28,15 +28,11 @@ export const logIn = ( data ) => dispatch => {
         method: 'POST',
         data,
     } ).then ( res => {
-        console.log ( res );
         authStart ( true );
     } ).catch ( e => [
         console.log ( 'error', e ),
     ] );
 };
-
-
-
 
 export const getCustomer = ( CID ) => dispatch => {
 
@@ -44,9 +40,6 @@ export const getCustomer = ( CID ) => dispatch => {
         url:    'api/users/'+CID,
         method: 'GET',
     } ).then ( res => {
-
-        console.log( res )
-
         dispatch( initCustomerData( res.data ) );
         return res.data
     } )

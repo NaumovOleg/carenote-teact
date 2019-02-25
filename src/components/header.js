@@ -21,7 +21,9 @@ class Header extends Component {
         };
         let planName = '';
         if (this.props.subscriptions.shopify_product_id !== undefined) {
-            planName = this.props.parcedProducts [this.props.subscriptions.shopify_product_id].name
+            if( this.props.parcedProducts [this.props.subscriptions.shopify_product_id] !== undefined ){
+                planName = this.props.parcedProducts [this.props.subscriptions.shopify_product_id].name
+            }
         }
 
         const cookies = this.cookies;
