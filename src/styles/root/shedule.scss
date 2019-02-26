@@ -383,6 +383,11 @@ $base-range:#F79F2C;
     text-align: center;
     cursor: pointer;
 }
+
+.shedule-component .calendar-days .item:hover .bottom {
+    text-decoration: underline;
+}
+
 .shedule-component .calendar-days .item.activated .bottom {
    display:block;
 }
