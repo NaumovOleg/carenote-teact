@@ -194,6 +194,7 @@ $base-range:#F79F2C;
     margin-right: -7px;
     display: flex;
     align-items: center;
+    width: auto;
     img {
       margin-right: 10px;
     }
@@ -226,7 +227,7 @@ $base-range:#F79F2C;
     background: none;
     position: relative;
     padding-left: 26px;
-
+    width: auto;
 }
 
 .shedule-component .calendar-header button img {
@@ -437,7 +438,7 @@ $base-range:#F79F2C;
 }
 
 @media (max-width: 616px) {
-    #root .routers-montainer {
+    .routers-montainer {
                margin: 0 !important;
            }
 
@@ -454,6 +455,10 @@ $base-range:#F79F2C;
        }
    }
 
+    .shedule-component .top-content .center-content {
+        font-size: 12px;
+    }
+
 }
 
 @media(max-width: 416px) {
@@ -468,6 +473,19 @@ $base-range:#F79F2C;
             }
         }
    }
+
+    .shedule-component .calendar-header .prev-mont,
+    .shedule-component .calendar-header .next-button {
+        font-size: 12px;
+    }
+
+    .shedule-component .calendar-header .date-text {
+        font-size: 14px;
+    }
+
+    .shedule-component .calendar-footer span {
+        font-size: 12px;
+    }
 }
 
 @media(max-width: 345px) {

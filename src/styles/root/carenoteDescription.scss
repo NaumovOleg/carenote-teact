@@ -153,6 +153,7 @@
   .carenotes-modal-header {
     padding: 0 30px;
     button {
+      width: auto;
       span {
         display: none;
       }
@@ -165,6 +166,12 @@
   .carenotes-employee-info,
   .carenotes-modal-link {
     padding-left: 0;
+  }
+}
+
+@media(max-width: 616px) {
+  .carenotes-employee-info {
+    padding-right: 0;
   }
 }
 
