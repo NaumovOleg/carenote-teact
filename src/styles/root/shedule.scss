@@ -179,11 +179,13 @@ $base-range:#F79F2C;
 
 .shedule-component .top-content .text {
     font-size: 24px;
+    font-family:'Avenir-Heavy', sans-serif;
 }
 
 .shedule-component .top-content button {
     border: none;
     font-size: 14px;
+    font-family:'Avenir-Heavy', sans-serif;
     color: $base-blue;
     outline: none;
     background: none;
@@ -214,6 +216,7 @@ $base-range:#F79F2C;
 
 .shedule-component .calendar-header .date-text {
     font-size: 18px;
+    font-family: 'Avenir-Heavy', sans-serif;
 }
 
 .shedule-component .calendar-header button {
@@ -236,6 +239,7 @@ $base-range:#F79F2C;
 .shedule-component .calendar-header .next-button {
     padding-left: 0px;
     padding-right: 26px;
+    font-size: 14px;
     font-family: 'Avenir-Light',sans-serif;
 }
 
@@ -284,6 +288,8 @@ $base-range:#F79F2C;
 .shedule-component .calendar-days .item:hover {
     transform: scale(1.2);
 }
+
+
 .shedule-component .calendar-days .item .top {
     padding-top: 28px;
     width: 94px;
@@ -304,7 +310,12 @@ $base-range:#F79F2C;
 
 .shedule-component .calendar-days .item .top span {
     font-size: 16px;
+    font-family: 'Avenir-Heavy', sans-serif;
     padding-bottom: 4px;
+}
+
+.shedule-component .calendar-days .item .top .right {
+    font-family: 'Avenir-Light', sans-serif;
 }
 
 .shedule-component .calendar-days .item .center {
@@ -317,7 +328,8 @@ $base-range:#F79F2C;
     height: 111px;
     span{
         span{
-            font-size: 15px;
+            font-size: 16px;
+            font-family: 'Avenir-Heavy', sans-serif;
             color: #06060670;
         }
     }
@@ -357,13 +369,18 @@ $base-range:#F79F2C;
     text-align: right;
 }
 
+.shedule-component .calendar-days .item:hover .center span {
+    font-size: 20px;
+    transition: all .7s;
+}
+
 .shedule-component .calendar-days .item .bottom {
     color: $base-blue;
     font-size: 12px;
+    font-family: 'Avenir-Heavy', sans-serif;
     padding-top: 8px;
     text-align: center;
     cursor: pointer;
-    display:none;
 }
 .shedule-component .calendar-days .item.activated .bottom {
    display:block;
@@ -376,6 +393,10 @@ $base-range:#F79F2C;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+
+.shedule-component .date {
+    color: #323334;
 }
 
 
