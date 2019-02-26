@@ -95,7 +95,7 @@
 }
 
 .notes-component .p-paginator {
-  padding: 21px 85px 125px;
+  padding: 21px 85px 125px 0;
   display: flex;
   justify-content: flex-end;
   background-color: #fff;
@@ -114,6 +114,10 @@
 
 .notes-component .p-paginator .p-paginator-icon {
   margin-top: -0.5em;
+}
+
+.notes-component .p-paginator button {
+  width: auto;
 }
 
 .notes-component .p-highlight {
