@@ -268,7 +268,7 @@ $base-range:#F79F2C;
     height: 228px;
     box-shadow: 0px 3px 6px rgba(68, 68, 68, 0.6);
     border-radius: 6px;
-    transition: 0.5s;
+    transition: 0.2s;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -332,6 +332,7 @@ $base-range:#F79F2C;
             font-size: 16px;
             font-family: 'Avenir-Heavy', sans-serif;
             color: #06060670;
+            line-height: 21px;
         }
     }
 }
@@ -372,13 +373,13 @@ $base-range:#F79F2C;
 
 .shedule-component .calendar-days .item:hover .center span {
     font-size: 20px;
-    transition: all .7s;
+    line-height: 26px;
 }
 
 .shedule-component .calendar-days .item .bottom {
     color: $base-blue;
     font-size: 12px;
-    font-family: 'Avenir-Heavy', sans-serif;
+    font-family: 'Avenir-Medium', sans-serif;
     padding-top: 8px;
     text-align: center;
     cursor: pointer;
@@ -386,6 +387,9 @@ $base-range:#F79F2C;
 
 .shedule-component .calendar-days .item:hover .bottom {
     text-decoration: underline;
+    font-weight: normal;
+    font-size: 14px;
+    font-family: 'Avenir-Medium', sans-serif;
 }
 
 .shedule-component .calendar-days .item.activated .bottom {
@@ -449,6 +453,8 @@ $base-range:#F79F2C;
 
 
    .shedule-component {
+       padding-bottom: 30px;
+       padding-top: 30px;
        .top-content {
            flex-wrap: wrap;
            button {

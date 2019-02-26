@@ -115,8 +115,12 @@
   color: #A1A2A5;
 }
 
-.subscriptions-component .plan-button span {
-  margin: 0 7px;
+.subscriptions-component .plan-button div {
+  display: inline-block;
+  width: 1px;
+  height: 13px;
+  background-color: #A1A2A5;
+  margin: 8px 7px 0;
 }
 
 .change-plan-button,

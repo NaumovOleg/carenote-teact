@@ -33,7 +33,7 @@ class Subscriptions_description extends Component {
                         </div>
                         <p className="plan-button"><a className="change-plan-button" onClick={function () {
                             selectPlan( 'schange_subscritions' )
-                        }}>Change Plan </a> <span>|</span> <a className="cancel-plan-button"> Cancel Plan</a></p>
+                        }}>Change Plan </a> <div></div> <a className="cancel-plan-button"> Cancel Plan</a></p>
                     </div>
                 </div>
             </div>
