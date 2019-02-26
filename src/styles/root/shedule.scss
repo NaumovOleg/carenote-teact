@@ -179,11 +179,13 @@ $base-range:#F79F2C;
 
 .shedule-component .top-content .text {
     font-size: 24px;
+    font-family:'Avenir-Heavy', sans-serif;
 }
 
 .shedule-component .top-content button {
     border: none;
     font-size: 14px;
+    font-family:'Avenir-Heavy', sans-serif;
     color: $base-blue;
     outline: none;
     background: none;
@@ -192,6 +194,7 @@ $base-range:#F79F2C;
     margin-right: -7px;
     display: flex;
     align-items: center;
+    width: auto;
     img {
       margin-right: 10px;
     }
@@ -214,6 +217,7 @@ $base-range:#F79F2C;
 
 .shedule-component .calendar-header .date-text {
     font-size: 18px;
+    font-family: 'Avenir-Heavy', sans-serif;
 }
 
 .shedule-component .calendar-header button {
@@ -223,7 +227,7 @@ $base-range:#F79F2C;
     background: none;
     position: relative;
     padding-left: 26px;
-
+    width: auto;
 }
 
 .shedule-component .calendar-header button img {
@@ -236,6 +240,7 @@ $base-range:#F79F2C;
 .shedule-component .calendar-header .next-button {
     padding-left: 0px;
     padding-right: 26px;
+    font-size: 14px;
     font-family: 'Avenir-Light',sans-serif;
 }
 
@@ -263,7 +268,7 @@ $base-range:#F79F2C;
     height: 228px;
     box-shadow: 0px 3px 6px rgba(68, 68, 68, 0.6);
     border-radius: 6px;
-    transition: 0.5s;
+    transition: 0.2s;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -284,6 +289,8 @@ $base-range:#F79F2C;
 .shedule-component .calendar-days .item:hover {
     transform: scale(1.2);
 }
+
+
 .shedule-component .calendar-days .item .top {
     padding-top: 28px;
     width: 94px;
@@ -304,7 +311,12 @@ $base-range:#F79F2C;
 
 .shedule-component .calendar-days .item .top span {
     font-size: 16px;
+    font-family: 'Avenir-Heavy', sans-serif;
     padding-bottom: 4px;
+}
+
+.shedule-component .calendar-days .item .top .right {
+    font-family: 'Avenir-Light', sans-serif;
 }
 
 .shedule-component .calendar-days .item .center {
@@ -317,8 +329,10 @@ $base-range:#F79F2C;
     height: 111px;
     span{
         span{
-            font-size: 15px;
+            font-size: 16px;
+            font-family: 'Avenir-Heavy', sans-serif;
             color: #06060670;
+            line-height: 21px;
         }
     }
 }
@@ -357,14 +371,27 @@ $base-range:#F79F2C;
     text-align: right;
 }
 
+.shedule-component .calendar-days .item:hover .center span {
+    font-size: 20px;
+    line-height: 26px;
+}
+
 .shedule-component .calendar-days .item .bottom {
     color: $base-blue;
     font-size: 12px;
+    font-family: 'Avenir-Medium', sans-serif;
     padding-top: 8px;
     text-align: center;
     cursor: pointer;
-    display:none;
 }
+
+.shedule-component .calendar-days .item:hover .bottom {
+    text-decoration: underline;
+    font-weight: normal;
+    font-size: 14px;
+    font-family: 'Avenir-Medium', sans-serif;
+}
+
 .shedule-component .calendar-days .item.activated .bottom {
    display:block;
 }
@@ -376,6 +403,10 @@ $base-range:#F79F2C;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
+}
+
+.shedule-component .date {
+    color: #323334;
 }
 
 
@@ -416,12 +447,14 @@ $base-range:#F79F2C;
 }
 
 @media (max-width: 616px) {
-    #root .routers-montainer {
+    .routers-montainer {
                margin: 0 !important;
            }
 
 
    .shedule-component {
+       padding-bottom: 30px;
+       padding-top: 30px;
        .top-content {
            flex-wrap: wrap;
            button {
@@ -432,6 +465,10 @@ $base-range:#F79F2C;
            width: 96vw;
        }
    }
+
+    .shedule-component .top-content .center-content {
+        font-size: 12px;
+    }
 
 }
 
@@ -447,6 +484,19 @@ $base-range:#F79F2C;
             }
         }
    }
+
+    .shedule-component .calendar-header .prev-mont,
+    .shedule-component .calendar-header .next-button {
+        font-size: 12px;
+    }
+
+    .shedule-component .calendar-header .date-text {
+        font-size: 14px;
+    }
+
+    .shedule-component .calendar-footer span {
+        font-size: 12px;
+    }
 }
 
 @media(max-width: 345px) {

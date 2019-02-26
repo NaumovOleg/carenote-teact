@@ -41,7 +41,7 @@ class Notes extends Component {
                         {
                             notes.map(el => {
                                 return <div className="item" key={el.date + el.title}>
-                                    <div className="date"> {moment(el.date).format('mm/D')}</div>
+                                    <div className="dates"> {moment(el.date).format('mm/D')}</div>
                                     <div className='title'>{el.title}</div>
                                     <a className="search-img" onClick={function () {
                                         previewNote( el )

@@ -19,7 +19,7 @@ class Confirmation extends Component {
                                 returnRoute( 'subscriptions' )
                             }}><img src={backimg}/> <span> Back</span> </a></p>
                         </div>
-                        <div className="choosenSubscription">
+                        <div className="confirmation-choosenSubscription">
                             <p>Thank you. You're confirmed for a change to the {this.props.planName} Plan.</p>
                             <p>The plan change will take affect starting April 1, 2019</p>
                         </div>
