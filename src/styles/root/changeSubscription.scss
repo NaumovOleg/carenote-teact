@@ -73,6 +73,7 @@ a {
   }
   span {
     color: #008BE2;
+    cursor: pointer;
   }
 }
 }
@@ -82,6 +83,7 @@ a {
   p {
     &:last-child {
       a {
+        cursor: pointer;
         span {
           color: #008BE2;
         }
@@ -102,6 +104,9 @@ color: #323334;
 line-height: 24px;
 font-size: 16px;
 font-family: 'Avenir-Light', sans-serif;
+  span {
+    font-family: 'Avenir-Heavy', sans-serif;
+  }
 }
 }
 
@@ -120,6 +125,9 @@ line-height: 24px;
 font-size: 16px;
 font-family: 'Avenir-Light', sans-serif;
 flex-basis: 50%;
+  span {
+    font-family: 'Avenir-Heavy', sans-serif;
+  }
 }
 
 button {
@@ -179,6 +187,10 @@ p {
 font-size: 21px;
 font-family: 'Avenir-Light', sans-serif;
 }
+
+.change-subscriptions-choosen-plan {
+  font-family: 'Avenir-Heavy', sans-serif;
+}
 button{
 height: 40px;
 width: 155px;
@@ -223,6 +235,9 @@ text-align: center;
 font-size: 21px;
 line-height: 30px;
 font-family: 'Avenir-Light', sans-serif;
+  &:first-child {
+    font-family: 'Avenir-Heavy', sans-serif;
+  }
 }
 
 &:last-child {

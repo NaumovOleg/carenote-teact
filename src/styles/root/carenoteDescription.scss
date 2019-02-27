@@ -80,6 +80,7 @@
     display: flex;
     align-items: center;
     outline: none;
+    width: auto;
     img {
       margin-right: 10px;
     }
@@ -120,7 +121,7 @@
   padding-right: 83px;
   text-align: left;
   border-bottom: 7px solid #008BE2;
-  font-family: 'Avenir-Light', sans-serif;
+  font-family: 'Avenir-LightOblique', sans-serif;
   font-size: 16px;
   display: flex;
   align-items: center;
@@ -153,6 +154,7 @@
   .carenotes-modal-header {
     padding: 0 30px;
     button {
+      width: auto;
       span {
         display: none;
       }
@@ -165,6 +167,12 @@
   .carenotes-employee-info,
   .carenotes-modal-link {
     padding-left: 0;
+  }
+}
+
+@media(max-width: 616px) {
+  .carenotes-employee-info {
+    padding-right: 0;
   }
 }
 

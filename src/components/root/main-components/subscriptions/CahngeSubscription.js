@@ -74,7 +74,7 @@ class ChangeSubscription extends Component {
                     <div className="change-subscriptions-modal-container">
                         <div className="change-subscriptions-modal-text-box">
                             <p>Please confirm change in subscription to:</p>
-                            <p className="change-subscriptions-choosen-plan"><strong> {selectedPlan.name} Plan ${selectedPlan.price}/mo</strong></p>
+                            <p className="change-subscriptions-choosen-plan">{selectedPlan.name} Plan ${selectedPlan.price}/mo</p>
                             <button onClick={
                                 function () {
                                     confirm();
@@ -92,7 +92,7 @@ class ChangeSubscription extends Component {
                 }} className="subscriptions-modal-window">
                     <div className="subscriptions-modal-container">
                         <div className="subscriptions-modal-text-box">
-                            <p><strong>Thank you. You’re confirmed for a<br />change to the {selectedPlan.name}Plan.</strong></p>
+                            <p>Thank you. You’re confirmed for a<br />change to the {selectedPlan.name}Plan.</p>
                             <p className="subscriptions-choosen-plan">The plan change will take affect<br />
                                 starting April 1, 2019.</p>
                             <button onClick={function () {
@@ -111,7 +111,7 @@ class ChangeSubscription extends Component {
                         }}><img src={backimg}/> <span>Back</span></a></p>
                     </div>
                     <div className="current-subscription">
-                        <p><strong>Current Subscription: { currentPlan.name} Plans</strong><br />
+                        <p><span>Current Subscription: { currentPlan.name} Plans</span><br />
                             {currentPlan.plan_description}</p>
                         <p>${currentPlan.price }/mo</p>
                     </div>
@@ -119,7 +119,7 @@ class ChangeSubscription extends Component {
                         Object.keys(avaliablePlans).map(el=>{
                             if( el!=this.props.subscriptions.shopify_product_id ) {
                                 return(  <div className="avaliable-plan-subscription " key={el}>
-                                    <p><strong>{avaliablePlans[el].name} Plan ${avaliablePlans[el].price}/mo</strong><br />
+                                    <p><span>{avaliablePlans[el].name} Plan ${avaliablePlans[el].price}/mo</span><br />
                                         {avaliablePlans[el].plan_description}</p>
                                     <button onClick={function () {
                                         setSelectedPlan( el );
