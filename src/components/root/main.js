@@ -68,16 +68,10 @@ class Main extends Component {
         });
     };
     switchRoute = (route) => {
-       let menu = document.getElementsByClassName('menu-component')[0];
-
-
-
-        // var menu;
-        console.log(this.state.currentRoute);
-
-        console.log(route);
-
-        if (this.state.currentRoute.name === route) return false;
+       if(this.state.currentRoute.name === route) {
+           return;
+       }
+       ;
 
         let routes = this.state.routes;
         let currentRoute = this.state.currentRoute;
@@ -95,9 +89,7 @@ class Main extends Component {
             previousRoute: previousRoute,
         });
 
-        menu.style.display = 'none';
 
-        console.log(menu);
     };
 
     switchPreviousRoute = () => {
