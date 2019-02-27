@@ -106,6 +106,7 @@
   margin-top: 30px;
   display: flex;
   justify-content: flex-end;
+  align-items: baseline;
   color: #A1A2A5;
 }
 
@@ -115,12 +116,8 @@
   color: #A1A2A5;
 }
 
-.subscriptions-component .plan-button div {
-  display: inline-block;
-  width: 1px;
-  height: 13px;
-  background-color: #A1A2A5;
-  margin: 8px 7px 0;
+.subscriptions-component .plan-button span {
+  margin: 0 5px;
 }
 
 .change-plan-button,
