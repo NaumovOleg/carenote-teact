@@ -2,6 +2,7 @@ import {authStart, logIn, initCustomerData, logOut, getCustomer, updateCustomer}
 import {initProducts, getProducts} from './products';
 import {getAddress, updateAddress} from './adress';
 import {getCalendatData} from './calendar';
+import {getNotes, getComments } from './notes';
 import {
     getSubscriptions,
     updateSubscriptions,
@@ -23,6 +24,8 @@ export  {
     updateSubscriptions,
     getAdditionalSubscriptionsData,
     updateAdditionalSubscriptionsData,
-    getCalendatData
+    getCalendatData,
+    getNotes,
+    getComments
 
 };
