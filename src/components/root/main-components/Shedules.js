@@ -185,13 +185,12 @@ class Shedule extends Component {
         if (this.state.selectedDateTime.date !== '' && this.state.selectedDateTime.time !== '') {
 
             return (
-                this.state.selectedDateTime.date.format('MMM D , ddd') +
-                '@' + this.state.selectedDateTime.time
+                this.state.selectedDateTime.date.format('MMM D, ddd') +
+                ' @ ' + this.state.selectedDateTime.time
             )
         } else return null
     };
     getEventTime = (event) => {
-        console.log(  )
         return (
             <span style={    {
                 'margin': 'auto',
@@ -227,6 +226,7 @@ class Shedule extends Component {
                 parsedEvents[moment(el.end.dateTime).format('MMM_D_ddd')] = el
             })
         }
+        console.log( parsedEvents )
         const noCalls = () => {
             return (
                 <span style={    {

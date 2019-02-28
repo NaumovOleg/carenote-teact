@@ -49,7 +49,7 @@ class Main extends Component {
         this.getData();
 
     }
-    switchNotePrewiewRoute = (props) => {
+    switchNotePrewiewRoute = props => {
         let routes = this.state.routes;
         let currentRoute = this.state.currentRoute;
         let previousRoute = this.state.currentRoute;
@@ -68,10 +68,11 @@ class Main extends Component {
         });
     };
     switchRoute = (route) => {
-        if (this.state.currentRoute.name === route) {
-            return;
-        }
-        ;
+       if(this.state.currentRoute.name === route) {
+           return;
+       }
+       ;
+
         let routes = this.state.routes;
         let currentRoute = this.state.currentRoute;
         let previousRoute = this.state.currentRoute;
@@ -87,6 +88,8 @@ class Main extends Component {
             currentRoute: currentRoute,
             previousRoute: previousRoute,
         });
+
+
     };
 
     switchPreviousRoute = () => {
@@ -113,13 +116,16 @@ class Main extends Component {
             display: this.state.currentRoute.name === 'shedule' || this.state.currentRoute.name === 'notePreview' ? 'none' : 'flex',
         };
 
+
         if(isMobile) styleForMenu.display = 'none';
 
+        const { subscriptions, shedule, profile, notes  } = this.state.routes;
+
         const stylesForActivRoutes = {
-            subscriptions: this.state.routes.subscriptions.active ? 'header-navigation-menu header-navigation__selected' : 'header-navigation-menu',
-            shedule: this.state.routes.shedule.active ? 'header-navigation-menu header-navigation__selected' : 'header-navigation-menu',
-            profile: this.state.routes.profile.active ? 'header-navigation-menu header-navigation__selected' : 'header-navigation-menu',
-            notes: this.state.routes.notes.active ? 'header-navigation-menu header-navigation__selected' : 'header-navigation-menu',
+            subscriptions: subscriptions.active ? 'header-navigation-menu header-navigation__selected' : 'header-navigation-menu',
+            shedule: shedule.active ? 'header-navigation-menu header-navigation__selected' : 'header-navigation-menu',
+            profile: profile.active ? 'header-navigation-menu header-navigation__selected' : 'header-navigation-menu',
+            notes: notes.active ? 'header-navigation-menu header-navigation__selected' : 'header-navigation-menu',
         };
 
         const routesStyle = {

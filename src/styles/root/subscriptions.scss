@@ -82,24 +82,79 @@
   text-align: left;
   border-top: 7px solid #EAEDEF;
   border-bottom: 7px solid #EAEDEF;
+  display: flex;
+  justify-content: space-between;
 }
 
 .choosenSubscription p {
   margin: 0;
   padding-bottom: 5px;
   color: #323334;
-}
-
-.choosenSubscription p:first-child {
   font-family: 'Avenir-Heavy', sans-serif;
 }
-.change-plan-button{
+
+.current-sub p:first-child {
+  font-family: 'Avenir-Heavy', sans-serif;
+}
+
+.current-sub p:last-child {
+  font-size: 16px;
+  font-family: 'Avenir-Light', sans-serif;
+}
+
+.subscriptions-component .plan-button {
+  margin-top: 30px;
+  display: flex;
+  justify-content: flex-end;
+  align-items: baseline;
+  color: #A1A2A5;
+}
+
+.subscriptions-component .plan-button a {
+  font-size: 14px;
+  font-family: 'Avenir-Heavy', sans-serif;
+  color: #A1A2A5;
+}
+
+.subscriptions-component .plan-button span {
+  margin: 0 5px;
+}
+
+.change-plan-button,
+.cancel-plan-button {
   cursor: pointer;
 }
 .change-subscriptions-modal-window, .subscriptions-modal-window{
   border-radius: 10px;
   overflow: hidden;
 }
+
+.confirmation-choosenSubscription {
+  padding: 40px 0;
+  text-align: left;
+  border-top: 7px solid #EAEDEF;
+}
+
+.confirmation-choosenSubscription p:first-child {
+  font-family: 'Avenir-Heavy', sans-serif;
+  font-size: 16px;
+}
+
+.confirmation-choosenSubscription p:last-child {
+  font-family: 'Avenir-Light', sans-serif;
+  font-size: 16px;
+}
+
+@media(max-width: 940px) {
+  .choosenSubscription {
+    flex-direction: column;
+  }
+
+  .choosenSubscription .subscriptions-plan-price {
+    margin-top: 15px;
+  }
+}
+
 
 @media(max-width: 850px) {
   .subscriptions {

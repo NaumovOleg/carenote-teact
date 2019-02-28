@@ -23,14 +23,17 @@ class Subscriptions_description extends Component {
                     <div className="main-container">
                         <div className="subscriptions">
                             <p>Subscriptions</p>
-                            <p><a className="change-plan-button" onClick={function () {
-                                selectPlan( 'schange_subscritions' )
-                            }}>Change Plan</a></p>
                         </div>
                         <div className="choosenSubscription">
-                            <p>{plan.name }</p>
-                            <p>{ plan.plan_description }</p>
+                            <div className="current-sub">
+                                <p>Current Subscription: {plan.name } Plan</p>
+                                <p>{ plan.plan_description }</p>
+                            </div>
+                                <p className="subscriptions-plan-price">${plan.price}/mo</p>
                         </div>
+                        <p className="plan-button"><a className="change-plan-button" onClick={function () {
+                            selectPlan( 'schange_subscritions' )
+                        }}>Change Plan </a> <span>|</span> <a className="cancel-plan-button"> Cancel Plan</a></p>
                     </div>
                 </div>
             </div>

@@ -24,13 +24,13 @@ export const initParcedProducts = ( productsArray ) => {
         };
 
         if( el.product_type.includes('Platinum')){
-            products[el.id].plan_description = '7 Care Calls per week, Unlimited outbound calls, Unlimited text messaging, Carentes sent daily, Dedicated personal concierge'
+            products[el.id].plan_description = '7 Care calls per week, unlimited outbound calls, unlimited text messaging'
         }
         if( el.product_type.includes('Gold')){
-            products[el.id].plan_description = '2 Care Calls per week, 2 Outbound calls per week, Unlimited text messaging, Carenotes sent weekly'
+            products[el.id].plan_description = '2 Care calls per week, 2 outbound calls, unlimited text messaging'
         }
         if( el.product_type.includes('Silver')){
-            products[el.id].plan_description = '1 Care Call per week, Unlimited text messaging, Carenotes sent weekly'
+            products[el.id].plan_description = '1 Care call per week, unlimited text messaging'
         }
 
     })
