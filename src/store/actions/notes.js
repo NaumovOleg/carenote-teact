@@ -28,7 +28,7 @@ export const getComments = (noteId) => {
             url: 'api/carenotes/'+noteId+'/comments',
             method: 'GET',
         }).then(res => {
-            return res.data.comments;
+            return res.data.comments.filter( (item) => item.public);
         })
         .catch(e => {});
 };
