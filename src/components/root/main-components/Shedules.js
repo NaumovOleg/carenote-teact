@@ -3,11 +3,12 @@ import   ReactDOM  from 'react-dom';
 import {connect} from 'react-redux';
 import * as actions from '../../../store/actions/index';
 import {Dialog} from 'primereact/dialog';
-import * as moment from 'moment';
+// import * as moment from 'moment';
 import arrowIcon from '../../../assets/Down_arrow_small@2x.png';
 import closeIcon from '../../../assets/No@2x.png';
 import backimg from '../../../assets/Group 268.png';
-moment.locales('us');
+const moment = require ('moment-timezone');
+moment.tz('Europe/Kiev');
 
 class Shedule extends Component {
     state = {
@@ -226,7 +227,6 @@ class Shedule extends Component {
                 parsedEvents[moment(el.end.dateTime).format('MMM_D_ddd')] = el
             })
         }
-        console.log( parsedEvents )
         const noCalls = () => {
             return (
                 <span style={    {
