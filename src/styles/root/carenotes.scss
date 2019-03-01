@@ -61,6 +61,7 @@
   padding-bottom: 28px;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   border-bottom: 1px solid #D0D3D5;
 }
 
@@ -152,6 +153,11 @@
 .notes-component .p-paginator-prev:hover {
   background-color: transparent;
   color: #008BE2;
+}
+
+.notes-container .items-container .item .date {
+  color: #A1A2A5;
+  font-family: 'Avenir-Medium', sans-serif;
 }
 
 @media(max-width: 850px) {
