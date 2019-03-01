@@ -4,6 +4,7 @@ export const LOG_OUT = 'LOG_OUT';
 export const GET_CURRENT_CUSTOMER = 'GET_CURRENT_CUSTOMER';
 
 export const GET_NOTES = 'GET_NOTES';
+export const GET_COMMENTS = 'GET_COMMENTS';
 export const GET_ADDRESS = 'GET_ADDRESS';
 
 export const GET_SUBSCRIPTIONS = 'GET_SUBSCRIPTIONS';

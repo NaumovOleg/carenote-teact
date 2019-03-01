@@ -191,7 +191,6 @@ class Shedule extends Component {
         } else return null
     };
     getEventTime = (event) => {
-        console.log(  )
         return (
             <span style={    {
                 'margin': 'auto',
@@ -227,6 +226,7 @@ class Shedule extends Component {
                 parsedEvents[moment(el.end.dateTime).format('MMM_D_ddd')] = el
             })
         }
+        console.log( parsedEvents )
         const noCalls = () => {
             return (
                 <span style={    {
