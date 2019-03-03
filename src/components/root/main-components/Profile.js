@@ -154,8 +154,8 @@ class Profile extends Component {
                 <div className="profileContainer">
                     <p>My Profile</p>
                     <div>
-                        <h5>{this.props.additional.relationship_status}'s Info</h5>
-                        <div className="relative">
+                        <h5 style={{display:this.props.additional.whos_signing==='myself'?'none':'flex'}}>{this.props.additional.relationship_status}'s Info</h5>
+                        <div className="relative" style={{display:this.props.additional.whos_signing==='myself'?'none':'flex'}}>
                             <input type="text" onChange={function (el) {
                                 updtatStateAdditionalData('first_name', el.target.value )
                             }} value={this.state.additionalData.first_name} name="name" placeholder="First name"/>
