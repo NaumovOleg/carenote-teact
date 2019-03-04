@@ -20,7 +20,12 @@ class Notes extends Component {
         super(props);
     }
 
-
+    /**
+     * calculate index of element by descending
+     */
+    getNoteNumber(index){
+        return (this.props.count - index - (this.state.page-1)*10);
+    }
     getNotes = () => {
         return this.props.notes;
     };
@@ -41,10 +46,10 @@ class Notes extends Component {
                     <div className="header">Carenotes</div>
                     <div className="items-container">
                         {
-                            notes.map(el => {
+                            notes.map((el, index) => {
                                 return <div className="item" key={el.created_at + el.description}>
-                                    <div className="date"> {moment(el.created_at).format('MM/D')}</div>
-                                    <div className='title'>{el.description}</div>
+                                    <div className="date">{this.getNoteNumber(index)}</div>
+                                    <div className='title'> {moment(el.created_at).format('LLLL')}</div>
                                     <a className="search-img" onClick={function () {
                                         previewNote( el.id )
                                     }}><img src={searchIcon}
