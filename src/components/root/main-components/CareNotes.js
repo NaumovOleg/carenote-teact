@@ -53,7 +53,7 @@ class Notes extends Component {
                                     onClick={function () {
                                         previewNote( el.id )
                                     }}>
-                                    <div className="date">{moment(el.created_at).format('MM/D')} </div>
+                                    <div className="date">{moment(el.created_at).format('M/D/YYYY')} </div>
                                     <div className='title'>Carenote {this.getNoteNumber(index)} </div>
                                     <a className="search-img" onClick={function () {
                                         previewNote( el.id )
