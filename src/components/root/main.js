@@ -41,6 +41,7 @@ class Main extends Component {
         const shopifyuserId = this.cookies.get('care-note-api-user');
         const user = await this.props.getCustomer(shopifyuserId);
         const additional = await this.props.getAdditionalSubscriptionsData( user.id );
+        console.log( additional )
         const subscriptions = await this.props.getSubscriptions(user.id);
         const address = this.props.getAddress(user.id);
 

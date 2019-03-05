@@ -41,15 +41,19 @@ export const updateSubscriptions = ( SID, subscription ) => dispatch => {
        } );
 };
 
-export const getAdditionalSubscriptionsData = ( cutomer ) => dispatch => {
-    return request ( {
+export const getAdditionalSubscriptionsData =  ( cutomer ) => dispatch  => {
+    console.log( cutomer )
+    return  request ( {
         url:    'api/subscriptions/additional/'+cutomer,
         method: 'GET',
     } ).then ( res => {
+
+        console.log( res )
         dispatch( initAdditionalSubscriptions( res.data ) );
         return res.data
     } )
         .catch ( e => {
+            console.log( cutomer )
             console.log ( 'error in reac eeeet  products', e );
         } );
 };

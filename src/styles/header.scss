@@ -43,7 +43,7 @@
 }
 
 .header-container .welcome-container .separator {
-  margin: 0 5px;
+  margin: 0 12px;
   height: 100%;
   width: 0px;
   border-left: 1px solid #000;
@@ -63,7 +63,7 @@
 .header-container .log-out__button a {
   width: 115px;
   height: 40px;
-  border: 1px solid #D0D3D5;
+  border: 2px solid #D0D3D5;
   background: none;
   color: #008BE2;
   border-radius: 40px;
@@ -80,7 +80,7 @@
 }
 
 .header-container .log-out__button a:hover {
-  border: 1px solid #008BE2;
+  border: 2px solid #008BE2;
 }
 
 @media (max-width: 616px) {
